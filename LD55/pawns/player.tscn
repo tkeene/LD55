@@ -5,6 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sc4ya"]
 
 [node name="Player" type="CharacterBody2D"]
+floor_constant_speed = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_sc4ya")

@@ -69,6 +69,7 @@ func _process(delta):
 				current_placing_object.global_position += Vector2.DOWN * MOVE_PLACING_OBJECT_SPEED * unscaled_delta
 			
 			if Input.is_action_just_pressed("ui_accept"):
+				placeable_objects.remove_at(current_spellbook_index)
 				current_placing_object = null;
 				un_pause_game()
 	else:

@@ -1,0 +1,62 @@
+[gd_scene load_steps=4 format=3 uid="uid://dvh625u0onhn6"]
+
+[ext_resource type="Texture2D" uid="uid://cyqc4nl6vjpx" path="res://white_pixel.bmp" id="1_3yu6l"]
+[ext_resource type="Script" path="res://01_main_menu/01_main.gd" id="1_epcay"]
+[ext_resource type="Texture2D" uid="uid://c2ce7wgpsvaxf" path="res://debug_pixel.bmp" id="2_nkavv"]
+
+[node name="00Boot" type="Node2D"]
+script = ExtResource("1_epcay")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GameTitle" type="RichTextLabel" parent="CanvasLayer"]
+offset_left = 21.0
+offset_top = 27.0
+offset_right = 334.0
+offset_bottom = 229.0
+text = "[INSERT GAME NAME HERE]"
+
+[node name="Credits" type="RichTextLabel" parent="CanvasLayer"]
+offset_left = 21.0
+offset_top = 307.0
+offset_right = 334.0
+offset_bottom = 509.0
+text = "Code - @JennTheFern
+Writing - @AlanBahr
+Design & Art - @iellswo
+Code & Music - @koboldskeep"
+
+[node name="level_select" type="GridContainer" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+columns = 5
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/level_select"]
+position = Vector2(450, 201)
+scale = Vector2(136.746, 111.496)
+texture = ExtResource("1_3yu6l")
+
+[node name="Sprite2D2" type="Sprite2D" parent="CanvasLayer/level_select"]
+position = Vector2(544, 238)
+scale = Vector2(136.746, 111.496)
+texture = ExtResource("1_3yu6l")
+
+[node name="Sprite2D3" type="Sprite2D" parent="CanvasLayer/level_select"]
+position = Vector2(693, 196)
+scale = Vector2(136.746, 111.496)
+texture = ExtResource("1_3yu6l")
+
+[node name="Sprite2D4" type="Sprite2D" parent="CanvasLayer/level_select"]
+position = Vector2(853, 199)
+scale = Vector2(136.746, 111.496)
+texture = ExtResource("1_3yu6l")
+
+[node name="Sprite2D5" type="Sprite2D" parent="CanvasLayer/level_select"]
+position = Vector2(960, 332)
+scale = Vector2(136.746, 111.496)
+texture = ExtResource("1_3yu6l")
+
+[node name="Cursor" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(387, 83)
+scale = Vector2(-104.189, -28.4445)
+texture = ExtResource("2_nkavv")

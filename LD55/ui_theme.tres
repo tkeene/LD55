@@ -6,3 +6,10 @@
 default_font = ExtResource("1_dxjsl")
 Fonts/fonts/large = ExtResource("1_dxjsl")
 Fonts/fonts/normal = ExtResource("1_dxjsl")
+LevelSelectIcon/base_type = &"TextureRect"
+TitleText/base_type = &"Label"
+TitleText/colors/font_shadow_color = Color(0, 0, 0, 1)
+TitleText/constants/shadow_offset_x = 2
+TitleText/constants/shadow_offset_y = 2
+TitleText/constants/shadow_outline_size = 10
+TitleText/font_sizes/font_size = 48

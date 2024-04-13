@@ -1,65 +1,110 @@
-[gd_scene load_steps=5 format=3 uid="uid://dvh625u0onhn6"]
+[gd_scene load_steps=13 format=3 uid="uid://dvh625u0onhn6"]
 
-[ext_resource type="Texture2D" uid="uid://cyqc4nl6vjpx" path="res://white_pixel.bmp" id="1_3yu6l"]
 [ext_resource type="Script" path="res://01_main_menu/01_main.gd" id="1_epcay"]
-[ext_resource type="Texture2D" uid="uid://c2ce7wgpsvaxf" path="res://debug_pixel.bmp" id="2_nkavv"]
 [ext_resource type="Theme" uid="uid://dk2uniu5qjt3m" path="res://ui_theme.tres" id="2_pbpsj"]
+[ext_resource type="Texture2D" uid="uid://b7u8tc87omnnj" path="res://01_main_menu/Level1.png" id="3_jrgj7"]
+[ext_resource type="Texture2D" uid="uid://b2gjjtiri25ua" path="res://01_main_menu/Level1Selected.png" id="4_ive4o"]
+[ext_resource type="Texture2D" uid="uid://dfg5xawxfb1cf" path="res://01_main_menu/Level2.png" id="4_tvmcn"]
+[ext_resource type="Texture2D" uid="uid://bqpysywah5ico" path="res://01_main_menu/Level3.png" id="5_7p4i5"]
+[ext_resource type="Texture2D" uid="uid://co7nkeopjsxva" path="res://01_main_menu/Level4.png" id="6_8qtoa"]
+[ext_resource type="Texture2D" uid="uid://dtbojdimllcts" path="res://01_main_menu/Level2Selected.png" id="6_18f4x"]
+[ext_resource type="Texture2D" uid="uid://cdi3bgv25jguq" path="res://01_main_menu/Level5.png" id="7_4b8bp"]
+[ext_resource type="Texture2D" uid="uid://7imedmchlr52" path="res://01_main_menu/Level3Selected.png" id="8_a3x5b"]
+[ext_resource type="Texture2D" uid="uid://d4hf66epq6jl6" path="res://01_main_menu/Level4Selected.png" id="10_vyu5m"]
+[ext_resource type="Texture2D" uid="uid://p384t6qletue" path="res://01_main_menu/Level5Selected.png" id="12_n0h1y"]
 
-[node name="00Boot" type="Node2D"]
+[node name="01Main" type="Node2D"]
 script = ExtResource("1_epcay")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="GameTitle" type="RichTextLabel" parent="CanvasLayer"]
-offset_left = 21.0
-offset_top = 27.0
-offset_right = 334.0
-offset_bottom = 229.0
+[node name="GameTitle" type="Label" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -156.5
+offset_right = 157.5
+offset_bottom = 186.0
+grow_horizontal = 2
 theme = ExtResource("2_pbpsj")
+theme_type_variation = &"TitleText"
 text = "LOCKED OUT"
+vertical_alignment = 1
 
 [node name="Credits" type="RichTextLabel" parent="CanvasLayer"]
-offset_left = 21.0
-offset_top = 307.0
-offset_right = 334.0
-offset_bottom = 509.0
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -80.0
+offset_right = 234.0
+grow_vertical = 0
 theme = ExtResource("2_pbpsj")
 text = "Code - @JennTheFern
 Writing - @AlanBahr
 Design & Art - @iellswo
 Code & Music - @koboldskeep"
+fit_content = true
+autowrap_mode = 0
 
 [node name="level_select" type="GridContainer" parent="CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
 columns = 5
 
-[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/level_select"]
-position = Vector2(450, 201)
-scale = Vector2(136.746, 111.496)
-texture = ExtResource("1_3yu6l")
+[node name="Title Container" type="MarginContainer" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="Sprite2D2" type="Sprite2D" parent="CanvasLayer/level_select"]
-position = Vector2(544, 238)
-scale = Vector2(136.746, 111.496)
-texture = ExtResource("1_3yu6l")
+[node name="LevelSelect" type="HBoxContainer" parent="CanvasLayer"]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+alignment = 1
 
-[node name="Sprite2D3" type="Sprite2D" parent="CanvasLayer/level_select"]
-position = Vector2(693, 196)
-scale = Vector2(136.746, 111.496)
-texture = ExtResource("1_3yu6l")
+[node name="Level1" type="TextureButton" parent="CanvasLayer/LevelSelect"]
+layout_mode = 2
+texture_normal = ExtResource("3_jrgj7")
+texture_hover = ExtResource("4_ive4o")
+texture_focused = ExtResource("4_ive4o")
 
-[node name="Sprite2D4" type="Sprite2D" parent="CanvasLayer/level_select"]
-position = Vector2(853, 199)
-scale = Vector2(136.746, 111.496)
-texture = ExtResource("1_3yu6l")
+[node name="Level2" type="TextureButton" parent="CanvasLayer/LevelSelect"]
+layout_mode = 2
+texture_normal = ExtResource("4_tvmcn")
+texture_hover = ExtResource("6_18f4x")
+texture_focused = ExtResource("6_18f4x")
 
-[node name="Sprite2D5" type="Sprite2D" parent="CanvasLayer/level_select"]
-position = Vector2(960, 332)
-scale = Vector2(136.746, 111.496)
-texture = ExtResource("1_3yu6l")
+[node name="Level3" type="TextureButton" parent="CanvasLayer/LevelSelect"]
+layout_mode = 2
+texture_normal = ExtResource("5_7p4i5")
+texture_hover = ExtResource("8_a3x5b")
+texture_focused = ExtResource("8_a3x5b")
 
-[node name="Cursor" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(387, 83)
-scale = Vector2(-104.189, -28.4445)
-texture = ExtResource("2_nkavv")
+[node name="Level4" type="TextureButton" parent="CanvasLayer/LevelSelect"]
+layout_mode = 2
+texture_normal = ExtResource("6_8qtoa")
+texture_hover = ExtResource("10_vyu5m")
+texture_focused = ExtResource("10_vyu5m")
+
+[node name="Level5" type="TextureButton" parent="CanvasLayer/LevelSelect"]
+layout_mode = 2
+texture_normal = ExtResource("7_4b8bp")
+texture_hover = ExtResource("12_n0h1y")
+texture_focused = ExtResource("12_n0h1y")
+
+[connection signal="pressed" from="CanvasLayer/LevelSelect/Level1" to="." method="go_to_level" binds= ["11_level"]]
+[connection signal="pressed" from="CanvasLayer/LevelSelect/Level2" to="." method="go_to_level" binds= ["11_level"]]
+[connection signal="pressed" from="CanvasLayer/LevelSelect/Level3" to="." method="go_to_level" binds= ["11_level"]]
+[connection signal="pressed" from="CanvasLayer/LevelSelect/Level4" to="." method="go_to_level" binds= ["11_level"]]
+[connection signal="pressed" from="CanvasLayer/LevelSelect/Level5" to="." method="go_to_level" binds= ["11_level"]]

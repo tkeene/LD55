@@ -1,0 +1,8 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://dk2uniu5qjt3m"]
+
+[ext_resource type="FontFile" uid="uid://dgagke6hqgc8o" path="res://fonts/IndieFlower/IndieFlower-Regular.ttf" id="1_pyxxy"]
+
+[resource]
+default_font = ExtResource("1_pyxxy")
+Fonts/fonts/large = ExtResource("1_pyxxy")
+Fonts/fonts/normal = ExtResource("1_pyxxy")

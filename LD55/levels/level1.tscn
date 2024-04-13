@@ -13,35 +13,35 @@
 [ext_resource type="Texture2D" uid="uid://c74codffpakqq" path="res://levels/graphics/TileStart.png" id="9_wl76h"]
 [ext_resource type="Texture2D" uid="uid://5cdvp7lng5lr" path="res://levels/graphics/Spikes2.png" id="10_c4et3"]
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_gwks1"]
-normal = Vector2(-1, 0)
-
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_rmqys"]
 normal = Vector2(1, 0)
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_gwks1"]
+normal = Vector2(-1, 0)
+
 [node name="Level1" type="Node2D"]
 
-[node name="LevelRoot" parent="." instance=ExtResource("1_x54y2")]
-
-[node name="Background" type="TextureRect" parent="LevelRoot"]
+[node name="Background" type="TextureRect" parent="."]
 offset_right = 960.0
 offset_bottom = 540.0
 texture = ExtResource("2_t7hlk")
 expand_mode = 5
 
-[node name="Right Wall" type="StaticBody2D" parent="LevelRoot"]
+[node name="LevelRoot" parent="." instance=ExtResource("1_x54y2")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelRoot/Right Wall"]
-position = Vector2(780, 245)
-shape = SubResource("WorldBoundaryShape2D_gwks1")
+[node name="Terrain" type="Node2D" parent="."]
 
-[node name="Left Wall" type="StaticBody2D" parent="LevelRoot"]
+[node name="Left Wall" type="StaticBody2D" parent="Terrain"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelRoot/Left Wall"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Left Wall"]
 position = Vector2(200, 218)
 shape = SubResource("WorldBoundaryShape2D_rmqys")
 
-[node name="Terrain" type="Node2D" parent="."]
+[node name="Right Wall" type="StaticBody2D" parent="Terrain"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Right Wall"]
+position = Vector2(780, 245)
+shape = SubResource("WorldBoundaryShape2D_gwks1")
 
 [node name="Bottom Floor" type="StaticBody2D" parent="Terrain"]
 

@@ -1,12 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://cmyk2tqcsthke"]
+[gd_scene load_steps=2 format=3 uid="uid://cget7lr6jumuo"]
 
 [ext_resource type="Script" path="res://level_root.gd" id="1_p8cyp"]
 
-[node name="level_root" type="Node2D"]
+[node name="LevelRoot" type="Node2D"]
 script = ExtResource("1_p8cyp")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-[gd_scene format=3 uid="uid://cmyk2tqcsthke"]
-
-[node name="level_camera" type="Camera2D"]
 anchor_mode = 0

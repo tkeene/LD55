@@ -103,7 +103,7 @@ texture_normal = ExtResource("7_4b8bp")
 texture_hover = ExtResource("12_n0h1y")
 texture_focused = ExtResource("12_n0h1y")
 
-[connection signal="pressed" from="CanvasLayer/LevelSelect/Level1" to="." method="go_to_level" binds= ["11_level"]]
+[connection signal="pressed" from="CanvasLayer/LevelSelect/Level1" to="." method="go_to_level" binds= ["level1"]]
 [connection signal="pressed" from="CanvasLayer/LevelSelect/Level2" to="." method="go_to_level" binds= ["11_level"]]
 [connection signal="pressed" from="CanvasLayer/LevelSelect/Level3" to="." method="go_to_level" binds= ["11_level"]]
 [connection signal="pressed" from="CanvasLayer/LevelSelect/Level4" to="." method="go_to_level" binds= ["11_level"]]

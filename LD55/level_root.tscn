@@ -27,3 +27,38 @@ grow_vertical = 2
 bbcode_enabled = true
 text = "[color=magenta][CONTROLS HERE]"
 fit_content = true
+
+[node name="SelectedScrollRect" type="ColorRect" parent="OverlayUI"]
+offset_left = 415.0
+offset_top = 69.0
+offset_right = 631.0
+offset_bottom = 463.0
+
+[node name="SelectedScrollLabel" type="RichTextLabel" parent="OverlayUI/SelectedScrollRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[color=magenta][PLACEABLE HERE]"
+fit_content = true
+
+[node name="LeftArrow" type="ColorRect" parent="OverlayUI/SelectedScrollRect"]
+layout_mode = 0
+offset_left = -35.0
+offset_top = 174.0
+offset_right = 5.0
+offset_bottom = 214.0
+rotation = 0.785398
+
+[node name="RightArrow" type="ColorRect" parent="OverlayUI/SelectedScrollRect"]
+layout_mode = 0
+offset_left = 251.0
+offset_top = 173.0
+offset_right = 291.0
+offset_bottom = 213.0
+rotation = 0.785398

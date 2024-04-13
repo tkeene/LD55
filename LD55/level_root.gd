@@ -8,7 +8,11 @@ const FADE_IN_SPEED = 1000.0
 var music_player = null
 var quit_held_time = 0.0
 
-#var placeable_objects = new Array()
+var placeable_objects = [
+	preload("res://pawns/summon_block.tscn"),
+	preload("res://pawns/summon_block.tscn")
+]
+var current_placing_object = null
 
 func _ready():
 	music_player = AudioStreamPlayer.new()
@@ -30,15 +34,26 @@ func _process(delta):
 			pause_game()
 		else:
 			un_pause_game()
+	# Object Placement UI
+	if Engine.time_scale == 0.0:
+		if current_placing_object == null:
+			($OverlayUI/SelectedScrollRect as CanvasItem).visible = true
+		else:
+			($OverlayUI/SelectedScrollRect as CanvasItem).visible = false
+	else:
+		($OverlayUI/SelectedScrollRect as CanvasItem).visible = false
+
 
 func un_pause_game():
+	current_placing_object = null
 	Engine.time_scale = 1.0
 	music_player.stream = load(NORMAL_MUSIC)
 	music_player.volume_db = FADE_IN_VOLUME
 	music_player.play()
-	$OverlayUI/ControlsPromptRect/ControlsPromptLabel.text = "[color=black]C (hold 1 second) Quit\nX - Summon\nZ - Jump"
+	$OverlayUI/ControlsPromptRect/ControlsPromptLabel.text = "[color=black]C (hold 1 second) - Quit\nX - Summon\nZ - Jump"
 
 func pause_game():
+	current_placing_object = null
 	Engine.time_scale = 0.0
 	music_player.stream = load(PAUSED_MUSIC)
 	music_player.volume_db = FADE_IN_VOLUME

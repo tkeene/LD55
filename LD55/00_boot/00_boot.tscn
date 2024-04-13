@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://du5kntwpul6y7"]
+[gd_scene load_steps=3 format=3 uid="uid://du5kntwpul6y7"]
 
 [ext_resource type="Script" path="res://00_boot/00_boot.gd" id="1_cbth2"]
+[ext_resource type="Theme" uid="uid://dk2uniu5qjt3m" path="res://ui_theme.tres" id="2_x1iva"]
 
 [node name="00Boot" type="Node2D"]
 script = ExtResource("1_cbth2")
@@ -12,4 +13,5 @@ offset_left = 380.0
 offset_top = 263.0
 offset_right = 693.0
 offset_bottom = 465.0
+theme = ExtResource("2_x1iva")
 text = "Press Z To Start"

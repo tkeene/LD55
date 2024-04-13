@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://v13ue5nhk4k8"]
+
+[ext_resource type="PackedScene" uid="uid://b1h5xxnqb6uwg" path="res://pawns/player.tscn" id="1_texth"]
+[ext_resource type="Script" path="res://pawns/player.gd" id="2_vtpes"]
+[ext_resource type="Texture2D" uid="uid://cyqc4nl6vjpx" path="res://white_pixel.bmp" id="3_6cf4e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tmv8q"]
+size = Vector2(1, 1)
+
+[node name="00Boot" type="Node2D"]
+
+[node name="player" parent="." instance=ExtResource("1_texth")]
+script = ExtResource("2_vtpes")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(303.5, 277.5)
+scale = Vector2(151.295, 66.3258)
+shape = SubResource("RectangleShape2D_tmv8q")
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
+texture = ExtResource("3_6cf4e")

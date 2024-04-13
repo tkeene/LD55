@@ -7,3 +7,23 @@ script = ExtResource("1_p8cyp")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
+
+[node name="OverlayUI" type="CanvasGroup" parent="."]
+z_index = 10
+
+[node name="ControlsPromptRect" type="ColorRect" parent="OverlayUI"]
+offset_right = 216.0
+offset_bottom = 137.0
+
+[node name="ControlsPromptLabel" type="RichTextLabel" parent="OverlayUI/ControlsPromptRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[color=magenta][CONTROLS HERE]"
+fit_content = true

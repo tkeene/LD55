@@ -1,0 +1,34 @@
+[gd_scene load_steps=7 format=3 uid="uid://bg1qb0i10lewd"]
+
+[ext_resource type="PackedScene" uid="uid://cget7lr6jumuo" path="res://level_root.tscn" id="1_h3nxs"]
+[ext_resource type="Texture2D" uid="uid://ds7fqm4he2wog" path="res://backdrop.png" id="2_a0n2o"]
+[ext_resource type="PackedScene" uid="uid://b1h5xxnqb6uwg" path="res://pawns/player.tscn" id="3_bckhg"]
+[ext_resource type="Script" path="res://pawns/player.gd" id="4_nno7o"]
+[ext_resource type="Texture2D" uid="uid://cyqc4nl6vjpx" path="res://white_pixel.bmp" id="5_04vny"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tmv8q"]
+size = Vector2(1, 1)
+
+[node name="00Boot" type="Node2D"]
+
+[node name="LevelRoot" parent="." instance=ExtResource("1_h3nxs")]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 960.0
+offset_bottom = 539.0
+texture = ExtResource("2_a0n2o")
+expand_mode = 5
+
+[node name="player" parent="." instance=ExtResource("3_bckhg")]
+position = Vector2(284, 186)
+script = ExtResource("4_nno7o")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(303.5, 277.5)
+scale = Vector2(151.295, 66.3258)
+shape = SubResource("RectangleShape2D_tmv8q")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D/CollisionShape2D"]
+texture = ExtResource("5_04vny")

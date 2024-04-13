@@ -30,11 +30,11 @@ func _physics_process(delta):
 		# Input
 		var horizontal_input : float = 0.0
 		var jump_pressed : bool = false
-		if Input.is_action_pressed("Left"):
+		if Input.is_action_pressed("ui_left"):
 			horizontal_input -= 1.0
-		if Input.is_action_pressed("Right"):
+		if Input.is_action_pressed("ui_right"):
 			horizontal_input += 1.0
-		if (Input.is_action_just_pressed("Action") and remaining_jump_cooldown_seconds <= 0.0
+		if (Input.is_action_just_pressed("ui_accept") and remaining_jump_cooldown_seconds <= 0.0
 			and remaining_floor_time >= 0.0):
 			jump_pressed = true
 		# Platforming Physics

@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://cmyk2tqcsthke"]
+
+[node name="level_camera" type="Camera2D"]

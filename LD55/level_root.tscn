@@ -6,3 +6,7 @@
 script = ExtResource("1_p8cyp")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+[gd_scene format=3 uid="uid://cmyk2tqcsthke"]
+
+[node name="level_camera" type="Camera2D"]
+anchor_mode = 0

@@ -1,17 +1,22 @@
-[gd_scene load_steps=6 format=3 uid="uid://v13ue5nhk4k8"]
+[gd_scene load_steps=7 format=3 uid="uid://v13ue5nhk4k8"]
 
 [ext_resource type="PackedScene" uid="uid://cmyk2tqcsthke" path="res://level_root.tscn" id="1_c2my6"]
+[ext_resource type="Texture2D" uid="uid://ds7fqm4he2wog" path="res://backdrop.png" id="1_ill6a"]
 [ext_resource type="PackedScene" uid="uid://b1h5xxnqb6uwg" path="res://pawns/player.tscn" id="1_texth"]
 [ext_resource type="Script" path="res://pawns/player.gd" id="2_vtpes"]
 [ext_resource type="Texture2D" uid="uid://cyqc4nl6vjpx" path="res://white_pixel.bmp" id="3_6cf4e"]
+[ext_resource type="PackedScene" uid="uid://cmyk2tqcsthke" path="res://level_root.tscn" id="5_5fe17"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tmv8q"]
 size = Vector2(1, 1)
 
 [node name="00Boot" type="Node2D"]
 
-[node name="level_camera" parent="." instance=ExtResource("1_c2my6")]
-anchor_mode = 0
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 960.0
+offset_bottom = 539.0
+texture = ExtResource("1_ill6a")
+expand_mode = 5
 
 [node name="player" parent="." instance=ExtResource("1_texth")]
 position = Vector2(284, 186)
@@ -26,3 +31,5 @@ shape = SubResource("RectangleShape2D_tmv8q")
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D/CollisionShape2D"]
 texture = ExtResource("3_6cf4e")
+
+[node name="level_camera" parent="." instance=ExtResource("5_5fe17")]

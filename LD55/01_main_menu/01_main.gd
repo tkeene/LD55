@@ -1,11 +1,10 @@
 extends Node2D
 
-func _process(delta):
-	if Input.is_action_just_pressed("Left"):
-		pass
-	if Input.is_action_just_pressed("Right"):
-		pass
-	if Input.is_action_just_pressed("Action"):
-		# TODO
-		get_tree().change_scene_to_file("res://levels/11_level.tscn")
-		pass
+func _ready():
+	# Start with the Level 1 icon selected.
+	# TODO: Is there a way to start with an invisible item focused, then never
+	# let the user return to that invisible item?
+	get_node(^"CanvasLayer/LevelSelect/Level1").grab_focus()
+
+func go_to_level(level: String):
+	get_tree().change_scene_to_file("res://levels/" + level + ".tscn")

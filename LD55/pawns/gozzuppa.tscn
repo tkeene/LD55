@@ -1,6 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cbd8appdbvq7e"]
+[gd_scene load_steps=7 format=3 uid="uid://4hek7htrjn7k"]
 
+[ext_resource type="Script" path="res://pawns/gozzuppa.gd" id="1_pdsu6"]
 [ext_resource type="Texture2D" uid="uid://bof3desqc0ic2" path="res://pawns/critters.png" id="1_x2ah7"]
+[ext_resource type="Script" path="res://levels/KillZone.gd" id="3_gmceo"]
 
 [sub_resource type="Animation" id="Animation_gmgps"]
 resource_name = "idle"
@@ -24,7 +26,11 @@ _data = {
 "idle": SubResource("Animation_gmgps")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_cxdal"]
+radius = 88.0227
+
 [node name="Gozzuppa" type="AnimatableBody2D"]
+script = ExtResource("1_pdsu6")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(1, -24, 134, -22, 128, 1, -25, 8, -41, 61, -113, 60, -139, 7, -124, -77, -51, -77, -24, -26)
@@ -33,9 +39,18 @@ polygon = PackedVector2Array(1, -24, 134, -22, 128, 1, -25, 8, -41, 61, -113, 60
 texture = ExtResource("1_x2ah7")
 hframes = 5
 vframes = 5
-frame = 16
+frame = 15
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_n53yk")
 }
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("3_gmceo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-76, 80)
+shape = SubResource("CircleShape2D_cxdal")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="on_body_entered"]

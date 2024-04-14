@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://pickups/page.gd" id="1_yagqk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p7gnw"]
-radius = 67.0
+radius = 17.1172
 
 [sub_resource type="Animation" id="Animation_ytfa0"]
 resource_name = "idle"
@@ -28,14 +28,14 @@ _data = {
 "idle": SubResource("Animation_ytfa0")
 }
 
-[node name="Page" type="StaticBody2D"]
+[node name="Page" type="Area2D"]
 script = ExtResource("1_yagqk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_p7gnw")
 
 [node name="Sprite" type="Sprite2D" parent="."]
-scale = Vector2(0.2, 0.2)
+scale = Vector2(0.05, 0.05)
 texture = ExtResource("1_gcpsq")
 hframes = 2
 
@@ -43,3 +43,5 @@ hframes = 2
 libraries = {
 "": SubResource("AnimationLibrary_vgax6")
 }
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

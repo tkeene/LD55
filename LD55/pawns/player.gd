@@ -1,13 +1,13 @@
 class_name Player
 extends CharacterBody2D
 
-const GROUND_MAX_SPEED : float = 90.0
-const GROUND_ACCELERATION : float = 500.0
-const AIR_ACCELERATION : float = 150.0
-const GRAVITY : float = 200.0
+const GROUND_MAX_SPEED : float = 60.0
+const GROUND_ACCELERATION : float = 600.0
+const AIR_ACCELERATION : float = 40.0
+const GRAVITY : float = 400.0
 const DEFAULT_JUMP_COOLDOWN : float = 0.25
-const JUMP_VELOCITY : float = 120.0
-const GHOST_JUMP_DURATION = 0.30
+const JUMP_VELOCITY : float = 180.0
+const GHOST_JUMP_DURATION = 0.1
 const DECELERATION : float = 0.1
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer

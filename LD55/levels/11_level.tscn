@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://v13ue5nhk4k8"]
 
-[ext_resource type="PackedScene" path="res://level_root.tscn" id="1_hpfdv"]
+[ext_resource type="PackedScene" uid="uid://cget7lr6jumuo" path="res://level_root.tscn" id="1_hpfdv"]
 [ext_resource type="Texture2D" uid="uid://ds7fqm4he2wog" path="res://backdrop.png" id="1_ill6a"]
 [ext_resource type="PackedScene" uid="uid://b1h5xxnqb6uwg" path="res://pawns/player.tscn" id="1_texth"]
 [ext_resource type="Texture2D" uid="uid://cyqc4nl6vjpx" path="res://white_pixel.bmp" id="3_6cf4e"]

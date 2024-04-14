@@ -1,10 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bv4pgsq11buoy"]
+[gd_scene load_steps=8 format=3 uid="uid://bv4pgsq11buoy"]
 
 [ext_resource type="Script" path="res://pawns/wakka.gd" id="1_0u1n4"]
 [ext_resource type="Texture2D" uid="uid://bof3desqc0ic2" path="res://pawns/critters.png" id="1_tl1fv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k4tlb"]
-size = Vector2(255, 82)
+size = Vector2(255, 163)
 
 [sub_resource type="Animation" id="Animation_iooow"]
 resource_name = "idle"
@@ -46,11 +46,15 @@ _data = {
 "walk": SubResource("Animation_whdfq")
 }
 
-[node name="Wakka" type="AnimatableBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pgjt5"]
+size = Vector2(255, 14)
+
+[node name="Wakka" type="CharacterBody2D"]
+safe_margin = 0.15
 script = ExtResource("1_0u1n4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1.5, -123)
+position = Vector2(-1.5, -82.5)
 shape = SubResource("RectangleShape2D_k4tlb")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -58,10 +62,24 @@ position = Vector2(0, -137)
 texture = ExtResource("1_tl1fv")
 hframes = 5
 vframes = 5
-frame = 10
+frame = 5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Sprite2D")
 libraries = {
 "": SubResource("AnimationLibrary_5judk")
 }
+
+[node name="LeftCliffDetector" type="RayCast2D" parent="."]
+position = Vector2(-129, -34)
+
+[node name="RightCliffDetector" type="RayCast2D" parent="."]
+position = Vector2(126, -34)
+
+[node name="BackDetector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BackDetector"]
+position = Vector2(-1.5, -165)
+shape = SubResource("RectangleShape2D_pgjt5")
+
+[connection signal="body_entered" from="BackDetector" to="." method="on_back_loaded"]

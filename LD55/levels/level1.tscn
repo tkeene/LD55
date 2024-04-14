@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dlfjb1m6w3dst"]
+[gd_scene load_steps=24 format=3 uid="uid://dlfjb1m6w3dst"]
 
 [ext_resource type="PackedScene" uid="uid://cget7lr6jumuo" path="res://level_root.tscn" id="1_x54y2"]
 [ext_resource type="Texture2D" uid="uid://ds7fqm4he2wog" path="res://backdrop.png" id="2_t7hlk"]
@@ -16,6 +16,7 @@
 [ext_resource type="Script" path="res://levels/Hint.gd" id="15_4hyf6"]
 [ext_resource type="PackedScene" uid="uid://bry0qk84weeo2" path="res://pickups/page.tscn" id="15_okwid"]
 [ext_resource type="Texture2D" uid="uid://bnv01jjx7q5ws" path="res://outline.png" id="16_l4j4a"]
+[ext_resource type="PackedScene" uid="uid://bv4pgsq11buoy" path="res://pawns/wakka.tscn" id="17_frl63"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_rmqys"]
 normal = Vector2(1, 0)
@@ -405,6 +406,11 @@ hframes = 2
 libraries = {
 "": SubResource("AnimationLibrary_cjh3o")
 }
+
+[node name="Wakka" parent="." instance=ExtResource("17_frl63")]
+z_index = 1
+position = Vector2(481, 163)
+scale = Vector2(0.15, 0.15)
 
 [connection signal="respawn_requested" from="LevelRoot" to="Spawner" method="place_player_at_spawn"]
 [connection signal="body_entered" from="Hazards/Bottom Spikes" to="Hazards/Bottom Spikes" method="on_body_entered"]

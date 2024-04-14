@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://cbd8appdbvq7e"]
+
+[ext_resource type="Texture2D" uid="uid://bof3desqc0ic2" path="res://pawns/critters.png" id="1_x2ah7"]
+
+[sub_resource type="Animation" id="Animation_gmgps"]
+resource_name = "idle"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [15, 16, 17]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n53yk"]
+_data = {
+"idle": SubResource("Animation_gmgps")
+}
+
+[node name="Gozzuppa" type="AnimatableBody2D"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(1, -24, 134, -22, 128, 1, -25, 8, -41, 61, -113, 60, -139, 7, -124, -77, -51, -77, -24, -26)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_x2ah7")
+hframes = 5
+vframes = 5
+frame = 16
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_n53yk")
+}

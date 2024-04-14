@@ -1,0 +1,67 @@
+[gd_scene load_steps=7 format=3 uid="uid://bv4pgsq11buoy"]
+
+[ext_resource type="Script" path="res://pawns/wakka.gd" id="1_0u1n4"]
+[ext_resource type="Texture2D" uid="uid://bof3desqc0ic2" path="res://pawns/critters.png" id="1_tl1fv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k4tlb"]
+size = Vector2(255, 82)
+
+[sub_resource type="Animation" id="Animation_iooow"]
+resource_name = "idle"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [5, 6]
+}
+
+[sub_resource type="Animation" id="Animation_whdfq"]
+resource_name = "walk"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [10, 11, 12, 13]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5judk"]
+_data = {
+"idle": SubResource("Animation_iooow"),
+"walk": SubResource("Animation_whdfq")
+}
+
+[node name="Wakka" type="AnimatableBody2D"]
+script = ExtResource("1_0u1n4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, -123)
+shape = SubResource("RectangleShape2D_k4tlb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -137)
+texture = ExtResource("1_tl1fv")
+hframes = 5
+vframes = 5
+frame = 10
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_5judk")
+}

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://d25lwn4fvx02d"]
+
+[ext_resource type="Texture2D" uid="uid://eq3uqyvxe7px" path="res://levels/graphics/GlowStart.png" id="1_f3kgw"]
+[ext_resource type="Script" path="res://levels/Spawner.gd" id="2_bf3ts"]
+
+[node name="Spawner" type="Sprite2D"]
+z_index = 2
+position = Vector2(271, 402)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_f3kgw")
+offset = Vector2(0, -50)
+script = ExtResource("2_bf3ts")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="finish"]

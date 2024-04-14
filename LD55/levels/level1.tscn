@@ -1,9 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://dlfjb1m6w3dst"]
+[gd_scene load_steps=14 format=3 uid="uid://dlfjb1m6w3dst"]
 
 [ext_resource type="PackedScene" path="res://level_root.tscn" id="1_x54y2"]
 [ext_resource type="Texture2D" uid="uid://ds7fqm4he2wog" path="res://backdrop.png" id="2_t7hlk"]
-[ext_resource type="PackedScene" uid="uid://b1h5xxnqb6uwg" path="res://pawns/player.tscn" id="3_5d0hg"]
-[ext_resource type="Script" path="res://pawns/player.gd" id="4_ka6wc"]
 [ext_resource type="Texture2D" uid="uid://da7oajlefehbf" path="res://levels/graphics/Tile1.png" id="5_axcea"]
 [ext_resource type="Texture2D" uid="uid://th6750v3w0o0" path="res://levels/graphics/Tile3.png" id="6_vad4h"]
 [ext_resource type="Texture2D" uid="uid://ccoxws5uukt0n" path="res://levels/graphics/Spikes1.png" id="7_gwd32"]
@@ -12,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cmi2gr3kik0d0" path="res://levels/graphics/TileEnd.png" id="9_qdaxs"]
 [ext_resource type="Texture2D" uid="uid://c74codffpakqq" path="res://levels/graphics/TileStart.png" id="9_wl76h"]
 [ext_resource type="Texture2D" uid="uid://5cdvp7lng5lr" path="res://levels/graphics/Spikes2.png" id="10_c4et3"]
+[ext_resource type="PackedScene" uid="uid://d25lwn4fvx02d" path="res://levels/spawner.tscn" id="11_csuu2"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_rmqys"]
 normal = Vector2(1, 0)
@@ -340,7 +339,6 @@ scale = Vector2(0.3, 0.3)
 texture = ExtResource("10_c4et3")
 centered = false
 
-[node name="player" parent="." instance=ExtResource("3_5d0hg")]
-z_index = 1
-position = Vector2(272, 364)
-script = ExtResource("4_ka6wc")
+[node name="Spawner" parent="." instance=ExtResource("11_csuu2")]
+
+[connection signal="respawn_requested" from="LevelRoot" to="Spawner" method="place_player_at_spawn"]

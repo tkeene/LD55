@@ -69,6 +69,7 @@ func _physics_process(delta):
 		if jump_pressed:
 			current_velocity.y -= JUMP_VELOCITY
 			remaining_jump_cooldown_seconds = DEFAULT_JUMP_COOLDOWN
+			remaining_floor_time = -delta
 		else:
 			current_velocity.y += GRAVITY * delta
 		velocity = current_velocity

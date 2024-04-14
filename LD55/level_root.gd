@@ -16,6 +16,8 @@ var placeable_objects = [
 var current_placing_object : Node2D = null
 var current_spellbook_index = 0
 
+signal respawn_requested
+
 func _ready():
 	music_player = AudioStreamPlayer.new()
 	add_child(music_player)
@@ -27,6 +29,8 @@ func _process(delta):
 	music_player.volume_db = move_toward(music_player.volume_db, 0.0, FADE_IN_SPEED * unscaled_delta )
 	if Engine.time_scale != 0.0:
 		($OverlayUI/SelectedScrollRect as CanvasItem).visible = false
+		if Input.is_action_just_pressed("ui_cancel"):
+			respawn_requested.emit()
 		if Input.is_action_pressed("ui_cancel"):
 			quit_held_time += unscaled_delta
 			if quit_held_time > 1.5:
@@ -84,7 +88,7 @@ func un_pause_game():
 	music_player.stream = load(NORMAL_MUSIC)
 	music_player.volume_db = FADE_IN_VOLUME
 	music_player.play()
-	$OverlayUI/ControlsPromptRect/ControlsPromptLabel.text = "[color=black]C (hold 1 second) - Reset\nX - Summon\nZ - Jump"
+	$OverlayUI/ControlsPromptRect/ControlsPromptLabel.text = "[color=black]C - Reset\nC (hold 1 second) - Quit\nX - Summon\nZ - Jump"
 
 func pause_game():
 	current_placing_object = null

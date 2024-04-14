@@ -8,17 +8,25 @@ const JUMP_VELOCITY : float = 120.0
 const GHOST_JUMP_DURATION = 0.30
 const DECELERATION : float = 0.1
 
+@onready var animation_player = $AnimationPlayer
+
+var last_direction = "right"
 var remaining_jump_cooldown_seconds = 0.0
 var remaining_floor_time = 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
-	pass # Replace with function body.
+	animation_player.play("idle_right")
 
 func _process(delta):
-	# TODO Animation
-	pass
+	if is_on_floor() and velocity.x > 0.1:
+		animation_player.play("walk_right")
+		last_direction = "right"
+	elif is_on_floor() and velocity.x < -0.1:
+		animation_player.play("walk_left")
+		last_direction = "left"
+	elif is_on_floor():
+		animation_player.play("idle_" + last_direction)
 
 func _physics_process(delta):
 	if delta > 0.0:

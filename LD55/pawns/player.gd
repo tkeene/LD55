@@ -1,7 +1,8 @@
 extends CharacterBody2D
 
-const GROUND_MAX_SPEED : float = 4000.0
+const GROUND_MAX_SPEED : float = 90.0
 const GROUND_ACCELERATION : float = 500.0
+const AIR_ACCELERATION : float = 150.0
 const GRAVITY : float = 200.0
 const DEFAULT_JUMP_COOLDOWN : float = 0.25
 const JUMP_VELOCITY : float = 120.0
@@ -53,7 +54,8 @@ func _physics_process(delta):
 			jump_pressed_flag = true
 		# Platforming Physics
 		var current_velocity : Vector2 = velocity
-		current_velocity.x = horizontal_input * GROUND_MAX_SPEED * delta
+		var acceleration = GROUND_ACCELERATION if is_on_floor() else AIR_ACCELERATION
+		current_velocity.x = move_toward(current_velocity.x, horizontal_input * GROUND_MAX_SPEED, delta * acceleration)
 		if jump_pressed:
 			current_velocity.y -= JUMP_VELOCITY
 			remaining_jump_cooldown_seconds = DEFAULT_JUMP_COOLDOWN

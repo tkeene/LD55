@@ -19,9 +19,6 @@ var jump_pressed_flag = false
 var remaining_jump_cooldown_seconds = 0.0
 var remaining_floor_time = 0.0
 
-# Called when the player dies.
-signal died
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	animation_player.play("idle_right")
@@ -87,4 +84,4 @@ func kill():
 
 # This will be called a short bit after the player is killed.
 func _finalize_death():
-	died.emit()
+	LevelRoot.reset_level()

@@ -7,4 +7,5 @@ func _ready():
 	get_node(^"CanvasLayer/LevelSelect/Level1").grab_focus()
 
 func go_to_level(level: String):
-	get_tree().change_scene_to_file("res://levels/" + level + ".tscn")
+	LevelRoot.last_level_loaded = "res://levels/" + level + ".tscn"
+	get_tree().change_scene_to_file(LevelRoot.last_level_loaded)

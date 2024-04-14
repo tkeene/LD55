@@ -1,14 +1,21 @@
 extends Area2D
+class_name Page
 
 @onready var animation_player = $AnimationPlayer
-# TODO: add a reference to what spell this page should add to the spellbook
+
+@export var summon_name = "[NAME]"
 
 func _ready():
-	animation_player.play("idle")
+	if LevelRoot.has_summon(summon_name):
+		queue_free()
+	else:
+		animation_player.play("idle")
 
 func _process(delta):
 	pass
 
 func _on_body_entered(body):
-	print("You touched the butt. I mean the page.")
-	queue_free()
+	if body is Player:
+		print("You touched the butt. I mean the page.")
+		LevelRoot.unlock_summon(summon_name)
+		queue_free()

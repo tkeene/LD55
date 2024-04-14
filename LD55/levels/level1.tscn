@@ -389,7 +389,8 @@ position = Vector2(730, 373)
 scale = Vector2(-0.2, 0.2)
 
 [node name="Page" parent="." instance=ExtResource("15_okwid")]
-position = Vector2(599, 155)
+position = Vector2(359, 335)
+summon_name = "bluuk"
 
 [node name="Hint" type="Node2D" parent="."]
 position = Vector2(472, 404)

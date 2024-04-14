@@ -9,6 +9,7 @@
 size = Vector2(1, 1)
 
 [node name="00Boot" type="Node2D"]
+position = Vector2(0, 1)
 
 [node name="LevelRoot" parent="." instance=ExtResource("1_hpfdv")]
 

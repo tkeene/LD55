@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dlfjb1m6w3dst"]
+[gd_scene load_steps=18 format=3 uid="uid://dlfjb1m6w3dst"]
 
 [ext_resource type="PackedScene" path="res://level_root.tscn" id="1_x54y2"]
 [ext_resource type="Texture2D" uid="uid://ds7fqm4he2wog" path="res://backdrop.png" id="2_t7hlk"]
@@ -11,7 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://c74codffpakqq" path="res://levels/graphics/TileStart.png" id="9_wl76h"]
 [ext_resource type="Texture2D" uid="uid://5cdvp7lng5lr" path="res://levels/graphics/Spikes2.png" id="10_c4et3"]
 [ext_resource type="PackedScene" uid="uid://d25lwn4fvx02d" path="res://levels/spawner.tscn" id="11_csuu2"]
-[ext_resource type="Script" path="res://levels/Spike.gd" id="12_b5vna"]
+[ext_resource type="Script" path="res://levels/KillZone.gd" id="12_b5vna"]
+[ext_resource type="PackedScene" uid="uid://4hek7htrjn7k" path="res://pawns/gozzuppa.tscn" id="13_yud0a"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_rmqys"]
 normal = Vector2(1, 0)
@@ -370,6 +371,11 @@ z_index = 99
 position = Vector2(453.5, -153)
 shape = SubResource("RectangleShape2D_6vabb")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="Gozzuppa" parent="." instance=ExtResource("13_yud0a")]
+z_index = 1
+position = Vector2(730, 373)
+scale = Vector2(-0.2, 0.2)
 
 [connection signal="respawn_requested" from="LevelRoot" to="Spawner" method="place_player_at_spawn"]
 [connection signal="body_entered" from="Hazards/Bottom Spikes" to="Hazards/Bottom Spikes" method="on_body_entered"]

@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://pawns/player.gd" id="1_qoiri"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sc4ya"]
-size = Vector2(42, 60)
+size = Vector2(22, 29.5)
 
 [sub_resource type="Animation" id="Animation_5lt7h"]
 resource_name = "airborn_left"
@@ -370,12 +370,12 @@ floor_constant_speed = true
 script = ExtResource("1_qoiri")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -20)
+position = Vector2(0, -5)
 shape = SubResource("RectangleShape2D_sc4ya")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -28.645)
-scale = Vector2(0.2, 0.2)
+position = Vector2(0, -10)
+scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_g2mt1")
 hframes = 5
 vframes = 4

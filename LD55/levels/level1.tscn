@@ -1,6 +1,6 @@
-[gd_scene load_steps=18 format=3 uid="uid://dlfjb1m6w3dst"]
+[gd_scene load_steps=23 format=3 uid="uid://dlfjb1m6w3dst"]
 
-[ext_resource type="PackedScene" path="res://level_root.tscn" id="1_x54y2"]
+[ext_resource type="PackedScene" uid="uid://cget7lr6jumuo" path="res://level_root.tscn" id="1_x54y2"]
 [ext_resource type="Texture2D" uid="uid://ds7fqm4he2wog" path="res://backdrop.png" id="2_t7hlk"]
 [ext_resource type="Texture2D" uid="uid://da7oajlefehbf" path="res://levels/graphics/Tile1.png" id="5_axcea"]
 [ext_resource type="Texture2D" uid="uid://th6750v3w0o0" path="res://levels/graphics/Tile3.png" id="6_vad4h"]
@@ -13,6 +13,9 @@
 [ext_resource type="PackedScene" uid="uid://d25lwn4fvx02d" path="res://levels/spawner.tscn" id="11_csuu2"]
 [ext_resource type="Script" path="res://levels/KillZone.gd" id="12_b5vna"]
 [ext_resource type="PackedScene" uid="uid://4hek7htrjn7k" path="res://pawns/gozzuppa.tscn" id="13_yud0a"]
+[ext_resource type="Script" path="res://levels/Hint.gd" id="15_4hyf6"]
+[ext_resource type="PackedScene" uid="uid://bry0qk84weeo2" path="res://pickups/page.tscn" id="15_okwid"]
+[ext_resource type="Texture2D" uid="uid://bnv01jjx7q5ws" path="res://outline.png" id="16_l4j4a"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_rmqys"]
 normal = Vector2(1, 0)
@@ -21,10 +24,32 @@ normal = Vector2(1, 0)
 normal = Vector2(-1, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yow3n"]
-size = Vector2(220, 27)
+size = Vector2(182, 16.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6vabb"]
-size = Vector2(141, 14)
+size = Vector2(124.75, 10)
+
+[sub_resource type="Animation" id="Animation_7ptrv"]
+resource_name = "idle"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cjh3o"]
+_data = {
+"idle": SubResource("Animation_7ptrv")
+}
 
 [node name="Level1" type="Node2D"]
 
@@ -56,7 +81,7 @@ shape = SubResource("WorldBoundaryShape2D_gwks1")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Terrain/Bottom Floor"]
 z_index = 99
 position = Vector2(0, 400)
-polygon = PackedVector2Array(200, 0, 200, 150, 780, 150, 780, 0, 600, 0, 600, 60, 380, 60, 380, 0)
+polygon = PackedVector2Array(200, 0, 200, 150, 780, 150, 780, 2, 563, 2, 561, 60, 380, 60, 380, 0)
 
 [node name="Tiles" type="Node2D" parent="Terrain/Bottom Floor"]
 
@@ -104,67 +129,60 @@ scale = Vector2(0.3, 0.3)
 texture = ExtResource("8_5a2se")
 centered = false
 
-[node name="Tile3-2" type="Sprite2D" parent="Terrain/Bottom Floor/Tiles/Bottom Level"]
+[node name="Spikes1-1" type="Sprite2D" parent="Terrain/Bottom Floor/Tiles/Bottom Level"]
 z_index = 1
-position = Vector2(573, 479)
+position = Vector2(377, 432)
 scale = Vector2(0.3, 0.3)
-texture = ExtResource("6_vad4h")
+texture = ExtResource("7_gwd32")
+centered = false
+
+[node name="Spikes2-4" type="Sprite2D" parent="Terrain/Bottom Floor/Tiles/Bottom Level"]
+z_index = 1
+position = Vector2(424, 443)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("10_c4et3")
+centered = false
+
+[node name="Spikes1-3" type="Sprite2D" parent="Terrain/Bottom Floor/Tiles/Bottom Level"]
+z_index = 1
+position = Vector2(464, 431)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("7_gwd32")
+centered = false
+
+[node name="Spikes2-5" type="Sprite2D" parent="Terrain/Bottom Floor/Tiles/Bottom Level"]
+z_index = 1
+position = Vector2(511, 443)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("10_c4et3")
 centered = false
 
 [node name="Tile1-3" type="Sprite2D" parent="Terrain/Bottom Floor/Tiles/Bottom Level"]
 z_index = 1
-position = Vector2(590, 479)
+position = Vector2(554, 472)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("5_axcea")
 centered = false
 
 [node name="Tile3-3" type="Sprite2D" parent="Terrain/Bottom Floor/Tiles/Bottom Level"]
 z_index = 1
-position = Vector2(595, 459)
+position = Vector2(557, 452)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("6_vad4h")
 centered = false
 
 [node name="Tile2-3" type="Sprite2D" parent="Terrain/Bottom Floor/Tiles/Bottom Level"]
 z_index = 1
-position = Vector2(595, 436)
+position = Vector2(557, 431)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("7_ooa2f")
 centered = false
 
 [node name="Tile4-2" type="Sprite2D" parent="Terrain/Bottom Floor/Tiles/Bottom Level"]
 z_index = 1
-position = Vector2(596, 420)
+position = Vector2(556, 416)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("8_5a2se")
-centered = false
-
-[node name="Spikes1-1" type="Sprite2D" parent="Terrain/Bottom Floor/Tiles/Bottom Level"]
-z_index = 1
-position = Vector2(377, 434)
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("7_gwd32")
-centered = false
-
-[node name="Spikes1-2" type="Sprite2D" parent="Terrain/Bottom Floor/Tiles/Bottom Level"]
-z_index = 1
-position = Vector2(426, 435)
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("7_gwd32")
-centered = false
-
-[node name="Spikes1-3" type="Sprite2D" parent="Terrain/Bottom Floor/Tiles/Bottom Level"]
-z_index = 1
-position = Vector2(478, 434)
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("7_gwd32")
-centered = false
-
-[node name="Spikes1-4" type="Sprite2D" parent="Terrain/Bottom Floor/Tiles/Bottom Level"]
-z_index = 1
-position = Vector2(533, 436)
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("7_gwd32")
 centered = false
 
 [node name="Sides" type="Node2D" parent="Terrain/Bottom Floor/Tiles"]
@@ -222,14 +240,21 @@ centered = false
 
 [node name="Tile1-2" type="Sprite2D" parent="Terrain/Bottom Floor/Tiles/Top Level"]
 z_index = 1
-position = Vector2(594, 391)
+position = Vector2(555, 393)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("5_axcea")
 centered = false
 
+[node name="Tile4-3" type="Sprite2D" parent="Terrain/Bottom Floor/Tiles/Top Level"]
+z_index = 1
+position = Vector2(598, 397)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("8_5a2se")
+centered = false
+
 [node name="Tile3-2" type="Sprite2D" parent="Terrain/Bottom Floor/Tiles/Top Level"]
 z_index = 1
-position = Vector2(636, 391)
+position = Vector2(637, 394)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("6_vad4h")
 centered = false
@@ -253,7 +278,7 @@ centered = false
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Terrain/Top Floor"]
 z_index = 99
 position = Vector2(0, 175)
-polygon = PackedVector2Array(200, 0, 200, 25, 620, 25, 620, 0, 525, 0, 525, -20, 380, -20, 380, 0)
+polygon = PackedVector2Array(200, 0, 200, 25, 660, 23, 660, 0, 500, 1, 500, -7, 374, -7, 374, 1)
 
 [node name="Tiles" type="Node2D" parent="Terrain/Top Floor"]
 
@@ -285,25 +310,25 @@ scale = Vector2(0.3, 0.3)
 texture = ExtResource("5_axcea")
 centered = false
 
-[node name="Tile4-1" type="Sprite2D" parent="Terrain/Top Floor/Tiles"]
+[node name="Spikes2-1" type="Sprite2D" parent="Terrain/Top Floor/Tiles"]
 z_index = 1
-position = Vector2(364, 168)
+position = Vector2(368, 149)
 scale = Vector2(0.3, 0.3)
-texture = ExtResource("8_5a2se")
+texture = ExtResource("10_c4et3")
 centered = false
 
-[node name="Tile1-2" type="Sprite2D" parent="Terrain/Top Floor/Tiles"]
+[node name="Spikes2-2" type="Sprite2D" parent="Terrain/Top Floor/Tiles"]
 z_index = 1
-position = Vector2(403, 167)
+position = Vector2(410, 149)
 scale = Vector2(0.3, 0.3)
-texture = ExtResource("5_axcea")
+texture = ExtResource("10_c4et3")
 centered = false
 
-[node name="Tile2-2" type="Sprite2D" parent="Terrain/Top Floor/Tiles"]
+[node name="Spikes2-3" type="Sprite2D" parent="Terrain/Top Floor/Tiles"]
 z_index = 1
-position = Vector2(449, 166)
+position = Vector2(452, 148)
 scale = Vector2(0.3, 0.3)
-texture = ExtResource("7_ooa2f")
+texture = ExtResource("10_c4et3")
 centered = false
 
 [node name="Tile3-2" type="Sprite2D" parent="Terrain/Top Floor/Tiles"]
@@ -327,25 +352,11 @@ scale = Vector2(0.3, 0.3)
 texture = ExtResource("7_ooa2f")
 centered = false
 
-[node name="Spikes2-1" type="Sprite2D" parent="Terrain/Top Floor/Tiles"]
+[node name="Tile1-3" type="Sprite2D" parent="Terrain/Top Floor/Tiles"]
 z_index = 1
-position = Vector2(375, 136)
+position = Vector2(611, 165)
 scale = Vector2(0.3, 0.3)
-texture = ExtResource("10_c4et3")
-centered = false
-
-[node name="Spikes2-2" type="Sprite2D" parent="Terrain/Top Floor/Tiles"]
-z_index = 1
-position = Vector2(423, 137)
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("10_c4et3")
-centered = false
-
-[node name="Spikes2-3" type="Sprite2D" parent="Terrain/Top Floor/Tiles"]
-z_index = 1
-position = Vector2(473, 136)
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("10_c4et3")
+texture = ExtResource("5_axcea")
 centered = false
 
 [node name="Spawner" parent="." instance=ExtResource("11_csuu2")]
@@ -358,7 +369,7 @@ script = ExtResource("12_b5vna")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hazards/Bottom Spikes"]
 z_index = 99
-position = Vector2(491, 145)
+position = Vector2(472, 150.25)
 shape = SubResource("RectangleShape2D_yow3n")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
@@ -368,7 +379,7 @@ script = ExtResource("12_b5vna")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hazards/Top Spikes"]
 z_index = 99
-position = Vector2(453.5, -153)
+position = Vector2(437, -138)
 shape = SubResource("RectangleShape2D_6vabb")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
@@ -376,6 +387,23 @@ debug_color = Color(0, 0.6, 0.701961, 0.419608)
 z_index = 1
 position = Vector2(730, 373)
 scale = Vector2(-0.2, 0.2)
+
+[node name="Page" parent="." instance=ExtResource("15_okwid")]
+position = Vector2(599, 155)
+
+[node name="Hint" type="Node2D" parent="."]
+position = Vector2(472, 404)
+script = ExtResource("15_4hyf6")
+
+[node name="Sprite2D" type="Sprite2D" parent="Hint"]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("16_l4j4a")
+hframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Hint"]
+libraries = {
+"": SubResource("AnimationLibrary_cjh3o")
+}
 
 [connection signal="respawn_requested" from="LevelRoot" to="Spawner" method="place_player_at_spawn"]
 [connection signal="body_entered" from="Hazards/Bottom Spikes" to="Hazards/Bottom Spikes" method="on_body_entered"]

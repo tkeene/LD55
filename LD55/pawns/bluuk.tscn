@@ -26,18 +26,17 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_obqti"]
-size = Vector2(50, 20)
+size = Vector2(77, 27)
 
 [node name="Bluuk" type="AnimatableBody2D"]
 script = ExtResource("1_ftsum")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(-2, -18)
-scale = Vector2(0.2, 0.2)
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("1_mhhgg")
 hframes = 5
 vframes = 5
-frame = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -45,4 +44,5 @@ libraries = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2.5, 6.5)
 shape = SubResource("RectangleShape2D_obqti")

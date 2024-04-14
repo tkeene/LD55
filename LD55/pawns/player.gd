@@ -11,6 +11,7 @@ const DECELERATION : float = 0.1
 @onready var animation_player = $AnimationPlayer
 
 var last_direction = "right"
+var jump_pressed_flag = false
 var remaining_jump_cooldown_seconds = 0.0
 var remaining_floor_time = 0.0
 
@@ -19,7 +20,11 @@ func _ready():
 	animation_player.play("idle_right")
 
 func _process(delta):
-	if is_on_floor() and velocity.x > 0.1:
+	if jump_pressed_flag:
+		animation_player.play("jump_" + last_direction)
+		animation_player.queue("airborn_" + last_direction)
+		jump_pressed_flag = false
+	elif is_on_floor() and velocity.x > 0.1:
 		animation_player.play("walk_right")
 		last_direction = "right"
 	elif is_on_floor() and velocity.x < -0.1:
@@ -45,6 +50,7 @@ func _physics_process(delta):
 		if (Input.is_action_just_pressed("ui_accept") and remaining_jump_cooldown_seconds <= 0.0
 			and remaining_floor_time >= 0.0):
 			jump_pressed = true
+			jump_pressed_flag = true
 		# Platforming Physics
 		var current_velocity : Vector2 = velocity
 		current_velocity.x = horizontal_input * GROUND_MAX_SPEED * delta

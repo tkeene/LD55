@@ -2,14 +2,14 @@ extends Sprite2D
 
 const spawn_height = 30
 
-@onready var timer = $Timer
-@onready var player: Node2D = preload("res://pawns/player.tscn").instantiate()
+@onready var timer: Timer = $Timer
+@onready var player: Player = preload("res://pawns/player.tscn").instantiate()
+
 
 func _ready():
 	# Set up the player
-	player.set_script(preload("res://pawns/player.gd"))
 	player.z_index = 1
-	player.visible = true
+	player.died.connect(place_player_at_spawn)
 	get_parent().add_child.call_deferred(player)
 
 	place_player_at_spawn()
@@ -30,6 +30,7 @@ func place_player_at_spawn():
 	# Place the player
 	player.position = position + Vector2.UP * spawn_height
 	player.velocity = Vector2.ZERO
+	player.is_dead = false
 	print("Spawning player at " + str(player.position.x) + " x " + str(player.position.y))
 
 	# Run the spawn animation:

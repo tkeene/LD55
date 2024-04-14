@@ -1,6 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://b1h5xxnqb6uwg"]
+[gd_scene load_steps=17 format=3 uid="uid://b1h5xxnqb6uwg"]
 
-[ext_resource type="Texture2D" path="res://pawns/blort_sheet.png" id="1_g2mt1"]
+[ext_resource type="Texture2D" uid="uid://ycah338nxs7e" path="res://pawns/blort_sheet.png" id="1_g2mt1"]
+[ext_resource type="Script" path="res://pawns/player.gd" id="1_qoiri"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sc4ya"]
 size = Vector2(42, 60)
@@ -366,6 +367,7 @@ _data = {
 
 [node name="Player" type="CharacterBody2D"]
 floor_constant_speed = true
+script = ExtResource("1_qoiri")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -20)
@@ -377,9 +379,15 @@ scale = Vector2(0.2, 0.2)
 texture = ExtResource("1_g2mt1")
 hframes = 5
 vframes = 4
-frame = 13
+frame = 10
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_phlyd")
 }
+
+[node name="DeathTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="DeathTimer" to="." method="_finalize_death"]

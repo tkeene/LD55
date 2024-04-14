@@ -22,7 +22,7 @@ func _ready():
 	music_player = AudioStreamPlayer.new()
 	add_child(music_player)
 	un_pause_game()
-	pass # Replace with function body.
+	visible = true
 
 func _process(delta):
 	var unscaled_delta = 1.0 / 60.0

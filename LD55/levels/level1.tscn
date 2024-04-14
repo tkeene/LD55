@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dlfjb1m6w3dst"]
+[gd_scene load_steps=17 format=3 uid="uid://dlfjb1m6w3dst"]
 
 [ext_resource type="PackedScene" path="res://level_root.tscn" id="1_x54y2"]
 [ext_resource type="Texture2D" uid="uid://ds7fqm4he2wog" path="res://backdrop.png" id="2_t7hlk"]
@@ -11,12 +11,19 @@
 [ext_resource type="Texture2D" uid="uid://c74codffpakqq" path="res://levels/graphics/TileStart.png" id="9_wl76h"]
 [ext_resource type="Texture2D" uid="uid://5cdvp7lng5lr" path="res://levels/graphics/Spikes2.png" id="10_c4et3"]
 [ext_resource type="PackedScene" uid="uid://d25lwn4fvx02d" path="res://levels/spawner.tscn" id="11_csuu2"]
+[ext_resource type="Script" path="res://levels/Spike.gd" id="12_b5vna"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_rmqys"]
 normal = Vector2(1, 0)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_gwks1"]
 normal = Vector2(-1, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yow3n"]
+size = Vector2(220, 27)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6vabb"]
+size = Vector2(141, 14)
 
 [node name="Level1" type="Node2D"]
 
@@ -27,6 +34,7 @@ texture = ExtResource("2_t7hlk")
 expand_mode = 5
 
 [node name="LevelRoot" parent="." instance=ExtResource("1_x54y2")]
+visible = false
 
 [node name="Terrain" type="Node2D" parent="."]
 
@@ -341,4 +349,28 @@ centered = false
 
 [node name="Spawner" parent="." instance=ExtResource("11_csuu2")]
 
+[node name="Hazards" type="Node2D" parent="."]
+
+[node name="Bottom Spikes" type="Area2D" parent="Hazards"]
+position = Vector2(-1, 301)
+script = ExtResource("12_b5vna")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hazards/Bottom Spikes"]
+z_index = 99
+position = Vector2(491, 145)
+shape = SubResource("RectangleShape2D_yow3n")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="Top Spikes" type="Area2D" parent="Hazards"]
+position = Vector2(-1, 301)
+script = ExtResource("12_b5vna")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hazards/Top Spikes"]
+z_index = 99
+position = Vector2(453.5, -153)
+shape = SubResource("RectangleShape2D_6vabb")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
 [connection signal="respawn_requested" from="LevelRoot" to="Spawner" method="place_player_at_spawn"]
+[connection signal="body_entered" from="Hazards/Bottom Spikes" to="Hazards/Bottom Spikes" method="on_body_entered"]
+[connection signal="body_entered" from="Hazards/Top Spikes" to="Hazards/Top Spikes" method="on_body_entered"]

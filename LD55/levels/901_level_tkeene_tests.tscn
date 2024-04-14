@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bg1qb0i10lewd"]
+[gd_scene load_steps=6 format=3 uid="uid://bg1qb0i10lewd"]
 
-[ext_resource type="PackedScene" uid="uid://cget7lr6jumuo" path="res://level_root.tscn" id="1_h3nxs"]
+[ext_resource type="PackedScene" path="res://level_root.tscn" id="1_h3nxs"]
 [ext_resource type="Texture2D" uid="uid://ds7fqm4he2wog" path="res://backdrop.png" id="2_a0n2o"]
 [ext_resource type="PackedScene" uid="uid://b1h5xxnqb6uwg" path="res://pawns/player.tscn" id="3_bckhg"]
-[ext_resource type="Script" path="res://pawns/player.gd" id="4_nno7o"]
 [ext_resource type="Texture2D" uid="uid://cyqc4nl6vjpx" path="res://white_pixel.bmp" id="5_04vny"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tmv8q"]
@@ -21,7 +20,6 @@ expand_mode = 5
 
 [node name="player" parent="." instance=ExtResource("3_bckhg")]
 position = Vector2(284, 186)
-script = ExtResource("4_nno7o")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 

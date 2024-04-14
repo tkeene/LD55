@@ -1,3 +1,4 @@
+class_name Player
 extends CharacterBody2D
 
 const GROUND_MAX_SPEED : float = 90.0
@@ -9,19 +10,27 @@ const JUMP_VELOCITY : float = 120.0
 const GHOST_JUMP_DURATION = 0.30
 const DECELERATION : float = 0.1
 
-@onready var animation_player = $AnimationPlayer
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var death_timer: Timer = $DeathTimer
 
+var is_dead = false
 var last_direction = "right"
 var jump_pressed_flag = false
 var remaining_jump_cooldown_seconds = 0.0
 var remaining_floor_time = 0.0
+
+# Called when the player dies.
+signal died
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	animation_player.play("idle_right")
 
 func _process(delta):
-	if jump_pressed_flag:
+	# Do no animation if the player is dead.
+	if is_dead:
+		pass
+	elif jump_pressed_flag:
 		animation_player.play("jump_" + last_direction)
 		animation_player.queue("airborn_" + last_direction)
 		jump_pressed_flag = false
@@ -44,14 +53,15 @@ func _physics_process(delta):
 		# Input
 		var horizontal_input : float = 0.0
 		var jump_pressed : bool = false
-		if Input.is_action_pressed("ui_left"):
-			horizontal_input -= 1.0
-		if Input.is_action_pressed("ui_right"):
-			horizontal_input += 1.0
-		if (Input.is_action_just_pressed("ui_accept") and remaining_jump_cooldown_seconds <= 0.0
-			and remaining_floor_time >= 0.0):
-			jump_pressed = true
-			jump_pressed_flag = true
+		if not is_dead: # Don't let the player move if dead.
+			if Input.is_action_pressed("ui_left"):
+				horizontal_input -= 1.0
+			if Input.is_action_pressed("ui_right"):
+				horizontal_input += 1.0
+			if (Input.is_action_just_pressed("ui_accept") and remaining_jump_cooldown_seconds <= 0.0
+				and remaining_floor_time >= 0.0):
+				jump_pressed = true
+				jump_pressed_flag = true
 		# Platforming Physics
 		var current_velocity : Vector2 = velocity
 		var acceleration = GROUND_ACCELERATION if is_on_floor() else AIR_ACCELERATION
@@ -64,3 +74,16 @@ func _physics_process(delta):
 		velocity = current_velocity
 		
 		move_and_slide()
+
+# Call this to kill the player.
+func kill():
+	print("Blort is kill. No.")
+	is_dead = true
+	animation_player.stop()
+	death_timer.start()
+	animation_player.play("die")
+	animation_player.queue("dead")
+
+# This will be called a short bit after the player is killed.
+func _finalize_death():
+	died.emit()

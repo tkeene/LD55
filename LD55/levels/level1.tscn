@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cmi2gr3kik0d0" path="res://levels/graphics/TileEnd.png" id="9_qdaxs"]
 [ext_resource type="Texture2D" uid="uid://c74codffpakqq" path="res://levels/graphics/TileStart.png" id="9_wl76h"]
 [ext_resource type="Texture2D" uid="uid://5cdvp7lng5lr" path="res://levels/graphics/Spikes2.png" id="10_c4et3"]
-[ext_resource type="PackedScene" path="res://levels/spawner.tscn" id="11_csuu2"]
+[ext_resource type="PackedScene" uid="uid://d25lwn4fvx02d" path="res://levels/spawner.tscn" id="11_csuu2"]
 [ext_resource type="Script" path="res://levels/KillZone.gd" id="12_b5vna"]
 [ext_resource type="PackedScene" uid="uid://4hek7htrjn7k" path="res://pawns/gozzuppa.tscn" id="13_yud0a"]
 [ext_resource type="Script" path="res://levels/Hint.gd" id="15_4hyf6"]

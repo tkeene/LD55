@@ -13,6 +13,7 @@ const DECELERATION : float = 0.1
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var death_timer: Timer = $DeathTimer
 
+static var last_position = Vector2.ZERO
 var is_dead = false
 var last_direction = "right"
 var jump_pressed_flag = false
@@ -72,6 +73,7 @@ func _physics_process(delta):
 		velocity = current_velocity
 		
 		move_and_slide()
+		last_position = global_position
 
 # Call this to kill the player.
 func kill():

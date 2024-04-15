@@ -391,7 +391,6 @@ debug_color = Color(0, 0.6, 0.701961, 0.419608)
 [node name="Gozzuppa" parent="." instance=ExtResource("13_yud0a")]
 z_index = 1
 position = Vector2(730, 373)
-scale = Vector2(-0.2, 0.2)
 
 [node name="Page" parent="." instance=ExtResource("15_okwid")]
 process_mode = 3

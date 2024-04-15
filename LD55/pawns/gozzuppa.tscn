@@ -31,6 +31,7 @@ radius = 88.0227
 
 [node name="Gozzuppa" type="CharacterBody2D"]
 process_mode = 3
+scale = Vector2(-0.2, 0.2)
 script = ExtResource("1_pdsu6")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]

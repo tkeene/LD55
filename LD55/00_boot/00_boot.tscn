@@ -135,3 +135,5 @@ offset_bottom = 17.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 120
 text = "→"
+fit_content = true
+scroll_active = false

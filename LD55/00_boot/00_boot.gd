@@ -43,4 +43,9 @@ func _process(delta):
 func activate_key(key_sprite_renderer : Sprite2D):
 	if key_sprite_renderer.texture != activated_sprite:
 		key_sprite_renderer.texture = activated_sprite
+		var audio_source : AudioStreamPlayer = AudioStreamPlayer.new()
+		key_sprite_renderer.add_child(audio_source)
+		audio_source.pitch_scale = 4.0 / 3.0 * (activated_count+1)
+		audio_source.stream = load("res://audio/sfx_goal.wav")
+		audio_source.play()
 		activated_count += 1

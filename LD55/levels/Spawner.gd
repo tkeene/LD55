@@ -9,6 +9,7 @@ const spawn_height = 30
 func _ready():
 	# Set up the player
 	player.z_index = 1
+	player.died.connect(place_player_at_spawn)
 	get_parent().add_child.call_deferred(player)
 
 	place_player_at_spawn()

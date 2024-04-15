@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://du5kntwpul6y7"]
+[gd_scene load_steps=4 format=3 uid="uid://du5kntwpul6y7"]
 
 [ext_resource type="Script" path="res://00_boot/00_boot.gd" id="1_cbth2"]
 [ext_resource type="Theme" uid="uid://dk2uniu5qjt3m" path="res://ui_theme.tres" id="2_x1iva"]
+[ext_resource type="Texture2D" uid="uid://dapcgan7gmpw" path="res://00_boot/key_dull.png" id="3_t0pet"]
 
 [node name="00Boot" type="Node2D"]
 script = ExtResource("1_cbth2")
@@ -9,9 +10,128 @@ script = ExtResource("1_cbth2")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
-offset_left = 380.0
-offset_top = 263.0
-offset_right = 693.0
-offset_bottom = 465.0
+offset_left = 61.0
+offset_top = 39.0
+offset_right = 908.0
+offset_bottom = 326.0
 theme = ExtResource("2_x1iva")
-text = "Press Z To Start"
+theme_override_font_sizes/normal_font_size = 24
+text = "Oh no! I locked myself out of my wizard tower!
+And my spellbook is inside on the top floor!
+
+Good thing I memorized that ritual for summoning Blort.
+
+I just need to line up these runes,
+press my fingers on them,
+and then..."
+scroll_active = false
+
+[node name="Z" type="Sprite2D" parent="."]
+position = Vector2(125, 375)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("3_t0pet")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Z"]
+offset_left = -55.0001
+offset_top = -120.0
+offset_right = 74.9999
+offset_bottom = 37.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 120
+text = "Z"
+fit_content = true
+scroll_active = false
+
+[node name="X" type="Sprite2D" parent="."]
+position = Vector2(281, 410)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("3_t0pet")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="X"]
+offset_left = -55.0001
+offset_top = -120.0
+offset_right = 74.9999
+offset_bottom = 37.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 120
+text = "X"
+fit_content = true
+scroll_active = false
+
+[node name="C" type="Sprite2D" parent="."]
+position = Vector2(440, 370)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("3_t0pet")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="C"]
+offset_left = -55.0001
+offset_top = -120.0
+offset_right = 74.9999
+offset_bottom = 37.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 120
+text = "C"
+fit_content = true
+scroll_active = false
+
+[node name="Up" type="Sprite2D" parent="."]
+position = Vector2(736, 302)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("3_t0pet")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Up"]
+offset_left = -44.9999
+offset_top = -130.0
+offset_right = 85.0001
+offset_bottom = 27.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 120
+text = "↑"
+fit_content = true
+scroll_active = false
+
+[node name="Down" type="Sprite2D" parent="."]
+position = Vector2(732, 426)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("3_t0pet")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Down"]
+offset_left = -44.9999
+offset_top = -130.0
+offset_right = 85.0001
+offset_bottom = 27.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 120
+text = "↓"
+fit_content = true
+scroll_active = false
+
+[node name="Left" type="Sprite2D" parent="."]
+position = Vector2(589, 393)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("3_t0pet")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Left"]
+offset_left = -57.4999
+offset_top = -140.0
+offset_right = 72.5001
+offset_bottom = 21.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 120
+text = "←"
+fit_content = true
+scroll_active = false
+
+[node name="Right" type="Sprite2D" parent="."]
+position = Vector2(879, 390)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("3_t0pet")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Right"]
+offset_left = -59.9999
+offset_top = -140.0
+offset_right = 70.0001
+offset_bottom = 17.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 120
+text = "→"

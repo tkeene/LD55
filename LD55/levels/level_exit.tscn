@@ -1,0 +1,42 @@
+[gd_scene load_steps=8 format=3 uid="uid://b1i2tysh85dx2"]
+
+[ext_resource type="Script" path="res://levels/level_exit.gd" id="1_pcbi2"]
+[ext_resource type="Texture2D" uid="uid://cmi2gr3kik0d0" path="res://levels/graphics/TileEnd.png" id="1_yaljn"]
+[ext_resource type="Shader" uid="uid://cjve8vpwbee0g" path="res://levels/level_exit.tres" id="2_kjtel"]
+[ext_resource type="Texture2D" uid="uid://d1qrr16g854g8" path="res://fuzzy_circle.png" id="3_obydj"]
+[ext_resource type="Texture2D" uid="uid://344dxxa4b2vo" path="res://levels/graphics/level_end_haze.png" id="4_1g0nn"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fyapf"]
+shader = ExtResource("2_kjtel")
+shader_parameter/Color = Color(1, 0.411765, 1, 0.980392)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5nxgv"]
+size = Vector2(46.6666, 93.3335)
+
+[node name="LevelExit" type="Area2D"]
+z_index = 1
+position = Vector2(241, 164)
+scale = Vector2(0.3, 0.3)
+script = ExtResource("1_pcbi2")
+
+[node name="Block" type="Sprite2D" parent="."]
+position = Vector2(106.667, 63.3334)
+texture = ExtResource("1_yaljn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(106.667, 3.33333)
+texture = ExtResource("4_1g0nn")
+
+[node name="Spotlight" type="Sprite2D" parent="."]
+z_index = -1
+material = SubResource("ShaderMaterial_fyapf")
+position = Vector2(110, -50)
+rotation = 1.4948
+scale = Vector2(8.83988, 8.83988)
+texture = ExtResource("3_obydj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(103.333, 6.66687)
+shape = SubResource("RectangleShape2D_5nxgv")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

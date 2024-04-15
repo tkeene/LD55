@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://mvxbi2unglyr"]
+
+[ext_resource type="Script" path="res://pawns/faluuka.gd" id="1_v8rdt"]
+[ext_resource type="Texture2D" uid="uid://bof3desqc0ic2" path="res://pawns/critters.png" id="1_vis8u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gy2ao"]
+size = Vector2(310, 300)
+
+[sub_resource type="Animation" id="Animation_bbmu0"]
+resource_name = "idle"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [20, 21]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jydt2"]
+_data = {
+"idle": SubResource("Animation_bbmu0")
+}
+
+[node name="Faluuka" type="CharacterBody2D"]
+scale = Vector2(0.11, 0.11)
+script = ExtResource("1_v8rdt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-9, 57)
+shape = SubResource("RectangleShape2D_gy2ao")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_vis8u")
+hframes = 5
+vframes = 5
+frame = 20
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jydt2")
+}

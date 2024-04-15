@@ -13,6 +13,8 @@ const CARDS_IN_HAND_MAX_ANGLE_RADIANS = PI / 6.0
 static var instance = null
 static var last_level_loaded
 var music_player : AudioStreamPlayer = null
+var normal_music_time = 0.0
+var paused_music_time = 0.0
 var audio_player : AudioStreamPlayer = null
 
 static var unlocked_summons = []
@@ -134,17 +136,19 @@ func un_pause_game():
 		current_placing_object.queue_free()
 	current_placing_object = null
 	get_tree().paused = false
+	paused_music_time = music_player.get_playback_position()
 	music_player.stream = load(NORMAL_MUSIC)
 	music_player.volume_db = FADE_IN_VOLUME
-	music_player.play()
+	music_player.play(normal_music_time)
 	$OverlayUI/ControlsPromptRect/ControlsPromptLabel.text = "[color=black]Z - Jump\nX - Spellbook"
 
 func pause_game():
 	current_placing_object = null
 	get_tree().paused = true
+	normal_music_time = music_player.get_playback_position()
 	music_player.stream = load(PAUSED_MUSIC)
 	music_player.volume_db = FADE_IN_VOLUME
-	music_player.play()
+	music_player.play(paused_music_time)
 	$OverlayUI/ControlsPromptRect/ControlsPromptLabel.text = "[color=black]X/Z - Place\nArrows - Select/Move\nC - Close Spellbook"
 
 static func unlock_everything():

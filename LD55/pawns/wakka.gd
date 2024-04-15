@@ -36,7 +36,6 @@ func _physics_process(delta):
 				print("turning around")
 				direction *= -1
 			velocity.x = (Vector2.LEFT * speed * direction).x
-			print(velocity)
 			animation_player.play.call_deferred("walk")
 		else:
 			# Check if we need to stop.
@@ -47,7 +46,6 @@ func _physics_process(delta):
 				animation_player.play.call_deferred("idle")
 			elif moving:
 				velocity.x = (Vector2.LEFT * speed * direction).x
-		print(velocity)
 		move_and_slide()
 
 # Called when something enters the back detector.

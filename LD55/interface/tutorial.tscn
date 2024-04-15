@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cfbvuoh1iomrl"]
+[gd_scene load_steps=10 format=3 uid="uid://cfbvuoh1iomrl"]
 
 [ext_resource type="Texture2D" uid="uid://b4560isat7ad6" path="res://interface/dialog_window.png" id="1_ash47"]
 [ext_resource type="Script" path="res://interface/TutorialController.gd" id="1_bp1pr"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://interface/Sequence.gd" id="3_ehfko"]
 [ext_resource type="Texture2D" uid="uid://d4naq8t2jf6su" path="res://interface/kyrian_thinking.png" id="7_eyg8g"]
 [ext_resource type="Texture2D" uid="uid://bx0ub1c2tndfc" path="res://interface/kyrian_frustrated.png" id="8_5t2f8"]
+[ext_resource type="Texture2D" uid="uid://c2meeiw55s7ns" path="res://interface/tutorial_arrow.png" id="8_kr28x"]
 
 [node name="TutorialController" type="Node2D"]
 process_mode = 2
@@ -107,6 +108,16 @@ theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 14
 text = "A quick portal summoning spell should allow Blort to ascend higher!"
 
+[node name="TextureRect2" type="TextureRect" parent="OverlayUI/LevelIntroState/Line3"]
+offset_left = 278.0
+offset_top = 84.0
+offset_right = 338.0
+offset_bottom = 147.0
+rotation = 1.14843
+texture = ExtResource("8_kr28x")
+expand_mode = 1
+stretch_mode = 4
+
 [node name="Line4" type="Node2D" parent="OverlayUI/LevelIntroState"]
 visible = false
 script = ExtResource("3_0mcqe")
@@ -129,6 +140,16 @@ theme = ExtResource("3_a15ab")
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 14
 text = "Ah! Fate smiles. A page of my spellbook up here."
+
+[node name="TextureRect3" type="TextureRect" parent="OverlayUI/LevelIntroState/Line4"]
+offset_left = 652.0
+offset_top = 82.0
+offset_right = 712.0
+offset_bottom = 145.0
+rotation = 2.48884
+texture = ExtResource("8_kr28x")
+expand_mode = 1
+stretch_mode = 4
 
 [node name="Line5" type="Node2D" parent="OverlayUI/LevelIntroState"]
 visible = false
@@ -153,6 +174,16 @@ theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 14
 text = "How did a Gozzuppa end up here?"
 
+[node name="TextureRect4" type="TextureRect" parent="OverlayUI/LevelIntroState/Line5"]
+offset_left = 631.0
+offset_top = 355.0
+offset_right = 691.0
+offset_bottom = 418.0
+rotation = -0.445059
+texture = ExtResource("8_kr28x")
+expand_mode = 1
+stretch_mode = 4
+
 [node name="Line6" type="Node2D" parent="OverlayUI/LevelIntroState"]
 visible = false
 script = ExtResource("3_0mcqe")
@@ -175,6 +206,16 @@ theme = ExtResource("3_a15ab")
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 14
 text = " Ah, no matter. I’m sure it’s nothing malicious. Blort should be able to use the Gozzuppa to get up to the upper section."
+
+[node name="TextureRect5" type="TextureRect" parent="OverlayUI/LevelIntroState/Line6"]
+offset_left = 631.0
+offset_top = 355.0
+offset_right = 691.0
+offset_bottom = 418.0
+rotation = -0.445059
+texture = ExtResource("8_kr28x")
+expand_mode = 1
+stretch_mode = 4
 
 [node name="Line7" type="Node2D" parent="OverlayUI/LevelIntroState"]
 visible = false
@@ -199,6 +240,16 @@ theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 14
 text = "This eldritch impaler pit is going to be a problem. "
 
+[node name="TextureRect7" type="TextureRect" parent="OverlayUI/LevelIntroState/Line7"]
+offset_left = 507.0
+offset_top = 331.0
+offset_right = 567.0
+offset_bottom = 394.0
+rotation = 1.59698
+texture = ExtResource("8_kr28x")
+expand_mode = 1
+stretch_mode = 4
+
 [node name="Line8" type="Node2D" parent="OverlayUI/LevelIntroState"]
 visible = false
 script = ExtResource("3_0mcqe")
@@ -221,6 +272,16 @@ theme = ExtResource("3_a15ab")
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 14
 text = "Oh! Right! I’d found a Bluuk summoning spell."
+
+[node name="TextureRect6" type="TextureRect" parent="OverlayUI/LevelIntroState/Line8"]
+offset_left = 507.0
+offset_top = 331.0
+offset_right = 567.0
+offset_bottom = 394.0
+rotation = 1.59698
+texture = ExtResource("8_kr28x")
+expand_mode = 1
+stretch_mode = 4
 
 [node name="DeadNoBluuk" type="Node2D" parent="OverlayUI"]
 visible = false

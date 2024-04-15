@@ -3,8 +3,8 @@ extends CharacterBody2D
 @onready var animation_player = $AnimationPlayer
 
 const distance_to_travel := 200
-const travel_time_secs := 3.0
-const idle_time := 3.0
+const travel_time_secs := 2.0
+const idle_time := 1.5
 
 var idling := true
 var going_up := true

@@ -21,7 +21,7 @@ func _process(delta):
 	pass
 
 func _physics_process(delta):
-	if delta > 0.0:
+	if delta > 0.0 && !get_tree().paused:
 		var cliff_detector = left_cliff_detector if direction > 0 else right_cliff_detector
 		# Do gravity, ignore it if we are paused, though.
 		if not is_on_floor() and !get_tree().paused:

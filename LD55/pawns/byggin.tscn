@@ -1,11 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://vtsx3r0uddcq"]
+[gd_scene load_steps=12 format=3 uid="uid://vtsx3r0uddcq"]
 
 [ext_resource type="Script" path="res://pawns/byggin.gd" id="1_d5it7"]
 [ext_resource type="Texture2D" uid="uid://bof3desqc0ic2" path="res://pawns/critters.png" id="2_vg4tb"]
 
-[sub_resource type="Animation" id="Animation_mtakk"]
-resource_name = "idle"
-length = 0.9
+[sub_resource type="Animation" id="Animation_w0s5s"]
+resource_name = "idle_left"
+length = 0.6
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -14,34 +14,197 @@ tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [7, 8, 9]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_d4xa7"]
+resource_name = "idle_right"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [7, 8, 9]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_ch7yb"]
+resource_name = "walk_left"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3]
+"values": [18, 7, 19, 9]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_n3dse"]
+resource_name = "walk_right"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [18, 7, 19, 9]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_m0tih"]
+resource_name = "die_left"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [4, 14]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_bgw6l"]
+resource_name = "die_right"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [4, 14]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gqerm"]
 _data = {
-"idle": SubResource("Animation_mtakk")
+"die_left": SubResource("Animation_m0tih"),
+"die_right": SubResource("Animation_bgw6l"),
+"idle_left": SubResource("Animation_w0s5s"),
+"idle_right": SubResource("Animation_d4xa7"),
+"walk_left": SubResource("Animation_ch7yb"),
+"walk_right": SubResource("Animation_n3dse")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_obqti"]
-size = Vector2(77, 19)
+size = Vector2(25, 23)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rugby"]
-size = Vector2(83, 37)
+size = Vector2(36, 37)
 
 [node name="Byggin" type="CharacterBody2D"]
 process_mode = 3
 script = ExtResource("1_d5it7")
 
 [node name="Sprite" type="Sprite2D" parent="."]
-position = Vector2(-1, 15)
-scale = Vector2(0.3, 0.0999994)
+position = Vector2(0, 5)
+scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_vg4tb")
-flip_v = true
+flip_h = true
 hframes = 5
 vframes = 5
+frame = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -49,21 +212,23 @@ libraries = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2.5, 10.5)
+visible = false
+position = Vector2(0.5, 8.5)
 shape = SubResource("RectangleShape2D_obqti")
 
 [node name="LeftWallDetector" type="RayCast2D" parent="."]
-position = Vector2(-35, 6)
+position = Vector2(-18, 6)
 target_position = Vector2(-10, 0)
 
 [node name="RightWallDetector" type="RayCast2D" parent="."]
-position = Vector2(39, 6)
+position = Vector2(18, 6)
 target_position = Vector2(10, 0)
 
 [node name="HitCollider" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitCollider"]
-position = Vector2(2.5, 3.5)
+position = Vector2(0, 3.5)
 shape = SubResource("RectangleShape2D_rugby")
 
 [connection signal="body_entered" from="HitCollider" to="." method="_on_body_entered"]

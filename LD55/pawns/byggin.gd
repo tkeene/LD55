@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @onready var left_raycast : RayCast2D = $LeftWallDetector
 @onready var right_raycast : RayCast2D = $RightWallDetector
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 const SPEED = 150.0
 const GRAVITY = 100.0
 var current_facing = 1.0
@@ -9,10 +10,21 @@ var current_walk_timer = 0.0
 var time_to_next_walk_switch = 1.0
 var is_dying = false
 
+func _ready():
+	play_anim("idle")
+
+func play_anim(animation: String):
+	var direction: String
+	if current_facing > 0.0:
+		direction = "_right"
+	else:
+		direction = "_left"
+	animation_player.play(animation + direction)
+
 func _physics_process(delta):
 	if delta > 0.0 && !get_tree().paused:
 		if is_dying:
-			# TODO: Dying animation
+			play_anim("die")
 			current_walk_timer -= delta
 			if current_walk_timer < 0.0:
 				queue_free()
@@ -23,10 +35,10 @@ func _physics_process(delta):
 				velocity.y += GRAVITY * delta
 			var should_reverse = false
 			if current_walk_timer < 0.0:
-				# TODO: Standing animation
+				play_anim("idle")
 				velocity.x = 0
 			elif current_walk_timer < time_to_next_walk_switch:
-				# TODO: Walking animation
+				play_anim("walk")
 				velocity.x = SPEED * current_facing
 				if current_facing > 0.0 && right_raycast.is_colliding():
 					should_reverse = true

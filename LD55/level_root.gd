@@ -14,7 +14,6 @@ static var instance = null
 static var last_level_loaded
 var music_player : AudioStreamPlayer = null
 var audio_player : AudioStreamPlayer = null
-var quit_held_time = 0.0
 
 static var unlocked_summons = []
 var current_inventory = []
@@ -55,22 +54,16 @@ func _ready():
 func _process(delta):
 	music_player.volume_db = move_toward(music_player.volume_db, 0.0, FADE_IN_SPEED * delta )
 	if TutorialFlags.tutorial_currently_active:
+		$OverlayUI/ControlsPromptRect/ControlsPromptLabel.text = "[color=black]X - Next"
 		return
 	if OS.has_feature("editor") && Input.is_key_pressed(KEY_F4) && Input.is_key_pressed(KEY_A):
 		unlock_everything()
 	if !get_tree().paused:
 		($OverlayUI/PlacementUI as CanvasItem).visible = false
-		if Input.is_action_pressed("ui_cancel"):
-			quit_held_time += delta
-			if quit_held_time > 1.5:
-				get_tree().change_scene_to_file("res://01_main_menu/01_main.tscn")
-		else:
-			quit_held_time = 0.0
 		if Input.is_action_just_pressed("Toggle"):
 			pause_game()
 	else:
 		# Object Placement UI
-		quit_held_time = 0.0
 		if Input.is_action_just_pressed("ui_cancel"):
 			un_pause_game()
 		elif current_placing_object == null:
@@ -96,6 +89,7 @@ func _process(delta):
 					else:
 						cards_for_summons[card_index].visible = true
 						cards_for_summons[card_index].get_node("RichTextLabel").text = "[color=black]" + current_inventory[card_spellbook_index]["name"]
+						cards_for_summons[card_index].get_node("TextureRect").texture = current_inventory[card_spellbook_index]["sprite"]
 				if Input.is_action_just_pressed("ui_accept") ||  Input.is_action_just_pressed("Toggle"):
 					if selected_summon_data["is_rewind"]:
 						reset_level()
@@ -140,7 +134,7 @@ func un_pause_game():
 	music_player.stream = load(NORMAL_MUSIC)
 	music_player.volume_db = FADE_IN_VOLUME
 	music_player.play()
-	$OverlayUI/ControlsPromptRect/ControlsPromptLabel.text = "[color=black]C (hold 1 second) - Quit\nX - Summon\nZ - Jump"
+	$OverlayUI/ControlsPromptRect/ControlsPromptLabel.text = "[color=black]Z - Jump\nX - Spellbook"
 
 func pause_game():
 	current_placing_object = null
@@ -148,8 +142,7 @@ func pause_game():
 	music_player.stream = load(PAUSED_MUSIC)
 	music_player.volume_db = FADE_IN_VOLUME
 	music_player.play()
-	$OverlayUI/ControlsPromptRect/ControlsPromptLabel.text = "[color=black]C - Return\nX/Z - Place\n◀/▶ Select/Move"
-	
+	$OverlayUI/ControlsPromptRect/ControlsPromptLabel.text = "[color=black]X/Z - Place\nArrows - Select/Move\nC - Close Spellbook"
 
 static func unlock_everything():
 	for spell in SummonsList._all_spells:

@@ -1,6 +1,6 @@
 extends Node2D
 
-var TIME_TO_FINISH_ACTIVATION_ANIMATION = 1.5
+var TIME_TO_FINISH_ACTIVATION_ANIMATION = 1.0
 
 var activated_sprite = null
 var activated_count = 0

@@ -22,6 +22,7 @@ var current_inventory = []
 var cards_for_summons : Array[TextureRect] = []
 var current_placing_object : Node2D = null
 var current_spellbook_index : int = 0
+var special_spellcast_time = 0
 
 signal respawn_requested
 signal bluuk_placed
@@ -95,12 +96,22 @@ func _process(delta):
 						cards_for_summons[card_index].visible = true
 						cards_for_summons[card_index].get_node("RichTextLabel").text = "[color=black]" + current_inventory[card_spellbook_index]["name"]
 						cards_for_summons[card_index].get_node("TextureRect").texture = current_inventory[card_spellbook_index]["sprite"]
-				if Input.is_action_just_pressed("ui_accept") ||  Input.is_action_just_pressed("Toggle"):
+				var is_normal_summon = true
+				if Input.is_action_pressed("ui_accept") ||  Input.is_action_pressed("Toggle"):
 					if selected_summon_data["is_rewind"]:
-						reset_level()
+						is_normal_summon = false
+						special_spellcast_time += delta
+						if special_spellcast_time >= 1.0:
+							reset_level()
 					elif selected_summon_data["victory"] > 0:
-						get_tree().change_scene_to_file("res://endgame_screens/ending_0" + str(selected_summon_data["victory"]) + ".tscn")
-					else:
+						is_normal_summon = false
+						special_spellcast_time += delta
+						if special_spellcast_time >= 1.0:
+							get_tree().change_scene_to_file("res://endgame_screens/ending_0" + str(selected_summon_data["victory"]) + ".tscn")
+				else:
+					special_spellcast_time = 0.0
+				if Input.is_action_just_pressed("ui_accept") ||  Input.is_action_just_pressed("Toggle"):
+					if is_normal_summon:
 						current_placing_object = selected_summon_data["object"].instantiate() as Node2D
 						current_placing_object.global_position = Player.last_position + Vector2.UP * 50.0
 						add_child(current_placing_object)
@@ -135,6 +146,7 @@ func un_pause_game():
 	if current_placing_object != null:
 		current_placing_object.queue_free()
 	current_placing_object = null
+	special_spellcast_time = 0.0
 	get_tree().paused = false
 	paused_music_time = music_player.get_playback_position()
 	music_player.stream = load(NORMAL_MUSIC)

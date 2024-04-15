@@ -28,7 +28,7 @@ static var _placeholder_block = {
 }
 static var _rewind = {
 	"name": "Tempus Unwindus",
-	"description": "Rewinds time.\n\nTechnically this hourglass is cursed, but it's been my saving grace at many tedious social events (or if I screw up a recipe in the kitchen).",
+	"description": "Rewinds time.\n(hold Z for one second)\nTechnically this hourglass is cursed, but it's been my saving grace at many tedious social events (or if I screw up a recipe in the kitchen).",
 	"sprite": preload("res://interface/icon_hourglass.png"),
 	"is_rewind": true,
 	"victory": 0,
@@ -81,7 +81,7 @@ static var _byggin = {
 }
 static var _victory1 = {
 	"name": "Summon Tower Door Key",
-	"description": "I invented this spell so I'd never lose my keys again.\n\nFinally I can get inside my tower! Blorb really is a hard worker to find this for me. I don't know what I'd do without him.",
+	"description": "I invented this spell so I'd never lose my keys again.\n(hold Z for one second)\n\nFinally I can get inside my tower! Blorb really is a hard worker to find this for me. I don't know what I'd do without him.",
 	"sprite": preload("res://debug_pixel.bmp"),
 	"is_rewind": false,
 	"victory": 1,
@@ -89,7 +89,7 @@ static var _victory1 = {
 }
 static var _victory2 = {
 	"name": "Summon Airplane Tickets",
-	"description": "This spell conjures vacation tickets anytime I want.\n\nI hope nobody steals this spell. It was expensive!",
+	"description": "Conjures vacation tickets anytime I want.\n(hold Z for one second)\n\nI hope nobody steals this spell. It was expensive!",
 	"sprite": preload("res://debug_pixel.bmp"),
 	"is_rewind": false,
 	"victory": 2,
@@ -97,7 +97,7 @@ static var _victory2 = {
 }
 static var _victory3 = {
 	"name": "Summon Anti Wizard Barrier",
-	"description": "Kept locked up for safety.\n\nI would be in real trouble if any of my enemies got their hands on this spell!",
+	"description": "Kept locked up for safety.\n(hold Z for one second)\nI would be in real trouble if any of my enemies got their hands on this spell!",
 	"sprite": preload("res://debug_pixel.bmp"),
 	"is_rewind": false,
 	"victory": 3,

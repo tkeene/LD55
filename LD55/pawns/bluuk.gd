@@ -1,4 +1,5 @@
-extends AnimatableBody2D
+class_name Bluuk
+extends CharacterBody2D
 
 @onready var animation_player = $AnimationPlayer
 

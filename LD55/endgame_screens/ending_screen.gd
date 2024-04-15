@@ -3,7 +3,7 @@ extends Node
 var restart_timer = 20.0
 
 func _ready():
-	Engine.time_scale = 1.0
+	get_tree().paused = false
 
 func _process(delta):
 	restart_timer -= delta

@@ -1,3 +1,4 @@
+class_name Wakka
 extends CharacterBody2D
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -22,29 +23,35 @@ func _process(delta):
 func _physics_process(delta):
 	if delta > 0.0:
 		var cliff_detector = left_cliff_detector if direction > 0 else right_cliff_detector
-		# Do gravity
-		if not is_on_floor():
+		# Do gravity, ignore it if we are paused, though.
+		if not is_on_floor() and !get_tree().paused:
 			velocity = Vector2.DOWN * 300
 
 		if start_moving:
+			print("time to start moving")
 			start_moving = false
 			moving = true
 			# Check if we need to switch directions.
 			if is_on_wall() or (is_on_floor() and !cliff_detector.is_colliding()):
+				print("turning around")
 				direction *= -1
 			velocity.x = (Vector2.LEFT * speed * direction).x
+			print(velocity)
 			animation_player.play.call_deferred("walk")
 		else:
 			# Check if we need to stop.
 			if is_on_wall() or (is_on_floor() and !cliff_detector.is_colliding()):
+				print("time to stop")
 				moving = false
 				velocity.x = 0
 				animation_player.play.call_deferred("idle")
 			elif moving:
 				velocity.x = (Vector2.LEFT * speed * direction).x
+		print(velocity)
 		move_and_slide()
 
 # Called when something enters the back detector.
 func on_back_loaded(body: Node2D):
 	if body is Player:
+		print("Got landed on")
 		start_moving = true

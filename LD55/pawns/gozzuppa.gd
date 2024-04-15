@@ -1,4 +1,4 @@
-extends AnimatableBody2D
+extends CharacterBody2D
 
 @onready var animation_player = $AnimationPlayer
 

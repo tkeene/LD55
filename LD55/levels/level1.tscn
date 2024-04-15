@@ -1,6 +1,7 @@
-[gd_scene load_steps=23 format=3 uid="uid://dlfjb1m6w3dst"]
+[gd_scene load_steps=25 format=3 uid="uid://dlfjb1m6w3dst"]
 
 [ext_resource type="PackedScene" uid="uid://dn0yk3wiakddr" path="res://levels/level_background.tscn" id="1_p7pge"]
+[ext_resource type="Script" path="res://levels/Level1Controller.gd" id="1_siwir"]
 [ext_resource type="PackedScene" uid="uid://cget7lr6jumuo" path="res://level_root.tscn" id="1_x54y2"]
 [ext_resource type="Texture2D" uid="uid://da7oajlefehbf" path="res://levels/graphics/Tile1.png" id="5_axcea"]
 [ext_resource type="Texture2D" uid="uid://th6750v3w0o0" path="res://levels/graphics/Tile3.png" id="6_vad4h"]
@@ -14,6 +15,7 @@
 [ext_resource type="Script" path="res://levels/KillZone.gd" id="12_b5vna"]
 [ext_resource type="PackedScene" uid="uid://4hek7htrjn7k" path="res://pawns/gozzuppa.tscn" id="13_yud0a"]
 [ext_resource type="Script" path="res://levels/Hint.gd" id="15_4hyf6"]
+[ext_resource type="PackedScene" uid="uid://cfbvuoh1iomrl" path="res://interface/tutorial.tscn" id="15_6ihks"]
 [ext_resource type="PackedScene" uid="uid://bry0qk84weeo2" path="res://pickups/page.tscn" id="15_okwid"]
 [ext_resource type="Texture2D" uid="uid://bnv01jjx7q5ws" path="res://outline.png" id="16_l4j4a"]
 
@@ -52,8 +54,15 @@ _data = {
 }
 
 [node name="Level1" type="Node2D"]
+script = ExtResource("1_siwir")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+autostart = true
 
 [node name="LevelBackground" parent="." instance=ExtResource("1_p7pge")]
+process_mode = 3
 
 [node name="LevelRoot" parent="." instance=ExtResource("1_x54y2")]
 visible = false
@@ -385,10 +394,14 @@ position = Vector2(730, 373)
 scale = Vector2(-0.2, 0.2)
 
 [node name="Page" parent="." instance=ExtResource("15_okwid")]
+process_mode = 3
 position = Vector2(566, 110)
+input_pickable = false
 summon_name = "Wakka"
 
 [node name="Hint" type="Node2D" parent="."]
+process_mode = 3
+visible = false
 position = Vector2(472, 404)
 script = ExtResource("15_4hyf6")
 
@@ -402,6 +415,16 @@ libraries = {
 "": SubResource("AnimationLibrary_cjh3o")
 }
 
+[node name="TutorialController" parent="." instance=ExtResource("15_6ihks")]
+z_index = 10
+y_sort_enabled = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="bluuk_placed" from="LevelRoot" to="." method="_on_level_root_bluuk_placed"]
 [connection signal="respawn_requested" from="LevelRoot" to="Spawner" method="place_player_at_spawn"]
+[connection signal="scroll_acquired" from="LevelRoot" to="." method="_on_level_root_scroll_acquired"]
+[connection signal="wakka_placed" from="LevelRoot" to="." method="_on_level_root_wakka_placed"]
+[connection signal="player_killed" from="Spawner" to="." method="_on_spawner_player_killed"]
 [connection signal="body_entered" from="Hazards/Bottom Spikes" to="Hazards/Bottom Spikes" method="on_body_entered"]
 [connection signal="body_entered" from="Hazards/Top Spikes" to="Hazards/Top Spikes" method="on_body_entered"]
+[connection signal="tutorial_end_signal" from="TutorialController" to="." method="_on_tutorial_controller_tutorial_end_signal"]

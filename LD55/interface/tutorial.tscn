@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bx0ub1c2tndfc" path="res://interface/kyrian_frustrated.png" id="8_5t2f8"]
 
 [node name="TutorialController" type="Node2D"]
+process_mode = 2
 visible = false
 script = ExtResource("1_bp1pr")
 

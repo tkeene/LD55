@@ -28,7 +28,8 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_obqti"]
 size = Vector2(77, 27)
 
-[node name="Bluuk" type="AnimatableBody2D"]
+[node name="Bluuk" type="CharacterBody2D"]
+process_mode = 3
 script = ExtResource("1_ftsum")
 
 [node name="Sprite" type="Sprite2D" parent="."]

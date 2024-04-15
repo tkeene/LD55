@@ -37,6 +37,7 @@ func _process(delta):
 	if activated_count >= 7:
 		activation_timer += delta
 		if activation_timer > TIME_TO_FINISH_ACTIVATION_ANIMATION:
+			LevelRoot.last_level_loaded = "res://levels/level1.tscn"
 			get_tree().change_scene_to_file("res://levels/level1.tscn")
 
 func activate_key(key_sprite_renderer : Sprite2D):

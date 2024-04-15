@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://wwfnldg63c00"]
+
+[ext_resource type="Script" path="res://endgame_screens/ending_screen.gd" id="1_8tgd4"]
+
+[node name="Ending03" type="Node2D"]
+script = ExtResource("1_8tgd4")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 22.0
+offset_top = 22.0
+offset_right = 933.0
+offset_bottom = 514.0
+text = "Ending 3/3
+Blort used the Anti-Wizard Barrier to keep the Wizard out of the tower permanently.
+With nobody to give Blort orders and plenty of free time, Blort went on to run a successful crowdfunding campaign for a new videogame."

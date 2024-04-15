@@ -90,6 +90,8 @@ func _process(delta):
 				if Input.is_action_just_pressed("ui_accept") ||  Input.is_action_just_pressed("Toggle"):
 					if selected_summon_data["is_rewind"]:
 						reset_level()
+					elif selected_summon_data["victory"] > 0:
+						get_tree().change_scene_to_file("res://endgame_screens/ending_0" + selected_summon_data["victory"] + ".tscn")
 					else:
 						current_placing_object = selected_summon_data["object"].instantiate() as Node2D
 						current_placing_object.global_position = Player.last_position + Vector2.UP * 50.0

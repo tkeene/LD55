@@ -1,0 +1,281 @@
+[gd_scene load_steps=20 format=3 uid="uid://b3xebaqan3bde"]
+
+[ext_resource type="PackedScene" uid="uid://dn0yk3wiakddr" path="res://levels/level_background.tscn" id="1_lexvo"]
+[ext_resource type="Script" path="res://levels/final_level_controller.gd" id="1_trm7e"]
+[ext_resource type="PackedScene" uid="uid://cget7lr6jumuo" path="res://level_root.tscn" id="2_tkh0w"]
+[ext_resource type="PackedScene" uid="uid://d25lwn4fvx02d" path="res://levels/spawner.tscn" id="3_xwo1s"]
+[ext_resource type="PackedScene" uid="uid://cfbvuoh1iomrl" path="res://interface/tutorial.tscn" id="4_mwcf3"]
+[ext_resource type="Texture2D" uid="uid://da7oajlefehbf" path="res://levels/graphics/Tile1.png" id="5_npwq7"]
+[ext_resource type="Texture2D" uid="uid://dx8yyv7fuapke" path="res://levels/graphics/Tile2.png" id="6_8rqsh"]
+[ext_resource type="Texture2D" uid="uid://th6750v3w0o0" path="res://levels/graphics/Tile3.png" id="7_kp1ak"]
+[ext_resource type="PackedScene" uid="uid://8stn87jsaox3" path="res://levels/lava_floor.tscn" id="8_8ut6y"]
+[ext_resource type="Texture2D" uid="uid://b7wuoj30joa3a" path="res://levels/graphics/Tile4.png" id="8_suses"]
+[ext_resource type="Texture2D" uid="uid://c74codffpakqq" path="res://levels/graphics/TileStart.png" id="9_4glac"]
+[ext_resource type="Script" path="res://levels/KillZone.gd" id="9_hmcig"]
+[ext_resource type="PackedScene" uid="uid://bry0qk84weeo2" path="res://pickups/page.tscn" id="11_4ol8w"]
+[ext_resource type="PackedScene" uid="uid://ojm0hilu45b5" path="res://levels/jonezy.tscn" id="11_krxhk"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ilx01"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ea7yf"]
+normal = Vector2(-1, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hmxk0"]
+size = Vector2(21, 17)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6d223"]
+size = Vector2(376.188, 26.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_poxop"]
+radius = 26.0768
+
+[node name="FinalLevel" type="Node2D"]
+script = ExtResource("1_trm7e")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+autostart = true
+
+[node name="LevelBackground" parent="." instance=ExtResource("1_lexvo")]
+process_mode = 3
+
+[node name="LevelRoot" parent="." instance=ExtResource("2_tkh0w")]
+visible = false
+
+[node name="Terrain" type="Node2D" parent="."]
+
+[node name="Left Wall" type="StaticBody2D" parent="Terrain"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Left Wall"]
+position = Vector2(200, 218)
+shape = SubResource("WorldBoundaryShape2D_ilx01")
+
+[node name="Right Wall" type="StaticBody2D" parent="Terrain"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Right Wall"]
+position = Vector2(780, 245)
+shape = SubResource("WorldBoundaryShape2D_ea7yf")
+
+[node name="Floor" type="StaticBody2D" parent="Terrain"]
+position = Vector2(0, 5)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Terrain/Floor"]
+visible = false
+z_index = 99
+y_sort_enabled = true
+polygon = PackedVector2Array(211, 387, 301, 389, 298, 499, 676, 499, 683, 276, 774, 274, 775, 541, 211, 539)
+
+[node name="Tiles" type="Node2D" parent="Terrain/Floor"]
+
+[node name="TileStart" type="Sprite2D" parent="Terrain/Floor/Tiles"]
+position = Vector2(234, 392)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("9_4glac")
+
+[node name="Tile16" type="Sprite2D" parent="Terrain/Floor/Tiles"]
+position = Vector2(276, 523)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("8_suses")
+
+[node name="Tile6" type="Sprite2D" parent="Terrain/Floor/Tiles"]
+position = Vector2(276, 500.65)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5_npwq7")
+
+[node name="Tile14" type="Sprite2D" parent="Terrain/Floor/Tiles"]
+position = Vector2(278.2, 478.1)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("7_kp1ak")
+
+[node name="Tile15" type="Sprite2D" parent="Terrain/Floor/Tiles"]
+position = Vector2(279.2, 460.1)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("8_suses")
+
+[node name="Tile7" type="Sprite2D" parent="Terrain/Floor/Tiles"]
+position = Vector2(280, 436.45)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("6_8rqsh")
+
+[node name="Tile8" type="Sprite2D" parent="Terrain/Floor/Tiles"]
+position = Vector2(281, 412.45)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("7_kp1ak")
+
+[node name="Tile10" type="Sprite2D" parent="Terrain/Floor/Tiles"]
+position = Vector2(282, 394.45)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("8_suses")
+
+[node name="Tile12" type="Sprite2D" parent="Terrain/Floor/Tiles"]
+position = Vector2(320, 520.75)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5_npwq7")
+
+[node name="Tile11" type="Sprite2D" parent="Terrain/Floor/Tiles"]
+position = Vector2(362, 520.75)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("8_suses")
+
+[node name="Tile9" type="Sprite2D" parent="Terrain/Floor/Tiles"]
+position = Vector2(405, 518.75)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("7_kp1ak")
+
+[node name="Tile1" type="Sprite2D" parent="Terrain/Floor/Tiles"]
+position = Vector2(444, 520.75)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5_npwq7")
+
+[node name="Tile2" type="Sprite2D" parent="Terrain/Floor/Tiles"]
+position = Vector2(486, 520.75)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("8_suses")
+
+[node name="Tile3" type="Sprite2D" parent="Terrain/Floor/Tiles"]
+position = Vector2(529, 518.75)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("7_kp1ak")
+
+[node name="Tile4" type="Sprite2D" parent="Terrain/Floor/Tiles"]
+position = Vector2(568, 521.75)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5_npwq7")
+
+[node name="Tile13" type="Sprite2D" parent="Terrain/Floor/Tiles"]
+position = Vector2(610, 522)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("6_8rqsh")
+
+[node name="Tile5" type="Sprite2D" parent="Terrain/Floor/Tiles"]
+position = Vector2(653, 523)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5_npwq7")
+
+[node name="Tile17" type="Sprite2D" parent="Terrain/Floor/Tiles"]
+position = Vector2(698, 521)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("8_suses")
+
+[node name="LavaFloor" parent="Terrain/Floor/Tiles" instance=ExtResource("8_8ut6y")]
+position = Vector2(338, 473)
+
+[node name="LavaFloor2" parent="Terrain/Floor/Tiles" instance=ExtResource("8_8ut6y")]
+position = Vector2(417, 473)
+
+[node name="LavaFloor3" parent="Terrain/Floor/Tiles" instance=ExtResource("8_8ut6y")]
+position = Vector2(496, 473)
+
+[node name="LavaFloor4" parent="Terrain/Floor/Tiles" instance=ExtResource("8_8ut6y")]
+position = Vector2(576, 473)
+
+[node name="LavaFloor5" parent="Terrain/Floor/Tiles" instance=ExtResource("8_8ut6y")]
+position = Vector2(655, 473)
+
+[node name="Tile18" type="Sprite2D" parent="Terrain/Floor/Tiles"]
+position = Vector2(698, 498.65)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5_npwq7")
+
+[node name="Tile19" type="Sprite2D" parent="Terrain/Floor/Tiles"]
+position = Vector2(700.2, 476.1)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("7_kp1ak")
+
+[node name="Tile20" type="Sprite2D" parent="Terrain/Floor/Tiles"]
+position = Vector2(701.2, 458.1)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("8_suses")
+
+[node name="Tile21" type="Sprite2D" parent="Terrain/Floor/Tiles"]
+position = Vector2(702, 434.45)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("6_8rqsh")
+
+[node name="Tile22" type="Sprite2D" parent="Terrain/Floor/Tiles"]
+position = Vector2(703, 410.45)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("7_kp1ak")
+
+[node name="Tile24" type="Sprite2D" parent="Terrain/Floor/Tiles"]
+position = Vector2(703, 391)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("8_suses")
+
+[node name="Tile25" type="Sprite2D" parent="Terrain/Floor/Tiles"]
+position = Vector2(703, 368.65)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5_npwq7")
+
+[node name="Tile26" type="Sprite2D" parent="Terrain/Floor/Tiles"]
+position = Vector2(705.2, 346.1)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("7_kp1ak")
+
+[node name="Tile27" type="Sprite2D" parent="Terrain/Floor/Tiles"]
+position = Vector2(706.2, 328.1)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("8_suses")
+
+[node name="Tile28" type="Sprite2D" parent="Terrain/Floor/Tiles"]
+position = Vector2(707, 304.45)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("6_8rqsh")
+
+[node name="Tile29" type="Sprite2D" parent="Terrain/Floor/Tiles"]
+position = Vector2(708, 280.45)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("7_kp1ak")
+
+[node name="Tile30" type="Sprite2D" parent="Terrain/Floor/Tiles"]
+position = Vector2(750, 283)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("8_suses")
+
+[node name="Spike" type="StaticBody2D" parent="Terrain"]
+position = Vector2(530.224, 427.908)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Spike"]
+position = Vector2(1.27576, -1.40796)
+shape = SubResource("RectangleShape2D_hmxk0")
+
+[node name="Spawner" parent="." instance=ExtResource("3_xwo1s")]
+position = Vector2(233, 392)
+
+[node name="Hazards" type="Node2D" parent="."]
+position = Vector2(-1, 1)
+
+[node name="TheFloorIsLava" type="Area2D" parent="Hazards"]
+position = Vector2(-1, 301)
+script = ExtResource("9_hmcig")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hazards/TheFloorIsLava"]
+z_index = 99
+position = Vector2(487, 205.25)
+shape = SubResource("RectangleShape2D_6d223")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="FloatingSpike2" type="Area2D" parent="Hazards"]
+position = Vector2(532, 427)
+script = ExtResource("9_hmcig")
+
+[node name="Jonezy" parent="Hazards/FloatingSpike2" instance=ExtResource("11_krxhk")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hazards/FloatingSpike2"]
+shape = SubResource("CircleShape2D_poxop")
+
+[node name="TutorialController" parent="." instance=ExtResource("4_mwcf3")]
+z_index = 10
+y_sort_enabled = true
+
+[node name="UnlockDoor" parent="." instance=ExtResource("11_4ol8w")]
+position = Vector2(748, 254)
+summon_name = "Summon Tower Door Key"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="scroll_acquired" from="LevelRoot" to="." method="_on_level_root_scroll_acquired"]
+[connection signal="body_entered" from="Hazards/TheFloorIsLava" to="Hazards/TheFloorIsLava" method="on_body_entered"]
+[connection signal="body_entered" from="Hazards/FloatingSpike2" to="Hazards/FloatingSpike2" method="on_body_entered"]
+[connection signal="tutorial_end_signal" from="TutorialController" to="." method="_on_tutorial_controller_tutorial_end_signal"]

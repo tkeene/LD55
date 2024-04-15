@@ -794,3 +794,178 @@ theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 14
 bbcode_enabled = true
 text = "This will be really useful to help me unwind after this is all over."
+
+[node name="FinalLevelState" type="Node2D" parent="OverlayUI"]
+visible = false
+script = ExtResource("3_ehfko")
+
+[node name="Line1" type="Node2D" parent="OverlayUI/FinalLevelState"]
+visible = false
+script = ExtResource("3_0mcqe")
+
+[node name="TextureRect" type="TextureRect" parent="OverlayUI/FinalLevelState/Line1"]
+offset_left = 21.0
+offset_top = 289.0
+offset_right = 182.0
+offset_bottom = 450.0
+texture = ExtResource("2_5mlrn")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="OverlayUI/FinalLevelState/Line1"]
+offset_left = 162.0
+offset_top = 389.0
+offset_right = 360.0
+offset_bottom = 468.0
+theme = ExtResource("3_a15ab")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+text = "There it is!  That scroll should contain my [b]Tower Door Key[/b] spell!"
+
+[node name="Line2" type="Node2D" parent="OverlayUI/FinalLevelState"]
+visible = false
+script = ExtResource("3_0mcqe")
+
+[node name="TextureRect" type="TextureRect" parent="OverlayUI/FinalLevelState/Line2"]
+offset_left = 21.0
+offset_top = 289.0
+offset_right = 182.0
+offset_bottom = 450.0
+texture = ExtResource("8_5t2f8")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="OverlayUI/FinalLevelState/Line2"]
+offset_left = 161.0
+offset_top = 401.0
+offset_right = 359.0
+offset_bottom = 480.0
+theme = ExtResource("3_a15ab")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+text = "Though, I don't remember putting [b]LAVA[/b] anywhere in my tower.  What a mess."
+
+[node name="Line3" type="Node2D" parent="OverlayUI/FinalLevelState"]
+visible = false
+script = ExtResource("3_0mcqe")
+
+[node name="TextureRect" type="TextureRect" parent="OverlayUI/FinalLevelState/Line3"]
+offset_left = 21.0
+offset_top = 289.0
+offset_right = 182.0
+offset_bottom = 450.0
+texture = ExtResource("7_eyg8g")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="OverlayUI/FinalLevelState/Line3"]
+offset_left = 161.0
+offset_top = 401.0
+offset_right = 359.0
+offset_bottom = 480.0
+theme = ExtResource("3_a15ab")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+text = "I should easily have the tools I need to get Blort through this, though."
+
+[node name="PickupDoorKey" type="Node2D" parent="OverlayUI"]
+script = ExtResource("3_ehfko")
+
+[node name="Line1" type="Node2D" parent="OverlayUI/PickupDoorKey"]
+visible = false
+script = ExtResource("3_0mcqe")
+
+[node name="TextureRect" type="TextureRect" parent="OverlayUI/PickupDoorKey/Line1"]
+offset_left = 21.0
+offset_top = 289.0
+offset_right = 182.0
+offset_bottom = 450.0
+texture = ExtResource("2_5mlrn")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="OverlayUI/PickupDoorKey/Line1"]
+offset_left = 162.0
+offset_top = 396.0
+offset_right = 360.0
+offset_bottom = 468.0
+theme = ExtResource("3_a15ab")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+text = "By Izzendium's scaly posterior, I can finally open my front door."
+
+[node name="Line2" type="Node2D" parent="OverlayUI/PickupDoorKey"]
+visible = false
+script = ExtResource("3_0mcqe")
+
+[node name="TextureRect" type="TextureRect" parent="OverlayUI/PickupDoorKey/Line2"]
+offset_left = 21.0
+offset_top = 289.0
+offset_right = 182.0
+offset_bottom = 450.0
+texture = ExtResource("2_5mlrn")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="OverlayUI/PickupDoorKey/Line2"]
+offset_left = 161.0
+offset_top = 401.0
+offset_right = 359.0
+offset_bottom = 480.0
+theme = ExtResource("3_a15ab")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+text = "As always, [b]Blort[/b], you are my favorite familiar, thanks for getting that for me."
+
+[node name="Line3" type="Node2D" parent="OverlayUI/PickupDoorKey"]
+visible = false
+script = ExtResource("3_0mcqe")
+
+[node name="TextureRect" type="TextureRect" parent="OverlayUI/PickupDoorKey/Line3"]
+offset_left = 21.0
+offset_top = 289.0
+offset_right = 182.0
+offset_bottom = 450.0
+texture = ExtResource("7_eyg8g")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="OverlayUI/PickupDoorKey/Line3"]
+offset_left = 161.0
+offset_top = 401.0
+offset_right = 359.0
+offset_bottom = 480.0
+theme = ExtResource("3_a15ab")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+text = "Now to cast it from my [b]Spellbook[/b], and I can finally relax."
+
+[node name="Line4" type="Node2D" parent="OverlayUI/PickupDoorKey"]
+visible = false
+script = ExtResource("3_0mcqe")
+
+[node name="TextureRect" type="TextureRect" parent="OverlayUI/PickupDoorKey/Line4"]
+offset_left = 21.0
+offset_top = 289.0
+offset_right = 182.0
+offset_bottom = 450.0
+texture = ExtResource("2_5mlrn")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="OverlayUI/PickupDoorKey/Line4"]
+offset_left = 161.0
+offset_top = 401.0
+offset_right = 359.0
+offset_bottom = 480.0
+theme = ExtResource("3_a15ab")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+text = "I still need to catch up on [b]Battle Chef Academia[/b]."

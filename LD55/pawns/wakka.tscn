@@ -50,13 +50,20 @@ _data = {
 size = Vector2(255, 14)
 
 [node name="Wakka" type="CharacterBody2D"]
+process_mode = 3
+z_index = 5
+y_sort_enabled = true
 scale = Vector2(0.15, 0.15)
-safe_margin = 0.15
+collision_priority = 5.0
+floor_stop_on_slope = false
+platform_on_leave = 2
+safe_margin = 0.001
 script = ExtResource("1_0u1n4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1.5, -82.5)
 shape = SubResource("RectangleShape2D_k4tlb")
+one_way_collision = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -137)

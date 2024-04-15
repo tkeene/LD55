@@ -48,7 +48,7 @@ static var _gozzuppa = {
 }
 static var _wakka = {
 	"name": "Wakka",
-	"description": "Susceptible to gravity. This isn't terribly bad, and you can steer them by riding on their backs.\n\nThe five legs are a bizarre aftereffect from making a mistake drawing the summoning circle. (\"Pentagram\" does not mean \"pextragram\")",
+	"description": "Susceptible to gravity. This isn't terribly bad, and you can steer them by riding on their backs.\n\n(Reminder: \"Pentagram\" does not mean \"pextragram\")",
 	"sprite": preload("res://interface/icon_wakka.png"),
 	"object": preload("res://pawns/wakka.tscn"),
 	"is_rewind": false,

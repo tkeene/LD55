@@ -5,11 +5,13 @@ const spawn_height = 30
 @onready var timer: Timer = $Timer
 @onready var player: Player = preload("res://pawns/player.tscn").instantiate()
 
+signal player_killed
 
 func _ready():
 	# Set up the player
 	player.z_index = 1
 	player.died.connect(place_player_at_spawn)
+	player.killed.connect(emit_player_killed)
 	get_parent().add_child.call_deferred(player)
 
 	place_player_at_spawn()
@@ -35,5 +37,8 @@ func place_player_at_spawn():
 
 	# Run the spawn animation:
 	timer.start()
-	process_mode = Node.PROCESS_MODE_INHERIT
+	process_mode = Node.PROCESS_MODE_PAUSABLE
 	visible = true
+
+func emit_player_killed():
+	player_killed.emit()

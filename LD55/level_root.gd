@@ -23,6 +23,9 @@ var current_placing_object : Node2D = null
 var current_spellbook_index : int = 0
 
 signal respawn_requested
+signal bluuk_placed
+signal wakka_placed
+signal scroll_acquired
 
 func _ready():
 	instance = self
@@ -50,12 +53,13 @@ func _ready():
 	visible = true
 
 func _process(delta):
-	var unscaled_delta = 1.0 / 60.0
-	music_player.volume_db = move_toward(music_player.volume_db, 0.0, FADE_IN_SPEED * unscaled_delta )
-	if Engine.time_scale != 0.0:
+	if TutorialFlags.tutorial_currently_active:
+		return
+	music_player.volume_db = move_toward(music_player.volume_db, 0.0, FADE_IN_SPEED * delta )
+	if !get_tree().paused:
 		($OverlayUI/PlacementUI as CanvasItem).visible = false
 		if Input.is_action_pressed("ui_cancel"):
-			quit_held_time += unscaled_delta
+			quit_held_time += delta
 			if quit_held_time > 1.5:
 				get_tree().change_scene_to_file("res://01_main_menu/01_main.tscn")
 		else:
@@ -107,15 +111,21 @@ func _process(delta):
 			($OverlayUI/PlacementUI as CanvasItem).visible = false
 			var placing_position = current_placing_object.global_position
 			if Input.is_action_pressed("ui_left"):
-				placing_position += Vector2.LEFT * MOVE_PLACING_OBJECT_SPEED * unscaled_delta
+				placing_position += Vector2.LEFT * MOVE_PLACING_OBJECT_SPEED * delta
 			if Input.is_action_pressed("ui_right"):
-				placing_position += Vector2.RIGHT * MOVE_PLACING_OBJECT_SPEED * unscaled_delta
+				placing_position += Vector2.RIGHT * MOVE_PLACING_OBJECT_SPEED * delta
 			if Input.is_action_pressed("ui_up"):
-				placing_position += Vector2.UP * MOVE_PLACING_OBJECT_SPEED * unscaled_delta
+				placing_position += Vector2.UP * MOVE_PLACING_OBJECT_SPEED * delta
 			if Input.is_action_pressed("ui_down"):
-				placing_position += Vector2.DOWN * MOVE_PLACING_OBJECT_SPEED * unscaled_delta
+				placing_position += Vector2.DOWN * MOVE_PLACING_OBJECT_SPEED * delta
 			current_placing_object.global_position = placing_position
 			if Input.is_action_just_pressed("ui_accept") ||  Input.is_action_just_pressed("Toggle"):
+				if current_placing_object is Bluuk:
+					print("You placed a Bluuk.  Good jorb.")
+					bluuk_placed.emit()
+				if current_placing_object is Wakka:
+					print("You placed a Wakka.  Good jorb.")
+					wakka_placed.emit()
 				current_inventory.remove_at(current_spellbook_index)
 				current_placing_object = null;
 				un_pause_game()
@@ -124,7 +134,7 @@ func un_pause_game():
 	if current_placing_object != null:
 		current_placing_object.queue_free()
 	current_placing_object = null
-	Engine.time_scale = 1.0
+	get_tree().paused = false
 	music_player.stream = load(NORMAL_MUSIC)
 	music_player.volume_db = FADE_IN_VOLUME
 	music_player.play()
@@ -132,7 +142,7 @@ func un_pause_game():
 
 func pause_game():
 	current_placing_object = null
-	Engine.time_scale = 0.0
+	get_tree().paused = true
 	music_player.stream = load(PAUSED_MUSIC)
 	music_player.volume_db = FADE_IN_VOLUME
 	music_player.play()
@@ -141,6 +151,7 @@ func pause_game():
 
 static func unlock_summon(name, play_sound):
 	instance._unlock_summon(name, play_sound)
+	instance.scroll_acquired.emit()
 
 func _unlock_summon(name, play_sound):
 	var summon = SummonsList.get_spell(name)

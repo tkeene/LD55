@@ -15,6 +15,10 @@ run/main_scene="res://00_boot/00_boot.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+TutorialFlags="*res://levels/TutorialFlags.gd"
+
 [display]
 
 window/size/viewport_width=960

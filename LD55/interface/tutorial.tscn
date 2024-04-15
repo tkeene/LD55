@@ -1,0 +1,614 @@
+[gd_scene load_steps=10 format=3 uid="uid://cfbvuoh1iomrl"]
+
+[ext_resource type="Texture2D" uid="uid://b4560isat7ad6" path="res://interface/dialog_window.png" id="1_ash47"]
+[ext_resource type="Script" path="res://interface/TutorialController.gd" id="1_bp1pr"]
+[ext_resource type="Texture2D" uid="uid://chnxe44w5v3gm" path="res://interface/kyrian_neutral.png" id="2_5mlrn"]
+[ext_resource type="Script" path="res://interface/Line.gd" id="3_0mcqe"]
+[ext_resource type="Theme" uid="uid://dk2uniu5qjt3m" path="res://ui_theme.tres" id="3_a15ab"]
+[ext_resource type="Script" path="res://interface/Sequence.gd" id="3_ehfko"]
+[ext_resource type="Texture2D" uid="uid://d4naq8t2jf6su" path="res://interface/kyrian_thinking.png" id="7_eyg8g"]
+[ext_resource type="Texture2D" uid="uid://bx0ub1c2tndfc" path="res://interface/kyrian_frustrated.png" id="8_5t2f8"]
+[ext_resource type="Texture2D" uid="uid://c2meeiw55s7ns" path="res://interface/tutorial_arrow.png" id="8_kr28x"]
+
+[node name="TutorialController" type="Node2D"]
+process_mode = 2
+visible = false
+script = ExtResource("1_bp1pr")
+
+[node name="OverlayUI" type="CanvasGroup" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="OverlayUI"]
+offset_left = -7.0
+offset_top = 214.0
+offset_right = 391.0
+offset_bottom = 586.0
+texture = ExtResource("1_ash47")
+expand_mode = 1
+
+[node name="Skip" type="RichTextLabel" parent="OverlayUI"]
+offset_left = 291.0
+offset_top = 482.0
+offset_right = 371.0
+offset_bottom = 521.0
+theme = ExtResource("3_a15ab")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 14
+text = "Press z/x"
+
+[node name="LevelIntroState" type="Node2D" parent="OverlayUI"]
+visible = false
+script = ExtResource("3_ehfko")
+
+[node name="Line1" type="Node2D" parent="OverlayUI/LevelIntroState"]
+visible = false
+script = ExtResource("3_0mcqe")
+
+[node name="TextureRect" type="TextureRect" parent="OverlayUI/LevelIntroState/Line1"]
+offset_left = 21.0
+offset_top = 289.0
+offset_right = 182.0
+offset_bottom = 450.0
+texture = ExtResource("2_5mlrn")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="OverlayUI/LevelIntroState/Line1"]
+offset_left = 161.0
+offset_top = 386.0
+offset_right = 359.0
+offset_bottom = 480.0
+theme = ExtResource("3_a15ab")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 14
+text = "Curses. I forgot I set all these traps. I’ll have to help Blort get through them if we’re to resolve this quickly. "
+
+[node name="Line2" type="Node2D" parent="OverlayUI/LevelIntroState"]
+visible = false
+script = ExtResource("3_0mcqe")
+
+[node name="TextureRect" type="TextureRect" parent="OverlayUI/LevelIntroState/Line2"]
+offset_left = 21.0
+offset_top = 289.0
+offset_right = 182.0
+offset_bottom = 450.0
+texture = ExtResource("7_eyg8g")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="OverlayUI/LevelIntroState/Line2"]
+offset_left = 161.0
+offset_top = 393.0
+offset_right = 359.0
+offset_bottom = 480.0
+theme = ExtResource("3_a15ab")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 14
+text = "These arcane wards are more clever than I thought I had been…that’s odd…"
+
+[node name="Line3" type="Node2D" parent="OverlayUI/LevelIntroState"]
+visible = false
+script = ExtResource("3_0mcqe")
+
+[node name="TextureRect" type="TextureRect" parent="OverlayUI/LevelIntroState/Line3"]
+offset_left = 21.0
+offset_top = 289.0
+offset_right = 182.0
+offset_bottom = 450.0
+texture = ExtResource("2_5mlrn")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="OverlayUI/LevelIntroState/Line3"]
+offset_left = 161.0
+offset_top = 400.0
+offset_right = 359.0
+offset_bottom = 480.0
+theme = ExtResource("3_a15ab")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 14
+text = "A quick portal summoning spell should allow Blort to ascend higher!"
+
+[node name="TextureRect2" type="TextureRect" parent="OverlayUI/LevelIntroState/Line3"]
+offset_left = 278.0
+offset_top = 84.0
+offset_right = 338.0
+offset_bottom = 147.0
+rotation = 1.14843
+texture = ExtResource("8_kr28x")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Line4" type="Node2D" parent="OverlayUI/LevelIntroState"]
+visible = false
+script = ExtResource("3_0mcqe")
+
+[node name="TextureRect" type="TextureRect" parent="OverlayUI/LevelIntroState/Line4"]
+offset_left = 21.0
+offset_top = 289.0
+offset_right = 182.0
+offset_bottom = 450.0
+texture = ExtResource("2_5mlrn")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="OverlayUI/LevelIntroState/Line4"]
+offset_left = 161.0
+offset_top = 404.0
+offset_right = 359.0
+offset_bottom = 480.0
+theme = ExtResource("3_a15ab")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 14
+text = "Ah! Fate smiles. A page of my spellbook up here."
+
+[node name="TextureRect3" type="TextureRect" parent="OverlayUI/LevelIntroState/Line4"]
+offset_left = 652.0
+offset_top = 82.0
+offset_right = 712.0
+offset_bottom = 145.0
+rotation = 2.48884
+texture = ExtResource("8_kr28x")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Line5" type="Node2D" parent="OverlayUI/LevelIntroState"]
+visible = false
+script = ExtResource("3_0mcqe")
+
+[node name="TextureRect" type="TextureRect" parent="OverlayUI/LevelIntroState/Line5"]
+offset_left = 21.0
+offset_top = 289.0
+offset_right = 182.0
+offset_bottom = 450.0
+texture = ExtResource("7_eyg8g")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="OverlayUI/LevelIntroState/Line5"]
+offset_left = 159.0
+offset_top = 409.0
+offset_right = 357.0
+offset_bottom = 503.0
+theme = ExtResource("3_a15ab")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 14
+text = "How did a Gozzuppa end up here?"
+
+[node name="TextureRect4" type="TextureRect" parent="OverlayUI/LevelIntroState/Line5"]
+offset_left = 631.0
+offset_top = 355.0
+offset_right = 691.0
+offset_bottom = 418.0
+rotation = -0.445059
+texture = ExtResource("8_kr28x")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Line6" type="Node2D" parent="OverlayUI/LevelIntroState"]
+visible = false
+script = ExtResource("3_0mcqe")
+
+[node name="TextureRect" type="TextureRect" parent="OverlayUI/LevelIntroState/Line6"]
+offset_left = 21.0
+offset_top = 289.0
+offset_right = 182.0
+offset_bottom = 450.0
+texture = ExtResource("8_5t2f8")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="OverlayUI/LevelIntroState/Line6"]
+offset_left = 161.0
+offset_top = 386.0
+offset_right = 359.0
+offset_bottom = 480.0
+theme = ExtResource("3_a15ab")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 14
+text = " Ah, no matter. I’m sure it’s nothing malicious. Blort should be able to use the Gozzuppa to get up to the upper section."
+
+[node name="TextureRect5" type="TextureRect" parent="OverlayUI/LevelIntroState/Line6"]
+offset_left = 631.0
+offset_top = 355.0
+offset_right = 691.0
+offset_bottom = 418.0
+rotation = -0.445059
+texture = ExtResource("8_kr28x")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Line7" type="Node2D" parent="OverlayUI/LevelIntroState"]
+visible = false
+script = ExtResource("3_0mcqe")
+
+[node name="TextureRect" type="TextureRect" parent="OverlayUI/LevelIntroState/Line7"]
+offset_left = 21.0
+offset_top = 289.0
+offset_right = 182.0
+offset_bottom = 450.0
+texture = ExtResource("7_eyg8g")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="OverlayUI/LevelIntroState/Line7"]
+offset_left = 161.0
+offset_top = 398.0
+offset_right = 359.0
+offset_bottom = 480.0
+theme = ExtResource("3_a15ab")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 14
+text = "This eldritch impaler pit is going to be a problem. "
+
+[node name="TextureRect7" type="TextureRect" parent="OverlayUI/LevelIntroState/Line7"]
+offset_left = 507.0
+offset_top = 331.0
+offset_right = 567.0
+offset_bottom = 394.0
+rotation = 1.59698
+texture = ExtResource("8_kr28x")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Line8" type="Node2D" parent="OverlayUI/LevelIntroState"]
+visible = false
+script = ExtResource("3_0mcqe")
+
+[node name="TextureRect" type="TextureRect" parent="OverlayUI/LevelIntroState/Line8"]
+offset_left = 21.0
+offset_top = 289.0
+offset_right = 182.0
+offset_bottom = 450.0
+texture = ExtResource("2_5mlrn")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="OverlayUI/LevelIntroState/Line8"]
+offset_left = 161.0
+offset_top = 405.0
+offset_right = 359.0
+offset_bottom = 480.0
+theme = ExtResource("3_a15ab")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 14
+text = "Oh! Right! I’d found a Bluuk summoning spell."
+
+[node name="TextureRect6" type="TextureRect" parent="OverlayUI/LevelIntroState/Line8"]
+offset_left = 507.0
+offset_top = 331.0
+offset_right = 567.0
+offset_bottom = 394.0
+rotation = 1.59698
+texture = ExtResource("8_kr28x")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="DeadNoBluuk" type="Node2D" parent="OverlayUI"]
+visible = false
+script = ExtResource("3_ehfko")
+
+[node name="Line1" type="Node2D" parent="OverlayUI/DeadNoBluuk"]
+visible = false
+script = ExtResource("3_0mcqe")
+
+[node name="TextureRect" type="TextureRect" parent="OverlayUI/DeadNoBluuk/Line1"]
+offset_left = 21.0
+offset_top = 289.0
+offset_right = 182.0
+offset_bottom = 450.0
+texture = ExtResource("7_eyg8g")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="OverlayUI/DeadNoBluuk/Line1"]
+offset_left = 161.0
+offset_top = 400.0
+offset_right = 359.0
+offset_bottom = 480.0
+theme = ExtResource("3_a15ab")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 14
+text = "Hm. I seem to be misremembering Blort’s athletic capabilities. "
+
+[node name="Line2" type="Node2D" parent="OverlayUI/DeadNoBluuk"]
+visible = false
+script = ExtResource("3_0mcqe")
+
+[node name="TextureRect" type="TextureRect" parent="OverlayUI/DeadNoBluuk/Line2"]
+offset_left = 21.0
+offset_top = 289.0
+offset_right = 182.0
+offset_bottom = 450.0
+texture = ExtResource("7_eyg8g")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="OverlayUI/DeadNoBluuk/Line2"]
+offset_left = 161.0
+offset_top = 393.0
+offset_right = 359.0
+offset_bottom = 480.0
+theme = ExtResource("3_a15ab")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+text = "I suspect there’s a spell in my [b]spellbook (x)[/b] that will allow me to summon some help for Blort."
+
+[node name="DeadYesBluuk" type="Node2D" parent="OverlayUI"]
+visible = false
+script = ExtResource("3_ehfko")
+
+[node name="Line1" type="Node2D" parent="OverlayUI/DeadYesBluuk"]
+visible = false
+script = ExtResource("3_0mcqe")
+
+[node name="TextureRect" type="TextureRect" parent="OverlayUI/DeadYesBluuk/Line1"]
+offset_left = 21.0
+offset_top = 289.0
+offset_right = 182.0
+offset_bottom = 450.0
+texture = ExtResource("8_5t2f8")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="OverlayUI/DeadYesBluuk/Line1"]
+offset_left = 161.0
+offset_top = 400.0
+offset_right = 359.0
+offset_bottom = 480.0
+theme = ExtResource("3_a15ab")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 14
+text = "I seem to have misjudged that. Poor Blort, I guess."
+
+[node name="Line2" type="Node2D" parent="OverlayUI/DeadYesBluuk"]
+visible = false
+script = ExtResource("3_0mcqe")
+
+[node name="TextureRect" type="TextureRect" parent="OverlayUI/DeadYesBluuk/Line2"]
+offset_left = 21.0
+offset_top = 289.0
+offset_right = 182.0
+offset_bottom = 450.0
+texture = ExtResource("7_eyg8g")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="OverlayUI/DeadYesBluuk/Line2"]
+offset_left = 161.0
+offset_top = 393.0
+offset_right = 359.0
+offset_bottom = 480.0
+theme = ExtResource("3_a15ab")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+text = "Oh well. My [b]Tempus Unwindus[/b] spell will fix that nicely."
+
+[node name="PickupWakkaScroll" type="Node2D" parent="OverlayUI"]
+visible = false
+script = ExtResource("3_ehfko")
+
+[node name="Line1" type="Node2D" parent="OverlayUI/PickupWakkaScroll"]
+visible = false
+script = ExtResource("3_0mcqe")
+
+[node name="TextureRect" type="TextureRect" parent="OverlayUI/PickupWakkaScroll/Line1"]
+offset_left = 21.0
+offset_top = 289.0
+offset_right = 182.0
+offset_bottom = 450.0
+texture = ExtResource("2_5mlrn")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="OverlayUI/PickupWakkaScroll/Line1"]
+offset_left = 161.0
+offset_top = 400.0
+offset_right = 359.0
+offset_bottom = 480.0
+theme = ExtResource("3_a15ab")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 14
+text = "Ah, Insha smiles at me!   Wakkas are quite durable, and summoning one should allow Blort across."
+
+[node name="Line2" type="Node2D" parent="OverlayUI/PickupWakkaScroll"]
+visible = false
+script = ExtResource("3_0mcqe")
+
+[node name="TextureRect" type="TextureRect" parent="OverlayUI/PickupWakkaScroll/Line2"]
+offset_left = 21.0
+offset_top = 289.0
+offset_right = 182.0
+offset_bottom = 450.0
+texture = ExtResource("7_eyg8g")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="OverlayUI/PickupWakkaScroll/Line2"]
+offset_left = 161.0
+offset_top = 402.0
+offset_right = 359.0
+offset_bottom = 480.0
+theme = ExtResource("3_a15ab")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+text = "I might have done too many eldritch impaler traps. I’m not as original as I think."
+
+[node name="Line3" type="Node2D" parent="OverlayUI/PickupWakkaScroll"]
+visible = false
+script = ExtResource("3_0mcqe")
+
+[node name="TextureRect" type="TextureRect" parent="OverlayUI/PickupWakkaScroll/Line3"]
+offset_left = 21.0
+offset_top = 289.0
+offset_right = 182.0
+offset_bottom = 450.0
+texture = ExtResource("2_5mlrn")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="OverlayUI/PickupWakkaScroll/Line3"]
+offset_left = 161.0
+offset_top = 405.0
+offset_right = 359.0
+offset_bottom = 480.0
+theme = ExtResource("3_a15ab")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 14
+text = "Well, if I screw this up, only Blort suffers!"
+
+[node name="DeadNoWakka" type="Node2D" parent="OverlayUI"]
+visible = false
+script = ExtResource("3_ehfko")
+
+[node name="Line1" type="Node2D" parent="OverlayUI/DeadNoWakka"]
+visible = false
+script = ExtResource("3_0mcqe")
+
+[node name="TextureRect" type="TextureRect" parent="OverlayUI/DeadNoWakka/Line1"]
+offset_left = 21.0
+offset_top = 289.0
+offset_right = 182.0
+offset_bottom = 450.0
+texture = ExtResource("8_5t2f8")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="OverlayUI/DeadNoWakka/Line1"]
+offset_left = 161.0
+offset_top = 400.0
+offset_right = 359.0
+offset_bottom = 480.0
+theme = ExtResource("3_a15ab")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+text = "Right. I must remember to consult my [b]spellbook (x)[/b] as I repair it. "
+
+[node name="Line2" type="Node2D" parent="OverlayUI/DeadNoWakka"]
+visible = false
+script = ExtResource("3_0mcqe")
+
+[node name="TextureRect" type="TextureRect" parent="OverlayUI/DeadNoWakka/Line2"]
+offset_left = 21.0
+offset_top = 289.0
+offset_right = 182.0
+offset_bottom = 450.0
+texture = ExtResource("7_eyg8g")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="OverlayUI/DeadNoWakka/Line2"]
+offset_left = 161.0
+offset_top = 402.0
+offset_right = 359.0
+offset_bottom = 480.0
+theme = ExtResource("3_a15ab")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 14
+text = "Ah, I never should have forgotten to impaler-proof Blort’s feet."
+
+[node name="DeadYesWakka" type="Node2D" parent="OverlayUI"]
+visible = false
+script = ExtResource("3_ehfko")
+
+[node name="Line1" type="Node2D" parent="OverlayUI/DeadYesWakka"]
+visible = false
+script = ExtResource("3_0mcqe")
+
+[node name="TextureRect" type="TextureRect" parent="OverlayUI/DeadYesWakka/Line1"]
+offset_left = 21.0
+offset_top = 289.0
+offset_right = 182.0
+offset_bottom = 450.0
+texture = ExtResource("8_5t2f8")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="OverlayUI/DeadYesWakka/Line1"]
+offset_left = 161.0
+offset_top = 410.0
+offset_right = 359.0
+offset_bottom = 480.0
+theme = ExtResource("3_a15ab")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+text = "Take a breath. Focus. Do it right. "
+
+[node name="Line2" type="Node2D" parent="OverlayUI/DeadYesWakka"]
+visible = false
+script = ExtResource("3_0mcqe")
+
+[node name="TextureRect" type="TextureRect" parent="OverlayUI/DeadYesWakka/Line2"]
+offset_left = 21.0
+offset_top = 289.0
+offset_right = 182.0
+offset_bottom = 450.0
+texture = ExtResource("7_eyg8g")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="OverlayUI/DeadYesWakka/Line2"]
+offset_left = 161.0
+offset_top = 391.0
+offset_right = 359.0
+offset_bottom = 480.0
+theme = ExtResource("3_a15ab")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+text = "[b]Tempus Unwindus[/b] will undo a significant portion of my progress, but it might be worth it."
+
+[node name="SummonWakka" type="Node2D" parent="OverlayUI"]
+visible = false
+script = ExtResource("3_ehfko")
+
+[node name="Line1" type="Node2D" parent="OverlayUI/SummonWakka"]
+visible = false
+script = ExtResource("3_0mcqe")
+
+[node name="TextureRect" type="TextureRect" parent="OverlayUI/SummonWakka/Line1"]
+offset_left = 21.0
+offset_top = 289.0
+offset_right = 182.0
+offset_bottom = 450.0
+texture = ExtResource("2_5mlrn")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="OverlayUI/SummonWakka/Line1"]
+offset_left = 161.0
+offset_top = 402.0
+offset_right = 359.0
+offset_bottom = 480.0
+theme = ExtResource("3_a15ab")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+text = "Wakka won’t move until Blort hops up on top."
+
+[node name="Line2" type="Node2D" parent="OverlayUI/SummonWakka"]
+visible = false
+script = ExtResource("3_0mcqe")
+
+[node name="TextureRect" type="TextureRect" parent="OverlayUI/SummonWakka/Line2"]
+offset_left = 21.0
+offset_top = 289.0
+offset_right = 182.0
+offset_bottom = 450.0
+texture = ExtResource("7_eyg8g")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="OverlayUI/SummonWakka/Line2"]
+offset_left = 161.0
+offset_top = 393.0
+offset_right = 359.0
+offset_bottom = 480.0
+theme = ExtResource("3_a15ab")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 14
+text = "I better check my spell notes as I collect them. I don’t remember some of these."

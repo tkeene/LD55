@@ -12,6 +12,7 @@ const DECELERATION : float = 0.1
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var death_timer: Timer = $DeathTimer
+@onready var tutorial_timer: Timer = $TutorialDeathTimer
 
 static var last_position = Vector2.ZERO
 var is_dead = false
@@ -25,6 +26,7 @@ var audio_source : AudioStreamPlayer = null
 
 # Called when the player dies.
 signal died
+signal killed
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -106,9 +108,13 @@ func kill():
 	is_dead = true
 	animation_player.stop()
 	death_timer.start()
+	tutorial_timer.start()
 	animation_player.play("die")
 	animation_player.queue("dead")
 
 # This will be called a short bit after the player is killed.
 func _finalize_death():
 	died.emit()
+
+func _on_tutorial_death_timer_timeout():
+	killed.emit()

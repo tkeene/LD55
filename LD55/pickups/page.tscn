@@ -29,6 +29,7 @@ _data = {
 }
 
 [node name="Page" type="Area2D"]
+process_mode = 3
 script = ExtResource("1_yagqk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -53,9 +53,11 @@ func _ready():
 	visible = true
 
 func _process(delta):
+	music_player.volume_db = move_toward(music_player.volume_db, 0.0, FADE_IN_SPEED * delta )
 	if TutorialFlags.tutorial_currently_active:
 		return
-	music_player.volume_db = move_toward(music_player.volume_db, 0.0, FADE_IN_SPEED * delta )
+	if OS.has_feature("editor") && Input.is_key_pressed(KEY_F4) && Input.is_key_pressed(KEY_A):
+		unlock_everything()
 	if !get_tree().paused:
 		($OverlayUI/PlacementUI as CanvasItem).visible = false
 		if Input.is_action_pressed("ui_cancel"):
@@ -98,7 +100,7 @@ func _process(delta):
 					if selected_summon_data["is_rewind"]:
 						reset_level()
 					elif selected_summon_data["victory"] > 0:
-						get_tree().change_scene_to_file("res://endgame_screens/ending_0" + selected_summon_data["victory"] + ".tscn")
+						get_tree().change_scene_to_file("res://endgame_screens/ending_0" + str(selected_summon_data["victory"]) + ".tscn")
 					else:
 						current_placing_object = selected_summon_data["object"].instantiate() as Node2D
 						current_placing_object.global_position = Player.last_position + Vector2.UP * 50.0
@@ -149,6 +151,11 @@ func pause_game():
 	$OverlayUI/ControlsPromptRect/ControlsPromptLabel.text = "[color=black]C - Return\nX/Z - Place\n◀/▶ Select/Move"
 	
 
+static func unlock_everything():
+	for spell in SummonsList._all_spells:
+		if !has_summon(spell.name):
+			unlock_summon(spell.name, true)
+
 static func unlock_summon(name, play_sound):
 	instance._unlock_summon(name, play_sound)
 	instance.scroll_acquired.emit()
@@ -171,4 +178,4 @@ static func has_summon(name):
 	return has_it
 
 static func reset_level():
-	instance.get_tree().change_scene_to_file(LevelRoot.last_level_loaded)
+	instance.get_tree().reload_current_scene()

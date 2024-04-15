@@ -8,6 +8,7 @@ static func initialize():
 			_bluuk,
 			_gozzuppa,
 			_wakka,
+			_faluuka,
 			_victory1,
 			_victory2,
 			_victory3,
@@ -40,7 +41,7 @@ static var _bluuk = {
 }
 static var _gozzuppa = {
 	"name": "Gozzuppa",
-	"description": "Gozuppa was my mother's favorite summon. They are useful in the same way a dumbwaiter is (and about as smart).",
+	"description": "\nGozuppa was my mother's favorite summon. They are useful in the same way a dumbwaiter is (and about as smart).",
 	"sprite": preload("res://interface/icon_gozzuppa.png"),
 	"object": preload("res://pawns/gozzuppa.tscn"),
 	"is_rewind": false,
@@ -51,6 +52,14 @@ static var _wakka = {
 	"description": "Susceptible to gravity. This isn't terribly bad, and you can steer them by riding on their backs.\n\n(Reminder: \"Pentagram\" does not mean \"pextragram\")",
 	"sprite": preload("res://interface/icon_wakka.png"),
 	"object": preload("res://pawns/wakka.tscn"),
+	"is_rewind": false,
+	"victory": 0,
+}
+static var _faluuka = {
+	"name": "Faluuka",
+	"description": "Susceptible to gravity.\n\nDoesn't do much, just sits there, why did I even bother giving a TV legs.",
+	"sprite": preload("res://interface/icon_faluuka.png"),
+	"object": preload("res://pawns/faluuka.tscn"),
 	"is_rewind": false,
 	"victory": 0,
 }

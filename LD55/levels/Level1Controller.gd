@@ -5,10 +5,6 @@ var tutorial_controller
 func _ready():
 	tutorial_controller = get_node("TutorialController")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
 func _on_timer_timeout():
 	if !TutorialFlags.level_1_tutorial_seen:
 		get_tree().paused = true

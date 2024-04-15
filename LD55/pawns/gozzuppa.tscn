@@ -31,6 +31,8 @@ radius = 88.0227
 
 [node name="Gozzuppa" type="CharacterBody2D"]
 process_mode = 3
+z_index = 5
+y_sort_enabled = true
 scale = Vector2(-0.2, 0.2)
 script = ExtResource("1_pdsu6")
 

@@ -612,3 +612,185 @@ theme = ExtResource("3_a15ab")
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 14
 text = "I better check my spell notes as I collect them. I don’t remember some of these."
+
+[node name="Level2IntroState" type="Node2D" parent="OverlayUI"]
+visible = false
+script = ExtResource("3_ehfko")
+
+[node name="Line1" type="Node2D" parent="OverlayUI/Level2IntroState"]
+visible = false
+script = ExtResource("3_0mcqe")
+
+[node name="TextureRect" type="TextureRect" parent="OverlayUI/Level2IntroState/Line1"]
+offset_left = 21.0
+offset_top = 289.0
+offset_right = 182.0
+offset_bottom = 450.0
+texture = ExtResource("8_5t2f8")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="OverlayUI/Level2IntroState/Line1"]
+offset_left = 161.0
+offset_top = 397.0
+offset_right = 359.0
+offset_bottom = 480.0
+theme = ExtResource("3_a15ab")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+text = "Drat and tarnation.  Those [b]Byggins[/b] really did a number on my poor spellbook..."
+
+[node name="Line2" type="Node2D" parent="OverlayUI/Level2IntroState"]
+visible = false
+script = ExtResource("3_0mcqe")
+
+[node name="TextureRect" type="TextureRect" parent="OverlayUI/Level2IntroState/Line2"]
+offset_left = 21.0
+offset_top = 289.0
+offset_right = 182.0
+offset_bottom = 450.0
+texture = ExtResource("7_eyg8g")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="OverlayUI/Level2IntroState/Line2"]
+offset_left = 161.0
+offset_top = 403.0
+offset_right = 359.0
+offset_bottom = 480.0
+theme = ExtResource("3_a15ab")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+text = "Looks like there are [b]TWO[/b] spell pages here.  I really should grab both if I can."
+
+[node name="Line3" type="Node2D" parent="OverlayUI/Level2IntroState"]
+visible = false
+script = ExtResource("3_0mcqe")
+
+[node name="TextureRect" type="TextureRect" parent="OverlayUI/Level2IntroState/Line3"]
+offset_left = 21.0
+offset_top = 289.0
+offset_right = 182.0
+offset_bottom = 450.0
+texture = ExtResource("2_5mlrn")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="OverlayUI/Level2IntroState/Line3"]
+offset_left = 161.0
+offset_top = 405.0
+offset_right = 359.0
+offset_bottom = 480.0
+theme = ExtResource("3_a15ab")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+text = "And of course, by [b]I[/b], I really mean [b]YOU[/b], Blort.  Get to it!"
+
+[node name="Level2TrappedState" type="Node2D" parent="OverlayUI"]
+visible = false
+script = ExtResource("3_ehfko")
+
+[node name="Line1" type="Node2D" parent="OverlayUI/Level2TrappedState"]
+visible = false
+script = ExtResource("3_0mcqe")
+
+[node name="TextureRect" type="TextureRect" parent="OverlayUI/Level2TrappedState/Line1"]
+offset_left = 21.0
+offset_top = 289.0
+offset_right = 182.0
+offset_bottom = 450.0
+texture = ExtResource("7_eyg8g")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="OverlayUI/Level2TrappedState/Line1"]
+offset_left = 161.0
+offset_top = 404.0
+offset_right = 359.0
+offset_bottom = 480.0
+theme = ExtResource("3_a15ab")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+text = "Huh, looks like Blort might have gotten itself stuck."
+
+[node name="Line2" type="Node2D" parent="OverlayUI/Level2TrappedState"]
+visible = false
+script = ExtResource("3_0mcqe")
+
+[node name="TextureRect" type="TextureRect" parent="OverlayUI/Level2TrappedState/Line2"]
+offset_left = 21.0
+offset_top = 289.0
+offset_right = 182.0
+offset_bottom = 450.0
+texture = ExtResource("2_5mlrn")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="OverlayUI/Level2TrappedState/Line2"]
+offset_left = 161.0
+offset_top = 401.0
+offset_right = 359.0
+offset_bottom = 480.0
+theme = ExtResource("3_a15ab")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+text = "It's a good thing when I use [b]Tempus Unwindus[/b] I keep the spells that Blort has already recovered."
+
+[node name="PickupFaluukaScroll" type="Node2D" parent="OverlayUI"]
+visible = false
+script = ExtResource("3_ehfko")
+
+[node name="Line1" type="Node2D" parent="OverlayUI/PickupFaluukaScroll"]
+visible = false
+script = ExtResource("3_0mcqe")
+
+[node name="TextureRect" type="TextureRect" parent="OverlayUI/PickupFaluukaScroll/Line1"]
+offset_left = 21.0
+offset_top = 289.0
+offset_right = 182.0
+offset_bottom = 450.0
+texture = ExtResource("2_5mlrn")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="OverlayUI/PickupFaluukaScroll/Line1"]
+offset_left = 161.0
+offset_top = 401.0
+offset_right = 359.0
+offset_bottom = 480.0
+theme = ExtResource("3_a15ab")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+text = "Oh, good!  I found my TV!
+
+Er... I mean... my [b]Faluuka[/b]"
+
+[node name="Line2" type="Node2D" parent="OverlayUI/PickupFaluukaScroll"]
+visible = false
+script = ExtResource("3_0mcqe")
+
+[node name="TextureRect" type="TextureRect" parent="OverlayUI/PickupFaluukaScroll/Line2"]
+offset_left = 21.0
+offset_top = 289.0
+offset_right = 182.0
+offset_bottom = 450.0
+texture = ExtResource("8_5t2f8")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="OverlayUI/PickupFaluukaScroll/Line2"]
+offset_left = 161.0
+offset_top = 401.0
+offset_right = 359.0
+offset_bottom = 480.0
+theme = ExtResource("3_a15ab")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+text = "This will be really useful to help me unwind after this is all over."

@@ -17,5 +17,5 @@ func _process(delta):
 func _on_body_entered(body):
 	if body is Player:
 		print("You touched the butt. I mean the page.")
-		LevelRoot.unlock_summon(summon_name)
+		LevelRoot.unlock_summon(summon_name, true)
 		queue_free()

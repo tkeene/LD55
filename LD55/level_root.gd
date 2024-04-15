@@ -12,7 +12,8 @@ const CARDS_IN_HAND_MAX_ANGLE_RADIANS = PI / 6.0
 
 static var instance = null
 static var last_level_loaded
-var music_player = null
+var music_player : AudioStreamPlayer = null
+var audio_player : AudioStreamPlayer = null
 var quit_held_time = 0.0
 
 static var unlocked_summons = []
@@ -27,6 +28,8 @@ func _ready():
 	instance = self
 	music_player = AudioStreamPlayer.new()
 	add_child(music_player)
+	audio_player = AudioStreamPlayer.new()
+	add_child(audio_player)
 	current_inventory.append(SummonsList.get_spell("Bluuk"))
 	current_inventory.append(SummonsList.get_spell("Tempus Unwindus"))
 	for summon in unlocked_summons:
@@ -136,14 +139,17 @@ func pause_game():
 	$OverlayUI/ControlsPromptRect/ControlsPromptLabel.text = "[color=black]C - Return\nX/Z - Place\n◀/▶ Select/Move"
 	
 
-static func unlock_summon(name):
-	instance._unlock_summon(name)
+static func unlock_summon(name, play_sound):
+	instance._unlock_summon(name, play_sound)
 
-func _unlock_summon(name):
+func _unlock_summon(name, play_sound):
 	var summon = SummonsList.get_spell(name)
 	if summon != null:
 		unlocked_summons.append(summon)
 		current_inventory.push_front(summon)
+		if play_sound:
+			audio_player.stream = load("res://audio/sfx_page_get.wav")
+			audio_player.play()
 
 static func has_summon(name):
 	var has_it = false

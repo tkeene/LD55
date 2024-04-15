@@ -19,6 +19,9 @@ var last_direction = "right"
 var jump_pressed_flag = false
 var remaining_jump_cooldown_seconds = 0.0
 var remaining_floor_time = 0.0
+var TIME_BETWEEN_FOOTSTEPS = 0.5
+var walk_sound_timer = 0.0
+var audio_source : AudioStreamPlayer = null
 
 # Called when the player dies.
 signal died
@@ -26,23 +29,39 @@ signal died
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	animation_player.play("idle_right")
+	audio_source = AudioStreamPlayer.new()
+	add_child(audio_source)
 
 func _process(delta):
 	# Do no animation if the player is dead.
+	var is_walking = false
 	if is_dead:
 		pass
 	elif jump_pressed_flag:
 		animation_player.play("jump_" + last_direction)
 		animation_player.queue("airborn_" + last_direction)
 		jump_pressed_flag = false
+		audio_source.stream = load("res://audio/sfx_jump.wav")
+		audio_source.play()
 	elif is_on_floor() and velocity.x > 0.1:
+		is_walking = true
 		animation_player.play("walk_right")
 		last_direction = "right"
 	elif is_on_floor() and velocity.x < -0.1:
+		is_walking = true
 		animation_player.play("walk_left")
 		last_direction = "left"
 	elif is_on_floor():
 		animation_player.play("idle_" + last_direction)
+	if is_walking:
+		if walk_sound_timer <= 0.0:
+			walk_sound_timer = TIME_BETWEEN_FOOTSTEPS
+			audio_source.stream = load("res://audio/sfx_walk.wav")
+			audio_source.play()
+		else:
+			walk_sound_timer -= delta
+	else:
+		walk_sound_timer = 0.0
 
 func _physics_process(delta):
 	if delta > 0.0:
@@ -81,6 +100,9 @@ func _physics_process(delta):
 # Call this to kill the player.
 func kill():
 	print("Blort is kill. No.")
+	if !is_dead:
+		audio_source.stream = load("res://audio/sfx_die.wav")
+		audio_source.play()
 	is_dead = true
 	animation_player.stop()
 	death_timer.start()

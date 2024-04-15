@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://s18o5nqg8x5g"]
+[gd_scene load_steps=6 format=3 uid="uid://vtsx3r0uddcq"]
 
-[ext_resource type="Script" path="res://pawns/bluuk.gd" id="1_ftsum"]
-[ext_resource type="Texture2D" uid="uid://bof3desqc0ic2" path="res://pawns/critters.png" id="1_mhhgg"]
+[ext_resource type="Script" path="res://pawns/bluuk.gd" id="1_1cver"]
+[ext_resource type="Texture2D" uid="uid://bof3desqc0ic2" path="res://pawns/critters.png" id="2_vg4tb"]
 
 [sub_resource type="Animation" id="Animation_mtakk"]
 resource_name = "idle"
@@ -30,12 +30,12 @@ size = Vector2(77, 27)
 
 [node name="Bluuk" type="CharacterBody2D"]
 process_mode = 3
-script = ExtResource("1_ftsum")
+script = ExtResource("1_1cver")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(-2, -18)
 scale = Vector2(0.3, 0.3)
-texture = ExtResource("1_mhhgg")
+texture = ExtResource("2_vg4tb")
 hframes = 5
 vframes = 5
 

@@ -9,6 +9,7 @@ static func initialize():
 			_gozzuppa,
 			_wakka,
 			_faluuka,
+			_byggin,
 			_victory1,
 			_victory2,
 			_victory3,
@@ -65,6 +66,15 @@ static var _faluuka = {
 	"description": "Susceptible to gravity.\n\nDoesn't do much, just sits there, why did I even bother giving a TV legs.",
 	"sprite": preload("res://interface/icon_faluuka.png"),
 	"object": preload("res://pawns/faluuka.tscn"),
+	"is_rewind": false,
+	"victory": 0,
+	"hand_order": 0,
+}
+static var _byggin = {
+	"name": "Byggin",
+	"description": "???",
+	"sprite": preload("res://debug_pixel.bmp"),
+	"object": preload("res://pawns/byggin.tscn"),
 	"is_rewind": false,
 	"victory": 0,
 	"hand_order": 0,

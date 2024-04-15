@@ -98,6 +98,8 @@ func _physics_process(delta):
 		# Platforming Physics
 		var current_velocity : Vector2 = velocity
 		var acceleration = GROUND_ACCELERATION if is_on_floor() else AIR_ACCELERATION
+		if is_on_floor() && horizontal_input * current_velocity.x < 0.0:
+			current_velocity.x = 0.0
 		current_velocity.x = move_toward(current_velocity.x, horizontal_input * GROUND_MAX_SPEED, delta * acceleration)
 		if jump_pressed:
 			current_velocity.y -= JUMP_VELOCITY

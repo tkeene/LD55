@@ -10,17 +10,16 @@ extends CharacterBody2D
 var start_moving: bool = false
 var moving: bool = false
 
-const speed := 800.0
+const speed := 50.0
 
 var direction := 1
 
 func _ready():
 	animation_player.play("idle")
 
-func _process(delta):
-	pass
-
 func _physics_process(delta):
+	if get_tree().paused:
+		return
 	if delta > 0.0:
 		var cliff_detector = left_cliff_detector if direction > 0 else right_cliff_detector
 		# Do gravity, ignore it if we are paused, though.

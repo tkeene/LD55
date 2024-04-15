@@ -23,6 +23,7 @@ static var _placeholder_block = {
 	"object": preload("res://pawns/summon_block.tscn"),
 	"is_rewind": false,
 	"victory": 0,
+	"hand_order": 99,
 }
 static var _rewind = {
 	"name": "Tempus Unwindus",
@@ -30,6 +31,7 @@ static var _rewind = {
 	"sprite": preload("res://interface/icon_hourglass.png"),
 	"is_rewind": true,
 	"victory": 0,
+	"hand_order": 10,
 }
 static var _bluuk = {
 	"name": "Bluuk",
@@ -38,6 +40,7 @@ static var _bluuk = {
 	"object": preload("res://pawns/bluuk.tscn"),
 	"is_rewind": false,
 	"victory": 0,
+	"hand_order": 0,
 }
 static var _gozzuppa = {
 	"name": "Gozzuppa",
@@ -46,6 +49,7 @@ static var _gozzuppa = {
 	"object": preload("res://pawns/gozzuppa.tscn"),
 	"is_rewind": false,
 	"victory": 0,
+	"hand_order": 0,
 }
 static var _wakka = {
 	"name": "Wakka",
@@ -54,6 +58,7 @@ static var _wakka = {
 	"object": preload("res://pawns/wakka.tscn"),
 	"is_rewind": false,
 	"victory": 0,
+	"hand_order": 0,
 }
 static var _faluuka = {
 	"name": "Faluuka",
@@ -62,6 +67,7 @@ static var _faluuka = {
 	"object": preload("res://pawns/faluuka.tscn"),
 	"is_rewind": false,
 	"victory": 0,
+	"hand_order": 0,
 }
 static var _victory1 = {
 	"name": "Summon Tower Door Key",
@@ -69,6 +75,7 @@ static var _victory1 = {
 	"sprite": preload("res://debug_pixel.bmp"),
 	"is_rewind": false,
 	"victory": 1,
+	"hand_order": 50,
 }
 static var _victory2 = {
 	"name": "Summon Airplane Tickets",
@@ -76,6 +83,7 @@ static var _victory2 = {
 	"sprite": preload("res://debug_pixel.bmp"),
 	"is_rewind": false,
 	"victory": 2,
+	"hand_order": 51,
 }
 static var _victory3 = {
 	"name": "Summon Anti Wizard Barrier",
@@ -83,6 +91,7 @@ static var _victory3 = {
 	"sprite": preload("res://debug_pixel.bmp"),
 	"is_rewind": false,
 	"victory": 3,
+	"hand_order": 52,
 }
 static func get_spell(name):
 	initialize()

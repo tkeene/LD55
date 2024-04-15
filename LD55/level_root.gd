@@ -36,6 +36,7 @@ func _ready():
 	current_inventory.append(SummonsList.get_spell("Tempus Unwindus"))
 	for summon in unlocked_summons:
 		current_inventory.push_front(summon)
+	current_inventory.sort_custom(func(a, b): return a["hand_order"] < b["hand_order"])
 	var card_prefab = $OverlayUI/PlacementUI/CardPrefab as TextureRect
 	var max_card_offset = Vector2.RIGHT * card_prefab.size.x * 4.0
 	for i in range(NUMBER_OF_CARDS_TO_SHOW):
@@ -44,6 +45,8 @@ func _ready():
 		spawned_card.global_position = lerp(card_prefab.position - max_card_offset,
 			card_prefab.position + max_card_offset, distance)
 		spawned_card.global_position += abs(distance - 0.5) * Vector2.DOWN * 200.0
+		if i == NUMBER_OF_CARDS_TO_SHOW / 2:
+			spawned_card.global_position += Vector2.DOWN * 2000.0
 		spawned_card.rotation = lerp(-CARDS_IN_HAND_MAX_ANGLE_RADIANS, CARDS_IN_HAND_MAX_ANGLE_RADIANS, distance)
 		$OverlayUI/PlacementUI.add_child(spawned_card)
 		cards_for_summons.append(spawned_card)

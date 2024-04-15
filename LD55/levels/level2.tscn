@@ -10,9 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://th6750v3w0o0" path="res://levels/graphics/Tile3.png" id="7_8cxnc"]
 [ext_resource type="Texture2D" uid="uid://b7wuoj30joa3a" path="res://levels/graphics/Tile4.png" id="8_5rp4e"]
 [ext_resource type="Texture2D" uid="uid://c74codffpakqq" path="res://levels/graphics/TileStart.png" id="9_rpsly"]
-[ext_resource type="Texture2D" uid="uid://cmi2gr3kik0d0" path="res://levels/graphics/TileEnd.png" id="10_ko2v0"]
 [ext_resource type="PackedScene" uid="uid://d25lwn4fvx02d" path="res://levels/spawner.tscn" id="10_xnhs8"]
 [ext_resource type="Script" path="res://levels/KillZone.gd" id="11_4ya4h"]
+[ext_resource type="PackedScene" uid="uid://b1i2tysh85dx2" path="res://levels/level_exit.tscn" id="11_vryrv"]
 [ext_resource type="PackedScene" uid="uid://bry0qk84weeo2" path="res://pickups/page.tscn" id="12_bawrp"]
 [ext_resource type="PackedScene" uid="uid://cfbvuoh1iomrl" path="res://interface/tutorial.tscn" id="14_spkjg"]
 
@@ -327,17 +327,20 @@ position = Vector2(639, 67)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("8_5rp4e")
 
-[node name="TileEnd" type="Sprite2D" parent="Terrain/TopFloor/Tiles"]
-position = Vector2(685, 65)
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("10_ko2v0")
+[node name="LevelExit" parent="Terrain/TopFloor/Tiles" instance=ExtResource("11_vryrv")]
+position = Vector2(650, 48)
+next_level_path = "res://levels/level3.tscn"
 
 [node name="Tile15" type="Sprite2D" parent="Terrain/TopFloor/Tiles"]
+z_index = 1
+y_sort_enabled = true
 position = Vector2(725, 67)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("8_5rp4e")
 
 [node name="Tile11" type="Sprite2D" parent="Terrain/TopFloor/Tiles"]
+z_index = 3
+y_sort_enabled = true
 position = Vector2(767, 66)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("6_4leuk")

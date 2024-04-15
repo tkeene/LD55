@@ -872,6 +872,7 @@ bbcode_enabled = true
 text = "I should easily have the tools I need to get Blort through this, though."
 
 [node name="PickupDoorKey" type="Node2D" parent="OverlayUI"]
+visible = false
 script = ExtResource("3_ehfko")
 
 [node name="Line1" type="Node2D" parent="OverlayUI/PickupDoorKey"]
@@ -969,3 +970,230 @@ theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 14
 bbcode_enabled = true
 text = "I still need to catch up on [b]Battle Chef Academia[/b]."
+
+[node name="Level3IntroState" type="Node2D" parent="OverlayUI"]
+visible = false
+script = ExtResource("3_ehfko")
+
+[node name="Line4" type="Node2D" parent="OverlayUI/Level3IntroState"]
+visible = false
+script = ExtResource("3_0mcqe")
+
+[node name="TextureRect" type="TextureRect" parent="OverlayUI/Level3IntroState/Line4"]
+offset_left = 21.0
+offset_top = 289.0
+offset_right = 182.0
+offset_bottom = 450.0
+texture = ExtResource("8_5t2f8")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="OverlayUI/Level3IntroState/Line4"]
+offset_left = 161.0
+offset_top = 403.0
+offset_right = 359.0
+offset_bottom = 480.0
+theme = ExtResource("3_a15ab")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+text = "And here they are, those pesky [b]Byggins[/b].  "
+
+[node name="Line5" type="Node2D" parent="OverlayUI/Level3IntroState"]
+visible = false
+script = ExtResource("3_0mcqe")
+
+[node name="TextureRect" type="TextureRect" parent="OverlayUI/Level3IntroState/Line5"]
+offset_left = 21.0
+offset_top = 289.0
+offset_right = 182.0
+offset_bottom = 450.0
+texture = ExtResource("7_eyg8g")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="OverlayUI/Level3IntroState/Line5"]
+offset_left = 161.0
+offset_top = 400.0
+offset_right = 359.0
+offset_bottom = 480.0
+theme = ExtResource("3_a15ab")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+text = "[b]Blort[/b], let's show those [b]Byggins[/b] who is the boss around here."
+
+[node name="Line6" type="Node2D" parent="OverlayUI/Level3IntroState"]
+visible = false
+script = ExtResource("3_0mcqe")
+
+[node name="TextureRect" type="TextureRect" parent="OverlayUI/Level3IntroState/Line6"]
+offset_left = 21.0
+offset_top = 289.0
+offset_right = 182.0
+offset_bottom = 450.0
+texture = ExtResource("2_5mlrn")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="OverlayUI/Level3IntroState/Line6"]
+offset_left = 161.0
+offset_top = 400.0
+offset_right = 359.0
+offset_bottom = 480.0
+theme = ExtResource("3_a15ab")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+text = "Just give them a good [b]Stomp[/b] and they'll be out of your way."
+
+[node name="Line1" type="Node2D" parent="OverlayUI/Level3IntroState"]
+visible = false
+script = ExtResource("3_0mcqe")
+
+[node name="TextureRect" type="TextureRect" parent="OverlayUI/Level3IntroState/Line1"]
+offset_left = 21.0
+offset_top = 289.0
+offset_right = 182.0
+offset_bottom = 450.0
+texture = ExtResource("7_eyg8g")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="OverlayUI/Level3IntroState/Line1"]
+offset_left = 161.0
+offset_top = 398.0
+offset_right = 359.0
+offset_bottom = 480.0
+theme = ExtResource("3_a15ab")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+text = "Oh, it looks like there's another [b]Bluuk[/b] spell up there."
+
+[node name="Line2" type="Node2D" parent="OverlayUI/Level3IntroState"]
+visible = false
+script = ExtResource("3_0mcqe")
+
+[node name="TextureRect" type="TextureRect" parent="OverlayUI/Level3IntroState/Line2"]
+offset_left = 21.0
+offset_top = 289.0
+offset_right = 182.0
+offset_bottom = 450.0
+texture = ExtResource("7_eyg8g")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="OverlayUI/Level3IntroState/Line2"]
+offset_left = 161.0
+offset_top = 393.0
+offset_right = 359.0
+offset_bottom = 480.0
+theme = ExtResource("3_a15ab")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+text = "I probably don't need it right now, but if you want to go for it, [b]Blort[/b], it might be useful..."
+
+[node name="Line3" type="Node2D" parent="OverlayUI/Level3IntroState"]
+visible = false
+script = ExtResource("3_0mcqe")
+
+[node name="TextureRect" type="TextureRect" parent="OverlayUI/Level3IntroState/Line3"]
+offset_left = 21.0
+offset_top = 289.0
+offset_right = 182.0
+offset_bottom = 450.0
+texture = ExtResource("2_5mlrn")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="OverlayUI/Level3IntroState/Line3"]
+offset_left = 161.0
+offset_top = 399.0
+offset_right = 359.0
+offset_bottom = 480.0
+theme = ExtResource("3_a15ab")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+text = "But if you want to try and challenge yourself, see if you can skip it!"
+
+[node name="PickupSecondBluuk" type="Node2D" parent="OverlayUI"]
+visible = false
+script = ExtResource("3_ehfko")
+
+[node name="Line1" type="Node2D" parent="OverlayUI/PickupSecondBluuk"]
+visible = false
+script = ExtResource("3_0mcqe")
+
+[node name="TextureRect" type="TextureRect" parent="OverlayUI/PickupSecondBluuk/Line1"]
+offset_left = 21.0
+offset_top = 289.0
+offset_right = 182.0
+offset_bottom = 450.0
+texture = ExtResource("2_5mlrn")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="OverlayUI/PickupSecondBluuk/Line1"]
+offset_left = 161.0
+offset_top = 396.0
+offset_right = 359.0
+offset_bottom = 480.0
+theme = ExtResource("3_a15ab")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+text = "Fun Fact:
+My mother named all the spells based on what I called them as a toddler."
+
+[node name="Line2" type="Node2D" parent="OverlayUI/PickupSecondBluuk"]
+visible = false
+script = ExtResource("3_0mcqe")
+
+[node name="TextureRect" type="TextureRect" parent="OverlayUI/PickupSecondBluuk/Line2"]
+offset_left = 21.0
+offset_top = 289.0
+offset_right = 182.0
+offset_bottom = 450.0
+texture = ExtResource("8_5t2f8")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="OverlayUI/PickupSecondBluuk/Line2"]
+offset_left = 161.0
+offset_top = 393.0
+offset_right = 359.0
+offset_bottom = 480.0
+theme = ExtResource("3_a15ab")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+text = "I... am not sure why I just told you that...
+
+It's kind of embarrassing."
+
+[node name="Line3" type="Node2D" parent="OverlayUI/PickupSecondBluuk"]
+visible = false
+script = ExtResource("3_0mcqe")
+
+[node name="TextureRect" type="TextureRect" parent="OverlayUI/PickupSecondBluuk/Line3"]
+offset_left = 21.0
+offset_top = 289.0
+offset_right = 182.0
+offset_bottom = 450.0
+texture = ExtResource("2_5mlrn")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="OverlayUI/PickupSecondBluuk/Line3"]
+offset_left = 161.0
+offset_top = 399.0
+offset_right = 359.0
+offset_bottom = 480.0
+theme = ExtResource("3_a15ab")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+text = "Let's just forget I said anything, how does that sound [b]Blort[/b]?"

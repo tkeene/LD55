@@ -13,6 +13,10 @@ var level_2_tutorial_seen = false
 var level_2_trapped_seen = false
 var level_2_faluuka_seen = false
 
+# Level 3 tutorials
+var level_3_tutorial_seen = false
+var level_3_second_bluuk_seen = false
+
 # Final Level tutorials
 var final_level_tutorial_seen = false
 var obtain_door_key_seen = false

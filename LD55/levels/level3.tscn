@@ -1,0 +1,322 @@
+[gd_scene load_steps=22 format=3 uid="uid://b5wqhyiqepwn1"]
+
+[ext_resource type="PackedScene" uid="uid://dn0yk3wiakddr" path="res://levels/level_background.tscn" id="1_j1vso"]
+[ext_resource type="Script" path="res://levels/level_3_controller.gd" id="1_wmupl"]
+[ext_resource type="PackedScene" uid="uid://cget7lr6jumuo" path="res://level_root.tscn" id="2_ut4ns"]
+[ext_resource type="Texture2D" uid="uid://c74codffpakqq" path="res://levels/graphics/TileStart.png" id="3_u1fvc"]
+[ext_resource type="Texture2D" uid="uid://th6750v3w0o0" path="res://levels/graphics/Tile3.png" id="4_o38fq"]
+[ext_resource type="Texture2D" uid="uid://b7wuoj30joa3a" path="res://levels/graphics/Tile4.png" id="5_f8pi5"]
+[ext_resource type="Texture2D" uid="uid://da7oajlefehbf" path="res://levels/graphics/Tile1.png" id="6_7jks1"]
+[ext_resource type="Texture2D" uid="uid://5cdvp7lng5lr" path="res://levels/graphics/Spikes2.png" id="7_nosqa"]
+[ext_resource type="Texture2D" uid="uid://ccoxws5uukt0n" path="res://levels/graphics/Spikes1.png" id="8_vcwiw"]
+[ext_resource type="Texture2D" uid="uid://dx8yyv7fuapke" path="res://levels/graphics/Tile2.png" id="9_w5m0r"]
+[ext_resource type="PackedScene" uid="uid://b1i2tysh85dx2" path="res://levels/level_exit.tscn" id="10_h24oh"]
+[ext_resource type="PackedScene" uid="uid://d25lwn4fvx02d" path="res://levels/spawner.tscn" id="10_tqkp1"]
+[ext_resource type="Script" path="res://levels/KillZone.gd" id="10_xcvrl"]
+[ext_resource type="PackedScene" uid="uid://vtsx3r0uddcq" path="res://pawns/byggin.tscn" id="12_a2rqf"]
+[ext_resource type="PackedScene" uid="uid://bry0qk84weeo2" path="res://pickups/page.tscn" id="14_pufnt"]
+[ext_resource type="PackedScene" uid="uid://cfbvuoh1iomrl" path="res://interface/tutorial.tscn" id="16_20sqd"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_kw6qd"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_xnk0v"]
+normal = Vector2(-1, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1wxpm"]
+size = Vector2(252.25, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q8akd"]
+size = Vector2(82, 15.125)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0o7ga"]
+size = Vector2(122.188, 10)
+
+[node name="Level3" type="Node2D"]
+script = ExtResource("1_wmupl")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+autostart = true
+
+[node name="LevelBackground" parent="." instance=ExtResource("1_j1vso")]
+process_mode = 3
+
+[node name="LevelRoot" parent="." instance=ExtResource("2_ut4ns")]
+visible = false
+
+[node name="Terrain" type="Node2D" parent="."]
+
+[node name="Left Wall" type="StaticBody2D" parent="Terrain"]
+collision_layer = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Left Wall"]
+position = Vector2(200, 218)
+shape = SubResource("WorldBoundaryShape2D_kw6qd")
+
+[node name="Right Wall" type="StaticBody2D" parent="Terrain"]
+collision_layer = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Right Wall"]
+position = Vector2(780, 245)
+shape = SubResource("WorldBoundaryShape2D_xnk0v")
+
+[node name="BottomFloor" type="StaticBody2D" parent="Terrain"]
+position = Vector2(5, 20)
+collision_layer = 3
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Terrain/BottomFloor"]
+visible = false
+z_index = 99
+y_sort_enabled = true
+polygon = PackedVector2Array(722, 498, 724, 437, 773, 438, 775, 541, 211, 539, 209, 492, 465.315, 494.998, 464, 512, 548, 511, 548, 496)
+
+[node name="Tiles" type="Node2D" parent="Terrain/BottomFloor"]
+
+[node name="TileStart" type="Sprite2D" parent="Terrain/BottomFloor/Tiles"]
+position = Vector2(234, 499)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_u1fvc")
+
+[node name="Tile3" type="Sprite2D" parent="Terrain/BottomFloor/Tiles"]
+position = Vector2(278.95, 499.75)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("4_o38fq")
+
+[node name="Tile4" type="Sprite2D" parent="Terrain/BottomFloor/Tiles"]
+position = Vector2(320.95, 502.75)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5_f8pi5")
+
+[node name="Tile5" type="Sprite2D" parent="Terrain/BottomFloor/Tiles"]
+position = Vector2(360.95, 501.75)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("4_o38fq")
+
+[node name="Tile12" type="Sprite2D" parent="Terrain/BottomFloor/Tiles"]
+position = Vector2(402, 503.75)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("6_7jks1")
+
+[node name="Tile11" type="Sprite2D" parent="Terrain/BottomFloor/Tiles"]
+position = Vector2(444, 503.75)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5_f8pi5")
+
+[node name="Spikes2" type="Sprite2D" parent="Terrain/BottomFloor/Tiles"]
+position = Vector2(489, 509.4)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("7_nosqa")
+
+[node name="Spikes1" type="Sprite2D" parent="Terrain/BottomFloor/Tiles"]
+position = Vector2(529, 503.4)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("8_vcwiw")
+
+[node name="Tile16" type="Sprite2D" parent="Terrain/BottomFloor/Tiles"]
+position = Vector2(571, 507)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5_f8pi5")
+
+[node name="Tile19" type="Sprite2D" parent="Terrain/BottomFloor/Tiles"]
+position = Vector2(614.95, 506.75)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("4_o38fq")
+
+[node name="Tile20" type="Sprite2D" parent="Terrain/BottomFloor/Tiles"]
+position = Vector2(653.95, 509.75)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("6_7jks1")
+
+[node name="Tile21" type="Sprite2D" parent="Terrain/BottomFloor/Tiles"]
+position = Vector2(698, 508)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("9_w5m0r")
+
+[node name="Tile15" type="Sprite2D" parent="Terrain/BottomFloor/Tiles"]
+position = Vector2(744.1, 509.1)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5_f8pi5")
+
+[node name="Tile7" type="Sprite2D" parent="Terrain/BottomFloor/Tiles"]
+position = Vector2(744.9, 485.45)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("9_w5m0r")
+
+[node name="Tile8" type="Sprite2D" parent="Terrain/BottomFloor/Tiles"]
+position = Vector2(745.9, 461.45)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("4_o38fq")
+
+[node name="Tile10" type="Sprite2D" parent="Terrain/BottomFloor/Tiles"]
+position = Vector2(746.9, 443.45)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5_f8pi5")
+
+[node name="MiddleFloor" type="StaticBody2D" parent="Terrain"]
+position = Vector2(5, 20)
+collision_layer = 3
+
+[node name="Tiles" type="Node2D" parent="Terrain/MiddleFloor"]
+
+[node name="Tile3" type="Sprite2D" parent="Terrain/MiddleFloor/Tiles"]
+position = Vector2(287.95, 345.75)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("4_o38fq")
+
+[node name="Tile4" type="Sprite2D" parent="Terrain/MiddleFloor/Tiles"]
+position = Vector2(329.95, 348.75)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5_f8pi5")
+
+[node name="Tile5" type="Sprite2D" parent="Terrain/MiddleFloor/Tiles"]
+position = Vector2(369.95, 347.75)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("4_o38fq")
+
+[node name="Spikes2" type="Sprite2D" parent="Terrain/MiddleFloor/Tiles"]
+position = Vector2(411, 338.4)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("7_nosqa")
+
+[node name="Spikes1" type="Sprite2D" parent="Terrain/MiddleFloor/Tiles"]
+position = Vector2(451, 332.4)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("8_vcwiw")
+
+[node name="Spikes3" type="Sprite2D" parent="Terrain/MiddleFloor/Tiles"]
+position = Vector2(495, 337)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("7_nosqa")
+
+[node name="Tile12" type="Sprite2D" parent="Terrain/MiddleFloor/Tiles"]
+position = Vector2(532, 355)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("6_7jks1")
+
+[node name="Tile16" type="Sprite2D" parent="Terrain/MiddleFloor/Tiles"]
+position = Vector2(573, 354)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5_f8pi5")
+
+[node name="Tile19" type="Sprite2D" parent="Terrain/MiddleFloor/Tiles"]
+position = Vector2(615, 351)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("4_o38fq")
+
+[node name="Tile15" type="Sprite2D" parent="Terrain/MiddleFloor/Tiles"]
+position = Vector2(287.1, 328.1)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5_f8pi5")
+
+[node name="Tile7" type="Sprite2D" parent="Terrain/MiddleFloor/Tiles"]
+position = Vector2(287.9, 304.45)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("9_w5m0r")
+
+[node name="Tile8" type="Sprite2D" parent="Terrain/MiddleFloor/Tiles"]
+position = Vector2(288.9, 280.45)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("4_o38fq")
+
+[node name="Tile10" type="Sprite2D" parent="Terrain/MiddleFloor/Tiles"]
+position = Vector2(289.9, 262.45)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5_f8pi5")
+
+[node name="Tile13" type="Sprite2D" parent="Terrain/MiddleFloor/Tiles"]
+position = Vector2(289, 240)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("6_7jks1")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Terrain/MiddleFloor"]
+visible = false
+polygon = PackedVector2Array(268, 229, 311, 230, 308, 338, 635, 342, 635, 362, 262, 363)
+
+[node name="UpperFloor" type="StaticBody2D" parent="Terrain"]
+position = Vector2(5, 20)
+collision_layer = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/UpperFloor"]
+z_index = 80
+position = Vector2(557.875, 149)
+shape = SubResource("RectangleShape2D_1wxpm")
+
+[node name="Tiles" type="Node2D" parent="Terrain/UpperFloor"]
+
+[node name="Tile3" type="Sprite2D" parent="Terrain/UpperFloor/Tiles"]
+position = Vector2(457.95, 145.75)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("4_o38fq")
+
+[node name="Tile4" type="Sprite2D" parent="Terrain/UpperFloor/Tiles"]
+position = Vector2(499.95, 148.75)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5_f8pi5")
+
+[node name="Tile5" type="Sprite2D" parent="Terrain/UpperFloor/Tiles"]
+position = Vector2(539.95, 147.75)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("4_o38fq")
+
+[node name="Tile12" type="Sprite2D" parent="Terrain/UpperFloor/Tiles"]
+position = Vector2(580, 149)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("6_7jks1")
+
+[node name="LevelExit" parent="Terrain/UpperFloor/Tiles" instance=ExtResource("10_h24oh")]
+position = Vector2(589, 128)
+next_level_path = "res://levels/final_level.tscn"
+
+[node name="Tile19" type="Sprite2D" parent="Terrain/UpperFloor/Tiles"]
+z_index = 1
+position = Vector2(664, 147)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("4_o38fq")
+
+[node name="Hazards" type="Node2D" parent="."]
+visible = false
+
+[node name="Bottom Spikes" type="Area2D" parent="Hazards"]
+position = Vector2(-1, 301)
+script = ExtResource("10_xcvrl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hazards/Bottom Spikes"]
+z_index = 99
+position = Vector2(513, 225)
+shape = SubResource("RectangleShape2D_q8akd")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="Top Spikes" type="Area2D" parent="Hazards"]
+position = Vector2(-1, 301)
+script = ExtResource("10_xcvrl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hazards/Top Spikes"]
+z_index = 99
+position = Vector2(456, 56)
+shape = SubResource("RectangleShape2D_0o7ga")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="Spawner" parent="." instance=ExtResource("10_tqkp1")]
+position = Vector2(236, 513)
+
+[node name="Byggin" parent="." instance=ExtResource("12_a2rqf")]
+position = Vector2(702, 488)
+
+[node name="Byggin2" parent="." instance=ExtResource("12_a2rqf")]
+position = Vector2(659, 128)
+
+[node name="Page" parent="." instance=ExtResource("14_pufnt")]
+position = Vector2(334, 336)
+summon_name = "Bluuk"
+
+[node name="TutorialController" parent="." instance=ExtResource("16_20sqd")]
+z_index = 10
+y_sort_enabled = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="scroll_acquired" from="LevelRoot" to="." method="_on_level_root_scroll_acquired"]
+[connection signal="body_entered" from="Hazards/Bottom Spikes" to="Hazards/Bottom Spikes" method="on_body_entered"]
+[connection signal="body_entered" from="Hazards/Top Spikes" to="Hazards/Top Spikes" method="on_body_entered"]
+[connection signal="tutorial_end_signal" from="TutorialController" to="." method="_on_tutorial_controller_tutorial_end_signal"]

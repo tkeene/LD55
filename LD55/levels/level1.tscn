@@ -295,6 +295,7 @@ texture = ExtResource("7_ooa2f")
 centered = false
 
 [node name="LevelExit" parent="Terrain/Top Floor/Tiles" instance=ExtResource("11_g0rj1")]
+process_mode = 3
 next_level_path = "res://levels/level2.tscn"
 
 [node name="Tile3-1" type="Sprite2D" parent="Terrain/Top Floor/Tiles"]

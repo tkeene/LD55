@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://vtsx3r0uddcq"]
+[gd_scene load_steps=13 format=3 uid="uid://vtsx3r0uddcq"]
 
 [ext_resource type="Script" path="res://pawns/byggin.gd" id="1_d5it7"]
 [ext_resource type="Texture2D" uid="uid://bof3desqc0ic2" path="res://pawns/critters.png" id="2_vg4tb"]
@@ -188,23 +188,28 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_obqti"]
-size = Vector2(25, 23)
+size = Vector2(28.3333, 23)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rugby"]
-size = Vector2(36, 37)
+size = Vector2(45, 22.8333)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5fnqp"]
+size = Vector2(23.3333, 5.83333)
 
 [node name="Byggin" type="CharacterBody2D"]
 process_mode = 3
+z_index = 99
+y_sort_enabled = true
+scale = Vector2(1.2, 1.2)
 script = ExtResource("1_d5it7")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(0, 5)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_vg4tb")
-flip_h = true
 hframes = 5
 vframes = 5
-frame = 4
+frame = 7
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -212,23 +217,42 @@ libraries = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(0.5, 8.5)
+position = Vector2(0.833334, 8.5)
 shape = SubResource("RectangleShape2D_obqti")
 
 [node name="LeftWallDetector" type="RayCast2D" parent="."]
-position = Vector2(-18, 6)
+position = Vector2(-11.5, 6)
 target_position = Vector2(-10, 0)
+collision_mask = 2
 
 [node name="RightWallDetector" type="RayCast2D" parent="."]
-position = Vector2(18, 6)
+position = Vector2(13, 6)
 target_position = Vector2(10, 0)
+collision_mask = 2
+
+[node name="LeftCliffDetector" type="RayCast2D" parent="."]
+position = Vector2(-15.8333, 18.3333)
+target_position = Vector2(0, 5.83333)
+
+[node name="RightCliffDetector" type="RayCast2D" parent="."]
+z_index = 99
+position = Vector2(17.5, 18.3333)
+target_position = Vector2(-1.90735e-06, 5.83333)
 
 [node name="HitCollider" type="Area2D" parent="."]
 visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitCollider"]
-position = Vector2(0, 3.5)
+position = Vector2(0.833333, 10.5833)
 shape = SubResource("RectangleShape2D_rugby")
 
+[node name="BounceCollider" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BounceCollider"]
+position = Vector2(0.833333, -2.5)
+scale = Vector2(1.1, 1.1)
+shape = SubResource("RectangleShape2D_5fnqp")
+
 [connection signal="body_entered" from="HitCollider" to="." method="_on_body_entered"]
+[connection signal="body_entered" from="BounceCollider" to="." method="_on_bounce_collider_body_entered"]

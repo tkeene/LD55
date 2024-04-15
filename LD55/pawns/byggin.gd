@@ -2,8 +2,10 @@ extends CharacterBody2D
 
 @onready var left_raycast : RayCast2D = $LeftWallDetector
 @onready var right_raycast : RayCast2D = $RightWallDetector
+@onready var left_cliff_detector : RayCast2D = $LeftCliffDetector
+@onready var right_cliff_detector : RayCast2D = $RightCliffDetector 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-const SPEED = 150.0
+const SPEED = 75.0
 const GRAVITY = 100.0
 var current_facing = 1.0
 var current_walk_timer = 0.0
@@ -44,24 +46,32 @@ func _physics_process(delta):
 					should_reverse = true
 				elif current_facing < 0.0 && left_raycast.is_colliding():
 					should_reverse = true
+				elif current_facing > 0.0 and !right_cliff_detector.is_colliding():
+					should_reverse = true
+				elif current_facing < 0.0 and !left_cliff_detector.is_colliding():
+					should_reverse = true
 				if should_reverse:
 					current_facing = -current_facing
-					current_walk_timer = -1.0
+					# current_walk_timer = -1.0
 			else:
 				start_cycle = true
 			move_and_slide()
 
 			if start_cycle:
 				current_walk_timer = randf_range(-1.0, -3.0)
-				time_to_next_walk_switch = randf_range(1.0, 3.0)
+				time_to_next_walk_switch = randf_range(0.5, 2.0)
 
 func _on_body_entered(node: PhysicsBody2D):
 	if !is_dying:
 		if node is Player:
 			var player = node as Player
-			if player.velocity.y > 0.1: # If the player is falling downwards
-				is_dying = true
-				current_walk_timer = 0.5
-				player.launch_up()
-			else:
-				player.kill()
+			player.kill()
+
+
+func _on_bounce_collider_body_entered(node: PhysicsBody2D):
+	if !is_dying:
+		if node is Player:
+			var player = node as Player
+			is_dying = true
+			current_walk_timer = 0.5
+			player.launch_up()

@@ -1,7 +1,7 @@
 [gd_scene load_steps=24 format=3 uid="uid://dlfjb1m6w3dst"]
 
+[ext_resource type="PackedScene" uid="uid://dn0yk3wiakddr" path="res://levels/level_background.tscn" id="1_p7pge"]
 [ext_resource type="PackedScene" uid="uid://cget7lr6jumuo" path="res://level_root.tscn" id="1_x54y2"]
-[ext_resource type="Texture2D" uid="uid://ds7fqm4he2wog" path="res://backdrop.png" id="2_t7hlk"]
 [ext_resource type="Texture2D" uid="uid://da7oajlefehbf" path="res://levels/graphics/Tile1.png" id="5_axcea"]
 [ext_resource type="Texture2D" uid="uid://th6750v3w0o0" path="res://levels/graphics/Tile3.png" id="6_vad4h"]
 [ext_resource type="Texture2D" uid="uid://ccoxws5uukt0n" path="res://levels/graphics/Spikes1.png" id="7_gwd32"]
@@ -54,11 +54,7 @@ _data = {
 
 [node name="Level1" type="Node2D"]
 
-[node name="Background" type="TextureRect" parent="."]
-offset_right = 960.0
-offset_bottom = 540.0
-texture = ExtResource("2_t7hlk")
-expand_mode = 5
+[node name="LevelBackground" parent="." instance=ExtResource("1_p7pge")]
 
 [node name="LevelRoot" parent="." instance=ExtResource("1_x54y2")]
 visible = false

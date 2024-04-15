@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://dn0yk3wiakddr"]
+
+[ext_resource type="Texture2D" uid="uid://ds7fqm4he2wog" path="res://backdrop.png" id="1_cfyvt"]
+[ext_resource type="Shader" uid="uid://brwt3fbsi11yx" path="res://levels/level_background.tres" id="1_qejgw"]
+[ext_resource type="Script" path="res://levels/level_background.gd" id="2_iskf5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6uxob"]
+shader = ExtResource("1_qejgw")
+shader_parameter/Color = Color(1, 1, 1, 1)
+
+[node name="LevelBackground" type="TextureRect"]
+material = SubResource("ShaderMaterial_6uxob")
+offset_right = 960.0
+offset_bottom = 540.0
+texture = ExtResource("1_cfyvt")
+expand_mode = 5
+script = ExtResource("2_iskf5")

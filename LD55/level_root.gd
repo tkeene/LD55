@@ -28,6 +28,7 @@ signal respawn_requested
 signal bluuk_placed
 signal wakka_placed
 signal scroll_acquired
+signal final_spell_cast
 
 func _ready():
 	instance = self
@@ -107,7 +108,10 @@ func _process(delta):
 						is_normal_summon = false
 						special_spellcast_time += delta
 						if special_spellcast_time >= 1.0:
-							get_tree().change_scene_to_file("res://endgame_screens/ending_0" + str(selected_summon_data["victory"]) + ".tscn")
+							#get_tree().change_scene_to_file("res://endgame_screens/ending_0" + str(selected_summon_data["victory"]) + ".tscn")
+							print("Final spell has been cast")
+							special_spellcast_time = 0.0
+							final_spell_cast.emit()
 				else:
 					special_spellcast_time = 0.0
 				if Input.is_action_just_pressed("ui_accept") ||  Input.is_action_just_pressed("Toggle"):
@@ -166,7 +170,7 @@ func pause_game():
 static func unlock_everything():
 	for spell in SummonsList._all_spells:
 		if !has_summon(spell.name):
-			unlock_summon(spell.name, true)
+			unlock_summon(spell.name, false)
 
 static func unlock_summon(name, play_sound):
 	instance._unlock_summon(name, play_sound)
@@ -174,6 +178,9 @@ static func unlock_summon(name, play_sound):
 
 func _unlock_summon(name, play_sound):
 	var summon = SummonsList.get_spell(name)
+	if play_sound && summon["victory"] > 0:
+		unlocked_summons.clear()
+		current_inventory.clear()
 	if summon != null:
 		unlocked_summons.append(summon)
 		current_inventory.push_front(summon)

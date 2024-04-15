@@ -56,6 +56,7 @@ y_sort_enabled = true
 scale = Vector2(0.15, 0.15)
 collision_priority = 5.0
 floor_stop_on_slope = false
+floor_constant_speed = true
 platform_on_leave = 2
 safe_margin = 0.001
 script = ExtResource("1_0u1n4")

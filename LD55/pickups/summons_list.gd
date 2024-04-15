@@ -8,6 +8,7 @@ static func initialize():
 			_bluuk,
 			_gozzuppa,
 			_wakka,
+			_faluuka,
 			_victory1,
 			_victory2,
 			_victory3,
@@ -51,6 +52,14 @@ static var _wakka = {
 	"description": "Susceptible to gravity. This isn't terribly bad, and you can steer them by riding on their backs.\n\n(Reminder: \"Pentagram\" does not mean \"pextragram\")",
 	"sprite": preload("res://interface/icon_wakka.png"),
 	"object": preload("res://pawns/wakka.tscn"),
+	"is_rewind": false,
+	"victory": 0,
+}
+static var _faluuka = {
+	"name": "Faluuka",
+	"description": "Susceptible to gravity.\n\nDoes't do much, just sits there, shouldn't have even bothered giving a TV legs.",
+	"sprite": preload("res://interface/icon_faluuka.png"),
+	"object": preload("res://pawns/faluuka.tscn"),
 	"is_rewind": false,
 	"victory": 0,
 }

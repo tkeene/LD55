@@ -10,7 +10,7 @@ extends CharacterBody2D
 var start_moving: bool = false
 var moving: bool = false
 
-const speed := 50.0
+const speed := 800.0
 
 var direction := 1
 

@@ -16,6 +16,8 @@ func _ready():
 	animation_player.play("idle")
 
 func _physics_process(delta):
+	if get_tree().paused:
+		return
 	time_in_state += delta
 	# If we're idling, do nothing until we're past the idle timeout.
 	# At that point, calculate our next target position and start moving toward it.

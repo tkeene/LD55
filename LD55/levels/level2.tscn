@@ -1,0 +1,371 @@
+[gd_scene load_steps=18 format=3 uid="uid://c2q5i7js04t0h"]
+
+[ext_resource type="PackedScene" uid="uid://dn0yk3wiakddr" path="res://levels/level_background.tscn" id="1_8owwy"]
+[ext_resource type="PackedScene" uid="uid://cget7lr6jumuo" path="res://level_root.tscn" id="2_pyjxt"]
+[ext_resource type="Texture2D" uid="uid://5cdvp7lng5lr" path="res://levels/graphics/Spikes2.png" id="3_cf21s"]
+[ext_resource type="Texture2D" uid="uid://ccoxws5uukt0n" path="res://levels/graphics/Spikes1.png" id="4_f7dnc"]
+[ext_resource type="Texture2D" uid="uid://da7oajlefehbf" path="res://levels/graphics/Tile1.png" id="5_xc7un"]
+[ext_resource type="Texture2D" uid="uid://dx8yyv7fuapke" path="res://levels/graphics/Tile2.png" id="6_4leuk"]
+[ext_resource type="Texture2D" uid="uid://th6750v3w0o0" path="res://levels/graphics/Tile3.png" id="7_8cxnc"]
+[ext_resource type="Texture2D" uid="uid://b7wuoj30joa3a" path="res://levels/graphics/Tile4.png" id="8_5rp4e"]
+[ext_resource type="Texture2D" uid="uid://c74codffpakqq" path="res://levels/graphics/TileStart.png" id="9_rpsly"]
+[ext_resource type="Texture2D" uid="uid://cmi2gr3kik0d0" path="res://levels/graphics/TileEnd.png" id="10_ko2v0"]
+[ext_resource type="PackedScene" uid="uid://d25lwn4fvx02d" path="res://levels/spawner.tscn" id="10_xnhs8"]
+[ext_resource type="Script" path="res://levels/KillZone.gd" id="11_4ya4h"]
+[ext_resource type="PackedScene" uid="uid://bry0qk84weeo2" path="res://pickups/page.tscn" id="12_bawrp"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6ssjw"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_m5beq"]
+normal = Vector2(-1, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_emmyv"]
+size = Vector2(82, 12.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3piks"]
+size = Vector2(168.375, 10)
+
+[node name="Level2" type="Node2D"]
+
+[node name="LevelBackground" parent="." instance=ExtResource("1_8owwy")]
+process_mode = 3
+
+[node name="LevelRoot" parent="." instance=ExtResource("2_pyjxt")]
+visible = false
+
+[node name="Terrain" type="Node2D" parent="."]
+
+[node name="Left Wall" type="StaticBody2D" parent="Terrain"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Left Wall"]
+position = Vector2(200, 218)
+shape = SubResource("WorldBoundaryShape2D_6ssjw")
+
+[node name="Right Wall" type="StaticBody2D" parent="Terrain"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Right Wall"]
+position = Vector2(780, 245)
+shape = SubResource("WorldBoundaryShape2D_m5beq")
+
+[node name="BottomFloor" type="StaticBody2D" parent="Terrain"]
+position = Vector2(0, 5)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Terrain/BottomFloor"]
+visible = false
+z_index = 99
+y_sort_enabled = true
+polygon = PackedVector2Array(305, 346, 685, 347, 687, 372, 775, 371, 775, 541, 211, 539, 211, 517, 297, 517, 300, 466, 422, 469, 426, 366, 348, 367, 349, 402, 306, 403)
+
+[node name="TilesLeft" type="Node2D" parent="Terrain/BottomFloor"]
+
+[node name="Spikes2" type="Sprite2D" parent="Terrain/BottomFloor/TilesLeft"]
+position = Vector2(239, 518)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_cf21s")
+
+[node name="Spikes1" type="Sprite2D" parent="Terrain/BottomFloor/TilesLeft"]
+position = Vector2(281, 514)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("4_f7dnc")
+
+[node name="Tile1" type="Sprite2D" parent="Terrain/BottomFloor/TilesLeft"]
+position = Vector2(323, 524)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5_xc7un")
+
+[node name="Tile2" type="Sprite2D" parent="Terrain/BottomFloor/TilesLeft"]
+position = Vector2(324, 500)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("6_4leuk")
+
+[node name="Tile3" type="Sprite2D" parent="Terrain/BottomFloor/TilesLeft"]
+position = Vector2(325, 477)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("7_8cxnc")
+
+[node name="Tile4" type="Sprite2D" parent="Terrain/BottomFloor/TilesLeft"]
+position = Vector2(367, 480)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("8_5rp4e")
+
+[node name="Tile5" type="Sprite2D" parent="Terrain/BottomFloor/TilesLeft"]
+position = Vector2(407, 479)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("7_8cxnc")
+
+[node name="Tile6" type="Sprite2D" parent="Terrain/BottomFloor/TilesLeft"]
+position = Vector2(447, 480)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5_xc7un")
+
+[node name="Tile14" type="Sprite2D" parent="Terrain/BottomFloor/TilesLeft"]
+position = Vector2(449.2, 457.45)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("7_8cxnc")
+
+[node name="Tile15" type="Sprite2D" parent="Terrain/BottomFloor/TilesLeft"]
+position = Vector2(450.2, 439.45)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("8_5rp4e")
+
+[node name="Tile7" type="Sprite2D" parent="Terrain/BottomFloor/TilesLeft"]
+position = Vector2(451, 415.8)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("6_4leuk")
+
+[node name="Tile16" type="Sprite2D" parent="Terrain/BottomFloor/TilesLeft"]
+position = Vector2(326.2, 391.45)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("7_8cxnc")
+
+[node name="Tile17" type="Sprite2D" parent="Terrain/BottomFloor/TilesLeft"]
+position = Vector2(327.2, 373.45)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("8_5rp4e")
+
+[node name="Tile12" type="Sprite2D" parent="Terrain/BottomFloor/TilesLeft"]
+position = Vector2(327, 352.8)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5_xc7un")
+
+[node name="Tile8" type="Sprite2D" parent="Terrain/BottomFloor/TilesLeft"]
+position = Vector2(452, 391.8)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("7_8cxnc")
+
+[node name="Tile11" type="Sprite2D" parent="Terrain/BottomFloor/TilesLeft"]
+position = Vector2(369, 352.8)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("8_5rp4e")
+
+[node name="Tile10" type="Sprite2D" parent="Terrain/BottomFloor/TilesLeft"]
+position = Vector2(453, 373.8)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("8_5rp4e")
+
+[node name="Tile9" type="Sprite2D" parent="Terrain/BottomFloor/TilesLeft"]
+position = Vector2(412, 350.8)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("7_8cxnc")
+
+[node name="TileStart" type="Sprite2D" parent="Terrain/BottomFloor/TilesLeft"]
+position = Vector2(455, 351.8)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("9_rpsly")
+
+[node name="TilesRight" type="Node2D" parent="Terrain/BottomFloor"]
+
+[node name="Tile1" type="Sprite2D" parent="Terrain/BottomFloor/TilesRight"]
+position = Vector2(498, 356.75)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5_xc7un")
+
+[node name="Tile2" type="Sprite2D" parent="Terrain/BottomFloor/TilesRight"]
+position = Vector2(540, 356.75)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("8_5rp4e")
+
+[node name="Tile3" type="Sprite2D" parent="Terrain/BottomFloor/TilesRight"]
+position = Vector2(583, 354.75)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("7_8cxnc")
+
+[node name="Tile4" type="Sprite2D" parent="Terrain/BottomFloor/TilesRight"]
+position = Vector2(622, 357.75)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5_xc7un")
+
+[node name="Tile13" type="Sprite2D" parent="Terrain/BottomFloor/TilesRight"]
+position = Vector2(664, 358)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("6_4leuk")
+
+[node name="Tile5" type="Sprite2D" parent="Terrain/BottomFloor/TilesRight"]
+position = Vector2(706.1, 382.75)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("8_5rp4e")
+
+[node name="Tile6" type="Sprite2D" parent="Terrain/BottomFloor/TilesRight"]
+position = Vector2(749.1, 380.75)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("7_8cxnc")
+
+[node name="MiddleFloor" type="StaticBody2D" parent="Terrain"]
+position = Vector2(0, 15)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Terrain/MiddleFloor"]
+visible = false
+z_index = 99
+polygon = PackedVector2Array(208, 139, 292, 141, 292, 161, 332, 161, 332, 183, 412, 187, 411, 240, 581, 241, 583, 233, 671, 234, 671, 255, 372, 260)
+
+[node name="Tiles" type="Node2D" parent="Terrain/MiddleFloor"]
+
+[node name="Tile12" type="Sprite2D" parent="Terrain/MiddleFloor/Tiles"]
+position = Vector2(230, 148.7)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5_xc7un")
+
+[node name="Tile11" type="Sprite2D" parent="Terrain/MiddleFloor/Tiles"]
+position = Vector2(272, 148.7)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("8_5rp4e")
+
+[node name="Tile9" type="Sprite2D" parent="Terrain/MiddleFloor/Tiles"]
+position = Vector2(312, 170)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("7_8cxnc")
+
+[node name="Tile1" type="Sprite2D" parent="Terrain/MiddleFloor/Tiles"]
+position = Vector2(352, 194)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5_xc7un")
+
+[node name="Tile7" type="Sprite2D" parent="Terrain/MiddleFloor/Tiles"]
+position = Vector2(392.2, 253.45)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("6_4leuk")
+
+[node name="Tile8" type="Sprite2D" parent="Terrain/MiddleFloor/Tiles"]
+position = Vector2(393.2, 229.45)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("7_8cxnc")
+
+[node name="Tile13" type="Sprite2D" parent="Terrain/MiddleFloor/Tiles"]
+position = Vector2(394.2, 211.45)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("8_5rp4e")
+
+[node name="Tile10" type="Sprite2D" parent="Terrain/MiddleFloor/Tiles"]
+position = Vector2(393, 194)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("7_8cxnc")
+
+[node name="Spikes2" type="Sprite2D" parent="Terrain/MiddleFloor/Tiles"]
+position = Vector2(437, 239.4)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_cf21s")
+
+[node name="Spikes1" type="Sprite2D" parent="Terrain/MiddleFloor/Tiles"]
+position = Vector2(479, 235.4)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("4_f7dnc")
+
+[node name="Spikes3" type="Sprite2D" parent="Terrain/MiddleFloor/Tiles"]
+position = Vector2(522, 241.4)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_cf21s")
+
+[node name="Spikes4" type="Sprite2D" parent="Terrain/MiddleFloor/Tiles"]
+position = Vector2(564, 237.4)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("4_f7dnc")
+
+[node name="Tile5" type="Sprite2D" parent="Terrain/MiddleFloor/Tiles"]
+position = Vector2(608.1, 245.75)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("8_5rp4e")
+
+[node name="Tile6" type="Sprite2D" parent="Terrain/MiddleFloor/Tiles"]
+position = Vector2(651.1, 243.75)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("7_8cxnc")
+
+[node name="TopFloor" type="StaticBody2D" parent="Terrain"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Terrain/TopFloor"]
+visible = false
+polygon = PackedVector2Array(445, 113, 569, 120, 577, 58, 785, 64, 785, 83, 617, 82, 611, 137, 444, 140)
+
+[node name="Tiles" type="Node2D" parent="Terrain/TopFloor"]
+
+[node name="Tile7" type="Sprite2D" parent="Terrain/TopFloor/Tiles"]
+position = Vector2(467, 124)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("6_4leuk")
+
+[node name="Tile1" type="Sprite2D" parent="Terrain/TopFloor/Tiles"]
+position = Vector2(507, 125.75)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5_xc7un")
+
+[node name="Tile2" type="Sprite2D" parent="Terrain/TopFloor/Tiles"]
+position = Vector2(549, 125.75)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("8_5rp4e")
+
+[node name="Tile8" type="Sprite2D" parent="Terrain/TopFloor/Tiles"]
+position = Vector2(592, 125)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("6_4leuk")
+
+[node name="Tile9" type="Sprite2D" parent="Terrain/TopFloor/Tiles"]
+position = Vector2(594, 102)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("7_8cxnc")
+
+[node name="Tile13" type="Sprite2D" parent="Terrain/TopFloor/Tiles"]
+position = Vector2(597, 85)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("8_5rp4e")
+
+[node name="Tile10" type="Sprite2D" parent="Terrain/TopFloor/Tiles"]
+position = Vector2(596, 64)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("7_8cxnc")
+
+[node name="Tile14" type="Sprite2D" parent="Terrain/TopFloor/Tiles"]
+position = Vector2(639, 67)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("8_5rp4e")
+
+[node name="TileEnd" type="Sprite2D" parent="Terrain/TopFloor/Tiles"]
+position = Vector2(685, 65)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("10_ko2v0")
+
+[node name="Tile15" type="Sprite2D" parent="Terrain/TopFloor/Tiles"]
+position = Vector2(725, 67)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("8_5rp4e")
+
+[node name="Tile11" type="Sprite2D" parent="Terrain/TopFloor/Tiles"]
+position = Vector2(767, 66)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("6_4leuk")
+
+[node name="Hazards" type="Node2D" parent="."]
+visible = false
+
+[node name="Bottom Spikes" type="Area2D" parent="Hazards"]
+position = Vector2(-1, 301)
+script = ExtResource("11_4ya4h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hazards/Bottom Spikes"]
+z_index = 99
+position = Vector2(256, 219.125)
+shape = SubResource("RectangleShape2D_emmyv")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="Top Spikes" type="Area2D" parent="Hazards"]
+position = Vector2(-1, 301)
+script = ExtResource("11_4ya4h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hazards/Top Spikes"]
+z_index = 99
+position = Vector2(497.813, -51)
+shape = SubResource("RectangleShape2D_3piks")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="Spawner" parent="." instance=ExtResource("10_xnhs8")]
+position = Vector2(456, 352)
+
+[node name="PageFaluuka" parent="." instance=ExtResource("12_bawrp")]
+position = Vector2(230, 132)
+
+[node name="PageGozzuppa" parent="." instance=ExtResource("12_bawrp")]
+position = Vector2(382, 448)
+summon_name = "Gozzuppa"
+
+[connection signal="body_entered" from="Hazards/Bottom Spikes" to="Hazards/Bottom Spikes" method="on_body_entered"]
+[connection signal="body_entered" from="Hazards/Top Spikes" to="Hazards/Top Spikes" method="on_body_entered"]

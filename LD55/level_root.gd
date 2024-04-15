@@ -27,6 +27,7 @@ func _ready():
 	instance = self
 	music_player = AudioStreamPlayer.new()
 	add_child(music_player)
+	current_inventory.append(SummonsList.get_spell("Bluuk"))
 	current_inventory.append(SummonsList.get_spell("Tempus Unwindus"))
 	for summon in unlocked_summons:
 		current_inventory.push_front(summon)
@@ -77,6 +78,7 @@ func _process(delta):
 				var selected_summon_data = current_inventory[current_spellbook_index]
 				($OverlayUI/PlacementUI/SelectedScrollRect/SelectedScrollLabel as RichTextLabel).text = "[color=black]" + selected_summon_data["name"]
 				($OverlayUI/PlacementUI/SelectedScrollRect/SelectedScrollDescriptionLabel as RichTextLabel).text = "[color=black]" + selected_summon_data["description"]
+				($OverlayUI/PlacementUI/SelectedScrollRect/Sprite as TextureRect).texture = selected_summon_data["sprite"]
 				var middle_of_hand = NUMBER_OF_CARDS_TO_SHOW / 2
 				for card_index in range(cards_for_summons.size()):
 					var card_spellbook_index = card_index - middle_of_hand + current_spellbook_index
@@ -90,7 +92,7 @@ func _process(delta):
 						reset_level()
 					else:
 						current_placing_object = selected_summon_data["object"].instantiate() as Node2D
-						current_placing_object.global_position = Vector2(500, 400)
+						current_placing_object.global_position = Player.last_position + Vector2.UP * 50.0
 						add_child(current_placing_object)
 			else:
 				($OverlayUI/PlacementUI/SelectedScrollRect/SelectedScrollLabel as RichTextLabel).text = "[color=black]You have no more pages!"
@@ -98,14 +100,16 @@ func _process(delta):
 					un_pause_game()
 		else:
 			($OverlayUI/PlacementUI as CanvasItem).visible = false
+			var placing_position = current_placing_object.global_position
 			if Input.is_action_pressed("ui_left"):
-				current_placing_object.global_position += Vector2.LEFT * MOVE_PLACING_OBJECT_SPEED * unscaled_delta
+				placing_position += Vector2.LEFT * MOVE_PLACING_OBJECT_SPEED * unscaled_delta
 			if Input.is_action_pressed("ui_right"):
-				current_placing_object.global_position += Vector2.RIGHT * MOVE_PLACING_OBJECT_SPEED * unscaled_delta
+				placing_position += Vector2.RIGHT * MOVE_PLACING_OBJECT_SPEED * unscaled_delta
 			if Input.is_action_pressed("ui_up"):
-				current_placing_object.global_position += Vector2.UP * MOVE_PLACING_OBJECT_SPEED * unscaled_delta
+				placing_position += Vector2.UP * MOVE_PLACING_OBJECT_SPEED * unscaled_delta
 			if Input.is_action_pressed("ui_down"):
-				current_placing_object.global_position += Vector2.DOWN * MOVE_PLACING_OBJECT_SPEED * unscaled_delta
+				placing_position += Vector2.DOWN * MOVE_PLACING_OBJECT_SPEED * unscaled_delta
+			current_placing_object.global_position = placing_position
 			if Input.is_action_just_pressed("ui_accept") ||  Input.is_action_just_pressed("Toggle"):
 				current_inventory.remove_at(current_spellbook_index)
 				current_placing_object = null;
@@ -128,6 +132,7 @@ func pause_game():
 	music_player.volume_db = FADE_IN_VOLUME
 	music_player.play()
 	$OverlayUI/ControlsPromptRect/ControlsPromptLabel.text = "[color=black]C - Return\nX/Z - Place\n◀/▶ Select/Move"
+	
 
 static func unlock_summon(name):
 	instance._unlock_summon(name)

@@ -1,8 +1,8 @@
 class_name Player
 extends CharacterBody2D
 
-const GROUND_MAX_SPEED : float = 60.0
-const GROUND_ACCELERATION : float = 600.0
+const GROUND_MAX_SPEED : float = 90.0
+const GROUND_ACCELERATION : float = 400.0
 const AIR_ACCELERATION : float = 40.0
 const GRAVITY : float = 400.0
 const DEFAULT_JUMP_COOLDOWN : float = 0.25
@@ -13,11 +13,15 @@ const DECELERATION : float = 0.1
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var death_timer: Timer = $DeathTimer
 
+static var last_position = Vector2.ZERO
 var is_dead = false
 var last_direction = "right"
 var jump_pressed_flag = false
 var remaining_jump_cooldown_seconds = 0.0
 var remaining_floor_time = 0.0
+
+# Called when the player dies.
+signal died
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -72,6 +76,7 @@ func _physics_process(delta):
 		velocity = current_velocity
 		
 		move_and_slide()
+		last_position = global_position
 
 # Call this to kill the player.
 func kill():
@@ -84,4 +89,4 @@ func kill():
 
 # This will be called a short bit after the player is killed.
 func _finalize_death():
-	LevelRoot.reset_level()
+	died.emit()

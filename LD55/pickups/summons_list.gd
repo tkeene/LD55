@@ -8,6 +8,9 @@ static func initialize():
 			_bluuk,
 			_gozzuppa,
 			_wakka,
+			_victory1,
+			_victory2,
+			_victory3,
 		]
 
 static var _all_spells = null
@@ -18,35 +21,60 @@ static var _placeholder_block = {
 	"sprite": preload("res://debug_pixel.bmp"),
 	"object": preload("res://pawns/summon_block.tscn"),
 	"is_rewind": false,
+	"victory": 0,
 }
 static var _rewind = {
 	"name": "Tempus Unwindus",
-	"description": "Reset the level",
-	"sprite": preload("res://cards/hourglass.png"),
+	"description": "Rewinds time.\n\nTechnically this hourglass is cursed, but it's been my saving grace at many tedious social events (or if I screw up a recipe in the kitchen).",
+	"sprite": preload("res://interface/icon_hourglass.png"),
 	"is_rewind": true,
+	"victory": 0,
 }
 static var _bluuk = {
-	"name": "bluuk",
-	"description": "",
-	"sprite": preload("res://debug_pixel.bmp"),
+	"name": "Bluuk",
+	"description": "Lazy, avoids moving at all costs. Luckily, this makes Bluuk a convenient platform.\n\nScared of heights, which is ironic",
+	"sprite": preload("res://interface/icon_bluuk.png"),
 	"object": preload("res://pawns/bluuk.tscn"),
 	"is_rewind": false,
+	"victory": 0,
 }
 static var _gozzuppa = {
-	"name": "gozzuppa",
-	"description": "",
-	"sprite": preload("res://debug_pixel.bmp"),
+	"name": "Gozzuppa",
+	"description": "Gozuppa was my mother's favorite summon. They are useful in the same way a dumbwaiter is (and about as smart).",
+	"sprite": preload("res://interface/icon_gozzuppa.png"),
 	"object": preload("res://pawns/gozzuppa.tscn"),
 	"is_rewind": false,
+	"victory": 0,
 }
 static var _wakka = {
-	"name": "wakka",
-	"description": "",
-	"sprite": preload("res://debug_pixel.bmp"),
+	"name": "Wakka",
+	"description": "Susceptible to gravity. This isn't terribly bad, and you can steer them by riding on their backs.\n\nThe five legs are a bizarre aftereffect from making a mistake drawing the summoning circle. (\"Pentagram\" does not mean \"pextragram\")",
+	"sprite": preload("res://interface/icon_wakka.png"),
 	"object": preload("res://pawns/wakka.tscn"),
 	"is_rewind": false,
+	"victory": 0,
 }
-
+static var _victory1 = {
+	"name": "Summon Tower Door Key",
+	"description": "I invented this spell so I'd never lose my keys again.\n\nFinally I can get inside my tower! Blorb really is a hard worker to find this for me. I don't know what I'd do without him.",
+	"sprite": preload("res://debug_pixel.bmp"),
+	"is_rewind": false,
+	"victory": 1,
+}
+static var _victory2 = {
+	"name": "Summon Airplane Tickets",
+	"description": "This spell conjures vacation tickets anytime I want.\n\nI hope nobody steals this spell. It was expensive!",
+	"sprite": preload("res://debug_pixel.bmp"),
+	"is_rewind": false,
+	"victory": 2,
+}
+static var _victory3 = {
+	"name": "Summon Anti Wizard Barrier",
+	"description": "Kept locked up for safety.\n\nI would be in real trouble if any of my enemies got their hands on this spell!",
+	"sprite": preload("res://debug_pixel.bmp"),
+	"is_rewind": false,
+	"victory": 3,
+}
 static func get_spell(name):
 	initialize()
 	var return_value = null

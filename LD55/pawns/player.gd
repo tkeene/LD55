@@ -7,6 +7,7 @@ const AIR_ACCELERATION : float = 40.0
 const GRAVITY : float = 400.0
 const DEFAULT_JUMP_COOLDOWN : float = 0.25
 const JUMP_VELOCITY : float = 180.0
+const LAUNCH_VELOCITY : float = 400.0
 const GHOST_JUMP_DURATION = 0.1
 const DECELERATION : float = 0.1
 var TIME_BETWEEN_FOOTSTEPS = 1.45
@@ -132,3 +133,6 @@ func _finalize_death():
 
 func _on_tutorial_death_timer_timeout():
 	killed.emit()
+
+func launch_up():
+	velocity.y = -LAUNCH_VELOCITY

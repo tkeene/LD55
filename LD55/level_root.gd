@@ -171,4 +171,4 @@ static func has_summon(name):
 	return has_it
 
 static func reset_level():
-	instance.get_tree().change_scene_to_file(LevelRoot.last_level_loaded)
+	instance.get_tree().reload_current_scene()

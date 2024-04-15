@@ -13,14 +13,16 @@ const CARDS_IN_HAND_MAX_ANGLE_RADIANS = PI / 6.0
 static var instance = null
 static var last_level_loaded
 var music_player : AudioStreamPlayer = null
+var normal_music_time = 0.0
+var paused_music_time = 0.0
 var audio_player : AudioStreamPlayer = null
-var quit_held_time = 0.0
 
 static var unlocked_summons = []
 var current_inventory = []
 var cards_for_summons : Array[TextureRect] = []
 var current_placing_object : Node2D = null
 var current_spellbook_index : int = 0
+var special_spellcast_time = 0
 
 signal respawn_requested
 signal bluuk_placed
@@ -37,6 +39,7 @@ func _ready():
 	current_inventory.append(SummonsList.get_spell("Tempus Unwindus"))
 	for summon in unlocked_summons:
 		current_inventory.push_front(summon)
+	current_inventory.sort_custom(func(a, b): return a["hand_order"] < b["hand_order"])
 	var card_prefab = $OverlayUI/PlacementUI/CardPrefab as TextureRect
 	var max_card_offset = Vector2.RIGHT * card_prefab.size.x * 4.0
 	for i in range(NUMBER_OF_CARDS_TO_SHOW):
@@ -45,6 +48,8 @@ func _ready():
 		spawned_card.global_position = lerp(card_prefab.position - max_card_offset,
 			card_prefab.position + max_card_offset, distance)
 		spawned_card.global_position += abs(distance - 0.5) * Vector2.DOWN * 200.0
+		if i == NUMBER_OF_CARDS_TO_SHOW / 2:
+			spawned_card.global_position += Vector2.DOWN * 2000.0
 		spawned_card.rotation = lerp(-CARDS_IN_HAND_MAX_ANGLE_RADIANS, CARDS_IN_HAND_MAX_ANGLE_RADIANS, distance)
 		$OverlayUI/PlacementUI.add_child(spawned_card)
 		cards_for_summons.append(spawned_card)
@@ -55,22 +60,16 @@ func _ready():
 func _process(delta):
 	music_player.volume_db = move_toward(music_player.volume_db, 0.0, FADE_IN_SPEED * delta )
 	if TutorialFlags.tutorial_currently_active:
+		$OverlayUI/ControlsPromptRect/ControlsPromptLabel.text = "[color=black]X - Next"
 		return
 	if OS.has_feature("editor") && Input.is_key_pressed(KEY_F4) && Input.is_key_pressed(KEY_A):
 		unlock_everything()
 	if !get_tree().paused:
 		($OverlayUI/PlacementUI as CanvasItem).visible = false
-		if Input.is_action_pressed("ui_cancel"):
-			quit_held_time += delta
-			if quit_held_time > 1.5:
-				get_tree().change_scene_to_file("res://01_main_menu/01_main.tscn")
-		else:
-			quit_held_time = 0.0
 		if Input.is_action_just_pressed("Toggle"):
 			pause_game()
 	else:
 		# Object Placement UI
-		quit_held_time = 0.0
 		if Input.is_action_just_pressed("ui_cancel"):
 			un_pause_game()
 		elif current_placing_object == null:
@@ -96,12 +95,23 @@ func _process(delta):
 					else:
 						cards_for_summons[card_index].visible = true
 						cards_for_summons[card_index].get_node("RichTextLabel").text = "[color=black]" + current_inventory[card_spellbook_index]["name"]
-				if Input.is_action_just_pressed("ui_accept") ||  Input.is_action_just_pressed("Toggle"):
+						cards_for_summons[card_index].get_node("TextureRect").texture = current_inventory[card_spellbook_index]["sprite"]
+				var is_normal_summon = true
+				if Input.is_action_pressed("ui_accept") ||  Input.is_action_pressed("Toggle"):
 					if selected_summon_data["is_rewind"]:
-						reset_level()
+						is_normal_summon = false
+						special_spellcast_time += delta
+						if special_spellcast_time >= 1.0:
+							reset_level()
 					elif selected_summon_data["victory"] > 0:
-						get_tree().change_scene_to_file("res://endgame_screens/ending_0" + str(selected_summon_data["victory"]) + ".tscn")
-					else:
+						is_normal_summon = false
+						special_spellcast_time += delta
+						if special_spellcast_time >= 1.0:
+							get_tree().change_scene_to_file("res://endgame_screens/ending_0" + str(selected_summon_data["victory"]) + ".tscn")
+				else:
+					special_spellcast_time = 0.0
+				if Input.is_action_just_pressed("ui_accept") ||  Input.is_action_just_pressed("Toggle"):
+					if is_normal_summon:
 						current_placing_object = selected_summon_data["object"].instantiate() as Node2D
 						current_placing_object.global_position = Player.last_position + Vector2.UP * 50.0
 						add_child(current_placing_object)
@@ -136,20 +146,22 @@ func un_pause_game():
 	if current_placing_object != null:
 		current_placing_object.queue_free()
 	current_placing_object = null
+	special_spellcast_time = 0.0
 	get_tree().paused = false
+	paused_music_time = music_player.get_playback_position()
 	music_player.stream = load(NORMAL_MUSIC)
 	music_player.volume_db = FADE_IN_VOLUME
-	music_player.play()
-	$OverlayUI/ControlsPromptRect/ControlsPromptLabel.text = "[color=black]C (hold 1 second) - Quit\nX - Summon\nZ - Jump"
+	music_player.play(normal_music_time)
+	$OverlayUI/ControlsPromptRect/ControlsPromptLabel.text = "[color=black]Z - Jump\nX - Spellbook"
 
 func pause_game():
 	current_placing_object = null
 	get_tree().paused = true
+	normal_music_time = music_player.get_playback_position()
 	music_player.stream = load(PAUSED_MUSIC)
 	music_player.volume_db = FADE_IN_VOLUME
-	music_player.play()
-	$OverlayUI/ControlsPromptRect/ControlsPromptLabel.text = "[color=black]C - Return\nX/Z - Place\n◀/▶ Select/Move"
-	
+	music_player.play(paused_music_time)
+	$OverlayUI/ControlsPromptRect/ControlsPromptLabel.text = "[color=black]X/Z - Place\nArrows - Select/Move\nC - Close Spellbook"
 
 static func unlock_everything():
 	for spell in SummonsList._all_spells:

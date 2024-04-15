@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://mvxbi2unglyr"]
+[gd_scene load_steps=6 format=3 uid="uid://bfy8q1mxmm235"]
 
 [ext_resource type="Script" path="res://pawns/faluuka.gd" id="1_v8rdt"]
 [ext_resource type="Texture2D" uid="uid://bof3desqc0ic2" path="res://pawns/critters.png" id="1_vis8u"]

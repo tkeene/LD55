@@ -16,28 +16,27 @@ func _ready():
 	animation_player.play("idle")
 
 func _physics_process(delta):
-	if get_tree().paused:
-		return
-	time_in_state += delta
-	# If we're idling, do nothing until we're past the idle timeout.
-	# At that point, calculate our next target position and start moving toward it.
-	if idling:
-		if time_in_state >= idle_time:
-			time_in_state -= idle_time
-			idling = false
-			delta = time_in_state
-			if going_up:
-				target_position_y = position.y - distance_to_travel
-			else:
-				target_position_y = position.y + distance_to_travel
+	if delta > 0.0 && !get_tree().paused:
+		time_in_state += delta
+		# If we're idling, do nothing until we're past the idle timeout.
+		# At that point, calculate our next target position and start moving toward it.
+		if idling:
+			if time_in_state >= idle_time:
+				time_in_state -= idle_time
+				idling = false
+				delta = time_in_state
+				if going_up:
+					target_position_y = position.y - distance_to_travel
+				else:
+					target_position_y = position.y + distance_to_travel
 
-	# If we're not idling, move toward our destination.
-	# Note that this isn't an else, specifically because if we spent slightly
-	# more time in idle than we intended, we want to put that into the motion.
-	if not idling:
-		var distance_this_frame = delta * (distance_to_travel / travel_time_secs)
-		position.y = move_toward(position.y, target_position_y, distance_this_frame)
-		if time_in_state >= travel_time_secs:
-			time_in_state -= travel_time_secs
-			going_up = not going_up
-			idling = true
+		# If we're not idling, move toward our destination.
+		# Note that this isn't an else, specifically because if we spent slightly
+		# more time in idle than we intended, we want to put that into the motion.
+		if not idling:
+			var distance_this_frame = delta * (distance_to_travel / travel_time_secs)
+			position.y = move_toward(position.y, target_position_y, distance_this_frame)
+			if time_in_state >= travel_time_secs:
+				time_in_state -= travel_time_secs
+				going_up = not going_up
+				idling = true

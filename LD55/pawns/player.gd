@@ -7,6 +7,7 @@ const AIR_ACCELERATION : float = 40.0
 const GRAVITY : float = 400.0
 const DEFAULT_JUMP_COOLDOWN : float = 0.25
 const JUMP_VELOCITY : float = 180.0
+const LAUNCH_VELOCITY : float = 400.0
 const GHOST_JUMP_DURATION = 0.1
 const DECELERATION : float = 0.1
 var TIME_BETWEEN_FOOTSTEPS = 1.45
@@ -98,6 +99,8 @@ func _physics_process(delta):
 		# Platforming Physics
 		var current_velocity : Vector2 = velocity
 		var acceleration = GROUND_ACCELERATION if is_on_floor() else AIR_ACCELERATION
+		if is_on_floor() && horizontal_input * current_velocity.x < 0.0:
+			current_velocity.x = 0.0
 		current_velocity.x = move_toward(current_velocity.x, horizontal_input * GROUND_MAX_SPEED, delta * acceleration)
 		if jump_pressed:
 			current_velocity.y -= JUMP_VELOCITY
@@ -130,3 +133,6 @@ func _finalize_death():
 
 func _on_tutorial_death_timer_timeout():
 	killed.emit()
+
+func launch_up():
+	velocity.y = -LAUNCH_VELOCITY

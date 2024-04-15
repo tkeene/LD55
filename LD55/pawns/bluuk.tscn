@@ -30,8 +30,6 @@ size = Vector2(77, 27)
 
 [node name="Bluuk" type="CharacterBody2D"]
 process_mode = 3
-z_index = 5
-y_sort_enabled = true
 script = ExtResource("1_ftsum")
 
 [node name="Sprite" type="Sprite2D" parent="."]

@@ -33,6 +33,9 @@ size = Vector2(83, 37)
 
 [node name="Byggin" type="CharacterBody2D"]
 process_mode = 3
+z_index = 70
+y_sort_enabled = true
+scale = Vector2(1.2, 1.2)
 script = ExtResource("1_d5it7")
 
 [node name="Sprite" type="Sprite2D" parent="."]

@@ -50,6 +50,7 @@ _data = {
 size = Vector2(255, 14)
 
 [node name="Wakka" type="CharacterBody2D"]
+scale = Vector2(0.2, 0.2)
 safe_margin = 0.15
 script = ExtResource("1_0u1n4")
 

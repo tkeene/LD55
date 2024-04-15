@@ -27,8 +27,8 @@ func _ready():
 	instance = self
 	music_player = AudioStreamPlayer.new()
 	add_child(music_player)
+	current_inventory.append(SummonsList.get_spell("Bluuk"))
 	current_inventory.append(SummonsList.get_spell("Tempus Unwindus"))
-	current_inventory.append(SummonsList.get_spell("bluuk"))
 	for summon in unlocked_summons:
 		current_inventory.push_front(summon)
 	var card_prefab = $OverlayUI/PlacementUI/CardPrefab as TextureRect

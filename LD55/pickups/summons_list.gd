@@ -31,7 +31,7 @@ static var _rewind = {
 	"victory": 0,
 }
 static var _bluuk = {
-	"name": "bluuk",
+	"name": "Bluuk",
 	"description": "Lazy, avoids moving at all costs. Luckily, this makes Bluuk a convenient platform.\n\nScared of heights, which is ironic",
 	"sprite": preload("res://interface/icon_bluuk.png"),
 	"object": preload("res://pawns/bluuk.tscn"),
@@ -39,7 +39,7 @@ static var _bluuk = {
 	"victory": 0,
 }
 static var _gozzuppa = {
-	"name": "gozzuppa",
+	"name": "Gozzuppa",
 	"description": "Gozuppa was my mother's favorite summon. They are useful in the same way a dumbwaiter is (and about as smart).",
 	"sprite": preload("res://interface/icon_gozzuppa.png"),
 	"object": preload("res://pawns/gozzuppa.tscn"),
@@ -47,7 +47,7 @@ static var _gozzuppa = {
 	"victory": 0,
 }
 static var _wakka = {
-	"name": "wakka",
+	"name": "Wakka",
 	"description": "Susceptible to gravity. This isn't terribly bad, and you can steer them by riding on their backs.\n\nThe five legs are a bizarre aftereffect from making a mistake drawing the summoning circle. (\"Pentagram\" does not mean \"pextragram\")",
 	"sprite": preload("res://interface/icon_wakka.png"),
 	"object": preload("res://pawns/wakka.tscn"),
@@ -55,22 +55,22 @@ static var _wakka = {
 	"victory": 0,
 }
 static var _victory1 = {
-	"name": "Wizard Tower Door Key",
+	"name": "Summon Tower Door Key",
 	"description": "I invented this spell so I'd never lose my keys again.\n\nFinally I can get inside my tower! Blorb really is a hard worker to find this for me. I don't know what I'd do without him.",
 	"sprite": preload("res://debug_pixel.bmp"),
 	"is_rewind": false,
 	"victory": 1,
 }
 static var _victory2 = {
-	"name": "Tickets To The Bahamas",
+	"name": "Summon Airplane Tickets",
 	"description": "This spell conjures vacation tickets anytime I want.\n\nI hope nobody steals this spell. It was expensive!",
 	"sprite": preload("res://debug_pixel.bmp"),
 	"is_rewind": false,
 	"victory": 2,
 }
 static var _victory3 = {
-	"name": "Anti-Wizard Barrier",
-	"description": "I keep this one locked up for safety.\n\nI would be in real trouble if any of my enemies got their hands on this!",
+	"name": "Summon Anti Wizard Barrier",
+	"description": "Kept locked up for safety.\n\nI would be in real trouble if any of my enemies got their hands on this spell!",
 	"sprite": preload("res://debug_pixel.bmp"),
 	"is_rewind": false,
 	"victory": 3,

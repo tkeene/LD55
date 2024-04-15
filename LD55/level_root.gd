@@ -28,6 +28,7 @@ func _ready():
 	music_player = AudioStreamPlayer.new()
 	add_child(music_player)
 	current_inventory.append(SummonsList.get_spell("Tempus Unwindus"))
+	current_inventory.append(SummonsList.get_spell("bluuk"))
 	for summon in unlocked_summons:
 		current_inventory.push_front(summon)
 	var card_prefab = $OverlayUI/PlacementUI/CardPrefab as TextureRect
@@ -77,6 +78,7 @@ func _process(delta):
 				var selected_summon_data = current_inventory[current_spellbook_index]
 				($OverlayUI/PlacementUI/SelectedScrollRect/SelectedScrollLabel as RichTextLabel).text = "[color=black]" + selected_summon_data["name"]
 				($OverlayUI/PlacementUI/SelectedScrollRect/SelectedScrollDescriptionLabel as RichTextLabel).text = "[color=black]" + selected_summon_data["description"]
+				($OverlayUI/PlacementUI/SelectedScrollRect/Sprite as TextureRect).texture = selected_summon_data["sprite"]
 				var middle_of_hand = NUMBER_OF_CARDS_TO_SHOW / 2
 				for card_index in range(cards_for_summons.size()):
 					var card_spellbook_index = card_index - middle_of_hand + current_spellbook_index
@@ -128,6 +130,7 @@ func pause_game():
 	music_player.volume_db = FADE_IN_VOLUME
 	music_player.play()
 	$OverlayUI/ControlsPromptRect/ControlsPromptLabel.text = "[color=black]C - Return\nX/Z - Place\n◀/▶ Select/Move"
+	
 
 static func unlock_summon(name):
 	instance._unlock_summon(name)

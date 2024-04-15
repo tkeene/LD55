@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://cget7lr6jumuo"]
+[gd_scene load_steps=4 format=3 uid="uid://cget7lr6jumuo"]
 
 [ext_resource type="Script" path="res://level_root.gd" id="1_p8cyp"]
-[ext_resource type="Texture2D" uid="uid://d4kvan1jibcfg" path="res://2px_border.png" id="2_5xwtc"]
+[ext_resource type="Texture2D" uid="uid://bnud77k0iq047" path="res://cards/scroll_menu.png" id="2_hagtk"]
+
+[sub_resource type="Theme" id="Theme_8ydvm"]
 
 [node name="LevelRoot" type="Node2D"]
 script = ExtResource("1_p8cyp")
@@ -35,7 +37,7 @@ anchors_preset = 0
 offset_right = 960.0
 offset_bottom = 540.0
 
-[node name="SelectedScrollRect" type="ColorRect" parent="OverlayUI/PlacementUI"]
+[node name="SelectedScrollRect" type="TextureRect" parent="OverlayUI/PlacementUI"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -48,16 +50,21 @@ offset_right = 159.0
 offset_bottom = 183.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("2_hagtk")
+expand_mode = 3
 
 [node name="SelectedScrollLabel" type="RichTextLabel" parent="OverlayUI/PlacementUI/SelectedScrollRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 6.0
-offset_top = 6.0
+offset_left = 37.0
+offset_top = 33.0
+offset_right = -78.6667
+offset_bottom = -321.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_8ydvm")
 bbcode_enabled = true
 text = "[color=magenta][PLACEABLE HERE]"
 fit_content = true
@@ -67,13 +74,27 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 6.0
-offset_top = 213.0
+offset_left = 52.3333
+offset_top = 212.0
+offset_right = -38.3333
+offset_bottom = -60.0
 grow_horizontal = 2
 grow_vertical = 2
+rotation = -0.065543
+theme_override_font_sizes/normal_font_size = 12
 bbcode_enabled = true
 text = "[color=magenta][PLACEABLE HERE]"
 fit_content = true
+
+[node name="Sprite" type="TextureRect" parent="OverlayUI/PlacementUI/SelectedScrollRect"]
+layout_mode = 0
+offset_left = 30.3333
+offset_top = 88.0
+offset_right = 173.333
+offset_bottom = 203.0
+rotation = -0.0858416
+expand_mode = 2
+stretch_mode = 5
 
 [node name="LeftArrow" type="ColorRect" parent="OverlayUI/PlacementUI/SelectedScrollRect"]
 layout_mode = 0
@@ -97,13 +118,19 @@ offset_left = 480.0
 offset_top = 408.0
 offset_right = 586.0
 offset_bottom = 576.0
-texture = ExtResource("2_5xwtc")
-stretch_mode = 1
+texture = ExtResource("2_hagtk")
+expand_mode = 3
 
 [node name="RichTextLabel" type="RichTextLabel" parent="OverlayUI/PlacementUI/CardPrefab"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = 9.0
+offset_right = -29.0
+offset_bottom = -137.0
+theme_override_font_sizes/normal_font_size = 10
 bbcode_enabled = true
 text = "[color=black]name of card"
+autowrap_mode = 0

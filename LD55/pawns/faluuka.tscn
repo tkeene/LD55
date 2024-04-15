@@ -29,6 +29,8 @@ _data = {
 }
 
 [node name="Faluuka" type="CharacterBody2D"]
+z_index = 5
+y_sort_enabled = true
 scale = Vector2(0.11, 0.11)
 script = ExtResource("1_v8rdt")
 

@@ -41,7 +41,7 @@ static var _bluuk = {
 }
 static var _gozzuppa = {
 	"name": "Gozzuppa",
-	"description": "Gozuppa was my mother's favorite summon. They are useful in the same way a dumbwaiter is (and about as smart).",
+	"description": "\nGozuppa was my mother's favorite summon. They are useful in the same way a dumbwaiter is (and about as smart).",
 	"sprite": preload("res://interface/icon_gozzuppa.png"),
 	"object": preload("res://pawns/gozzuppa.tscn"),
 	"is_rewind": false,
@@ -57,7 +57,7 @@ static var _wakka = {
 }
 static var _faluuka = {
 	"name": "Faluuka",
-	"description": "Susceptible to gravity.\n\nDoes't do much, just sits there, shouldn't have even bothered giving a TV legs.",
+	"description": "Susceptible to gravity.\n\nDoesn't do much, just sits there, why did I even bother giving a TV legs.",
 	"sprite": preload("res://interface/icon_faluuka.png"),
 	"object": preload("res://pawns/faluuka.tscn"),
 	"is_rewind": false,

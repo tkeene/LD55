@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://bt602ehc2losp"]
+
+[ext_resource type="Script" path="res://endgame_screens/ending_screen.gd" id="1_2cgbi"]
+
+[node name="Ending02" type="Node2D"]
+script = ExtResource("1_2cgbi")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 22.0
+offset_top = 22.0
+offset_right = 933.0
+offset_bottom = 514.0
+text = "Ending 2/3
+Blort vanished without a trace.
+Where could Blort have gone?
+Some say the wizard still waits to this day
+for someone to unlock the tower door."

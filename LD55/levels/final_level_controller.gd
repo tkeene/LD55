@@ -14,7 +14,6 @@ func _on_timer_timeout():
 func _on_tutorial_controller_tutorial_end_signal():
 	get_tree().paused = false
 
-
 func _on_level_root_scroll_acquired():
 	if !TutorialFlags.obtain_door_key_seen:
 		get_tree().paused = true
@@ -22,4 +21,4 @@ func _on_level_root_scroll_acquired():
 		tutorial_controller.run_tutorial("PickupDoorKey")
 
 func _on_level_root_final_spell_cast():
-	get_tree().change_scene_to_file("res://TODO")
+	get_tree().change_scene_to_file("res://levels/end_screen.tscn")

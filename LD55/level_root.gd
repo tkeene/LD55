@@ -115,7 +115,7 @@ func _process(delta):
 						is_normal_summon = false
 						special_spellcast_time += delta
 						if special_spellcast_time >= 1.0:
-							#get_tree().change_scene_to_file("res://endgame_screens/ending_0" + str(selected_summon_data["victory"]) + ".tscn")
+							un_pause_game()
 							print("Final spell has been cast")
 							special_spellcast_time = 0.0
 							final_spell_cast.emit()

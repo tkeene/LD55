@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://lqe0151di4xf"]
+[gd_scene load_steps=16 format=3 uid="uid://bc6qhysp4gte"]
 
 [ext_resource type="Script" path="res://levels/end_screen.gd" id="1_fks6b"]
 [ext_resource type="PackedScene" uid="uid://dn0yk3wiakddr" path="res://levels/level_background.tscn" id="1_gi6je"]
@@ -7,13 +7,14 @@
 [ext_resource type="Texture2D" uid="uid://th6750v3w0o0" path="res://levels/graphics/Tile3.png" id="4_5cowe"]
 [ext_resource type="Texture2D" uid="uid://dx8yyv7fuapke" path="res://levels/graphics/Tile2.png" id="5_3vn3k"]
 [ext_resource type="Texture2D" uid="uid://82wp0q3skl6t" path="res://endgame_screens/tv_time.png" id="6_qvtji"]
-[ext_resource type="PackedScene" uid="uid://cd5lt7r4fxxlh" path="res://endgame_screens/faluuka_sprite.tscn" id="7_bui54"]
-[ext_resource type="PackedScene" uid="uid://csiqie10ytfxp" path="res://endgame_screens/byggin_sprite.tscn" id="8_e1rg5"]
-[ext_resource type="PackedScene" uid="uid://thwhyjbijr85" path="res://endgame_screens/blort_sprite.tscn" id="9_xn6jy"]
-[ext_resource type="PackedScene" uid="uid://ycxr5otvsmdc" path="res://endgame_screens/wakka_sprite.tscn" id="10_o14hc"]
-[ext_resource type="PackedScene" uid="uid://b7wt2tktewoio" path="res://endgame_screens/gozzuppa_sprite.tscn" id="11_0ys4c"]
-[ext_resource type="PackedScene" uid="uid://c6cug2b5cnaov" path="res://endgame_screens/bluuk_sprite.tscn" id="12_2uay0"]
-[ext_resource type="PackedScene" uid="uid://dyb6audb4wube" path="res://endgame_screens/the_end_text.tscn" id="14_oyfyq"]
+[ext_resource type="PackedScene" path="res://endgame_screens/faluuka_sprite.tscn" id="7_bui54"]
+[ext_resource type="PackedScene" path="res://endgame_screens/byggin_sprite.tscn" id="8_e1rg5"]
+[ext_resource type="PackedScene" path="res://endgame_screens/blort_sprite.tscn" id="9_xn6jy"]
+[ext_resource type="PackedScene" path="res://endgame_screens/wakka_sprite.tscn" id="10_o14hc"]
+[ext_resource type="PackedScene" path="res://endgame_screens/gozzuppa_sprite.tscn" id="11_0ys4c"]
+[ext_resource type="PackedScene" path="res://endgame_screens/bluuk_sprite.tscn" id="12_2uay0"]
+[ext_resource type="PackedScene" path="res://endgame_screens/the_end_text.tscn" id="14_oyfyq"]
+[ext_resource type="AudioStream" uid="uid://ce2sbl1wdt2fb" path="res://music/LDJam55_ContemplatingPainfulLacerations.mp3" id="15_o5b7h"]
 
 [node name="EndScreen" type="Node2D"]
 script = ExtResource("1_fks6b")
@@ -296,5 +297,10 @@ position = Vector2(714, 102)
 
 [node name="TheEndText" parent="." instance=ExtResource("14_oyfyq")]
 position = Vector2(479, 321)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_o5b7h")
+autoplay = true
+stream_paused = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

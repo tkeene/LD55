@@ -20,3 +20,6 @@ func _on_level_root_scroll_acquired():
 		get_tree().paused = true
 		TutorialFlags.obtain_door_key_seen = true
 		tutorial_controller.run_tutorial("PickupDoorKey")
+
+func _on_level_root_final_spell_cast():
+	get_tree().change_scene_to_file("res://TODO")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://b3xebaqan3bde"]
+[gd_scene load_steps=20 format=3 uid="uid://d2po14hky3f1k"]
 
 [ext_resource type="PackedScene" uid="uid://dn0yk3wiakddr" path="res://levels/level_background.tscn" id="1_lexvo"]
 [ext_resource type="Script" path="res://levels/final_level_controller.gd" id="1_trm7e"]
@@ -8,12 +8,12 @@
 [ext_resource type="Texture2D" uid="uid://da7oajlefehbf" path="res://levels/graphics/Tile1.png" id="5_npwq7"]
 [ext_resource type="Texture2D" uid="uid://dx8yyv7fuapke" path="res://levels/graphics/Tile2.png" id="6_8rqsh"]
 [ext_resource type="Texture2D" uid="uid://th6750v3w0o0" path="res://levels/graphics/Tile3.png" id="7_kp1ak"]
-[ext_resource type="PackedScene" uid="uid://8stn87jsaox3" path="res://levels/lava_floor.tscn" id="8_8ut6y"]
+[ext_resource type="PackedScene" path="res://levels/lava_floor.tscn" id="8_8ut6y"]
 [ext_resource type="Texture2D" uid="uid://b7wuoj30joa3a" path="res://levels/graphics/Tile4.png" id="8_suses"]
 [ext_resource type="Texture2D" uid="uid://c74codffpakqq" path="res://levels/graphics/TileStart.png" id="9_4glac"]
 [ext_resource type="Script" path="res://levels/KillZone.gd" id="9_hmcig"]
 [ext_resource type="PackedScene" uid="uid://bry0qk84weeo2" path="res://pickups/page.tscn" id="11_4ol8w"]
-[ext_resource type="PackedScene" uid="uid://ojm0hilu45b5" path="res://levels/jonezy.tscn" id="11_krxhk"]
+[ext_resource type="PackedScene" path="res://levels/jonezy.tscn" id="11_krxhk"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ilx01"]
 normal = Vector2(1, 0)
@@ -275,6 +275,7 @@ position = Vector2(748, 254)
 summon_name = "Summon Tower Door Key"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="final_spell_cast" from="LevelRoot" to="." method="_on_level_root_final_spell_cast"]
 [connection signal="scroll_acquired" from="LevelRoot" to="." method="_on_level_root_scroll_acquired"]
 [connection signal="body_entered" from="Hazards/TheFloorIsLava" to="Hazards/TheFloorIsLava" method="on_body_entered"]
 [connection signal="body_entered" from="Hazards/FloatingSpike2" to="Hazards/FloatingSpike2" method="on_body_entered"]

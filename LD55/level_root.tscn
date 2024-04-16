@@ -14,7 +14,8 @@ script = ExtResource("1_p8cyp")
 anchor_mode = 0
 
 [node name="OverlayUI" type="CanvasGroup" parent="."]
-z_index = 10
+z_index = 99
+y_sort_enabled = true
 
 [node name="ControlsPromptRect" type="ColorRect" parent="OverlayUI"]
 offset_right = 216.0

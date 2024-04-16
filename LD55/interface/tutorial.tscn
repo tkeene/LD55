@@ -13,6 +13,8 @@
 [node name="TutorialController" type="Node2D"]
 process_mode = 2
 visible = false
+z_index = 99
+y_sort_enabled = true
 script = ExtResource("1_bp1pr")
 
 [node name="OverlayUI" type="CanvasGroup" parent="."]

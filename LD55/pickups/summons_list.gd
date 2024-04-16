@@ -82,7 +82,7 @@ static var _byggin = {
 static var _victory1 = {
 	"name": "Summon Tower Door Key",
 	"description": "I invented this spell so I'd never lose my keys again.\n(hold Z for one second)\n\nFinally I can get inside my tower! Blorb really is a hard worker to find this for me. I don't know what I'd do without him.",
-	"sprite": preload("res://debug_pixel.bmp"),
+	"sprite": preload("res://cards/key.png"),
 	"is_rewind": false,
 	"victory": 1,
 	"hand_order": 50,

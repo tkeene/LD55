@@ -381,7 +381,6 @@ summon_name = "Gozzuppa"
 
 [node name="TutorialController" parent="." instance=ExtResource("14_spkjg")]
 z_index = 10
-y_sort_enabled = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="scroll_acquired" from="LevelRoot" to="." method="_on_level_root_scroll_acquired"]

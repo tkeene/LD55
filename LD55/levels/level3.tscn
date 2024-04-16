@@ -313,7 +313,6 @@ summon_name = "Bluuk"
 
 [node name="TutorialController" parent="." instance=ExtResource("16_20sqd")]
 z_index = 10
-y_sort_enabled = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="scroll_acquired" from="LevelRoot" to="." method="_on_level_root_scroll_acquired"]

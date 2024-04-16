@@ -5,5 +5,9 @@ extends Area2D
 
 func _on_body_entered(node: PhysicsBody2D):
 	if node is Player:
-		get_tree().change_scene_to_file(next_level_path)
+		LevelRoot.play_goal_sound_next_frame = true
+		call_deferred("_start_next_level")
+
+func _start_next_level():
+	get_tree().change_scene_to_file(next_level_path)
 

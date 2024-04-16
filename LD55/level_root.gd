@@ -23,6 +23,7 @@ var cards_for_summons : Array[TextureRect] = []
 var current_placing_object : Node2D = null
 var current_spellbook_index : int = 0
 var special_spellcast_time = 0
+static var play_goal_sound_next_frame = false
 
 signal respawn_requested
 signal bluuk_placed
@@ -59,6 +60,12 @@ func _ready():
 	visible = true
 
 func _process(delta):
+	if play_goal_sound_next_frame:
+		var goal_sound_player = AudioStreamPlayer.new()
+		add_child(goal_sound_player)
+		goal_sound_player.stream = load("res://audio/sfx_goal.wav")
+		goal_sound_player.play()
+		play_goal_sound_next_frame = false
 	music_player.volume_db = move_toward(music_player.volume_db, 0.0, FADE_IN_SPEED * delta )
 	if TutorialFlags.tutorial_currently_active:
 		$OverlayUI/ControlsPromptRect/ControlsPromptLabel.text = "[color=black]X - Next"

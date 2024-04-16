@@ -24,6 +24,11 @@ wait_time = 5.0
 one_shot = true
 autostart = true
 
+[node name="Timer2" type="Timer" parent="."]
+wait_time = 15.0
+one_shot = true
+autostart = true
+
 [node name="LevelBackground" parent="." instance=ExtResource("1_gi6je")]
 process_mode = 3
 
@@ -304,3 +309,4 @@ autoplay = true
 stream_paused = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]

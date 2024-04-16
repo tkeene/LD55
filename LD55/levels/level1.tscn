@@ -283,7 +283,7 @@ centered = false
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Terrain/Top Floor"]
 z_index = 99
 position = Vector2(0, 175)
-polygon = PackedVector2Array(200, 0, 200, 25, 660, 23, 660, 0, 500, 1, 500, -7, 374, -7, 374, 1)
+polygon = PackedVector2Array(200, 0, 200, 25, 660, 23, 660, 0, 500, 1, 374, 1)
 
 [node name="Tiles" type="Node2D" parent="Terrain/Top Floor"]
 
@@ -295,7 +295,6 @@ texture = ExtResource("7_ooa2f")
 centered = false
 
 [node name="LevelExit" parent="Terrain/Top Floor/Tiles" instance=ExtResource("11_g0rj1")]
-process_mode = 3
 next_level_path = "res://levels/level2.tscn"
 
 [node name="Tile3-1" type="Sprite2D" parent="Terrain/Top Floor/Tiles"]
@@ -381,7 +380,7 @@ script = ExtResource("12_b5vna")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hazards/Top Spikes"]
 z_index = 99
-position = Vector2(437, -138)
+position = Vector2(436, -130)
 shape = SubResource("RectangleShape2D_6vabb")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
 

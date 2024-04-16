@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://cd5lt7r4fxxlh"]
+
+[ext_resource type="Texture2D" uid="uid://bof3desqc0ic2" path="res://pawns/critters.png" id="1_g08se"]
+[ext_resource type="Script" path="res://endgame_screens/looping_sprite.gd" id="2_lhhyy"]
+
+[sub_resource type="Animation" id="Animation_5gygy"]
+resource_name = "loop"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [22, 23, 24]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lxfe1"]
+_data = {
+"loop": SubResource("Animation_5gygy")
+}
+
+[node name="FaluukaSprite" type="Sprite2D"]
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("1_g08se")
+hframes = 5
+vframes = 5
+frame = 22
+script = ExtResource("2_lhhyy")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_lxfe1")
+}

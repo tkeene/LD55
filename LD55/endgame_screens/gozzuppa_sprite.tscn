@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=3 uid="uid://b7wt2tktewoio"]
+
+[ext_resource type="Texture2D" uid="uid://bof3desqc0ic2" path="res://pawns/critters.png" id="1_iisna"]
+[ext_resource type="Script" path="res://endgame_screens/looping_sprite.gd" id="2_6jxc0"]
+
+[sub_resource type="Animation" id="Animation_87688"]
+resource_name = "loop"
+length = 0.6
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [15, 16, 17]
+}
+
+[sub_resource type="Animation" id="Animation_plww0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [15]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kcbap"]
+_data = {
+"RESET": SubResource("Animation_plww0"),
+"loop": SubResource("Animation_87688")
+}
+
+[node name="GozzuppaSprite" type="Sprite2D"]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_iisna")
+hframes = 5
+vframes = 5
+frame = 15
+script = ExtResource("2_6jxc0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_kcbap")
+}

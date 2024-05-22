@@ -1,5 +1,5 @@
 # LD55
-A game made in 72 hours for Ludum Dare 55 using Godot Engine. The theme was Summoning.
+A puzzle platformer game made in 72 hours for Ludum Dare 55 using Godot Engine. The theme was Summoning.
 Playable build here: https://koboldskeep.itch.io/ldjam55-blort
 
 Credits:
